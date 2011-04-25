@@ -37,7 +37,7 @@ void Graph::DeleteEdge(int i, int j) {
     adjacencyMatrix_[i][j] = -1;
 }
 
-float Graph::GetCost() const {
+int Graph::GetCost() const {
 	return adjacencyMatrix_[i][j];
 }
 
