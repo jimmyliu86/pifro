@@ -15,7 +15,7 @@ class Graph {
         void AddEdge(int i, int j);
         void Print();
         void DeleteEdge(int i, int j);
-		float GetCost(int i, int j) const;
+		    int GetCost(int i, int j) const;
 	private:
         int **adjacencyMatrix_;
         int nVertex_;
