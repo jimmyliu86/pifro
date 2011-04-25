@@ -1,6 +1,7 @@
 /*
-    Copyright 2010 Luiz Gustavo Sathler Dias
-    Disciplina:  Heuristicas e Metaheuristicas
+    Copyright 2011 Luiz Gustavo Sathler Dias
+    Projeto Orientado em Computacao 2
+	Implementacao da estrutura Grafo
 */
 
 #include "grafo.h"
@@ -34,6 +35,10 @@ void Graph::AddEdge(int i, int j) {
 
 void Graph::DeleteEdge(int i, int j) {
     adjacencyMatrix_[i][j] = -1;
+}
+
+float Graph::GetCost() const {
+	return adjacencyMatrix_[i][j];
 }
 
 void Graph::Print() {

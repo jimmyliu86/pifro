@@ -1,6 +1,7 @@
 /*
-    Copyright 2010 Luiz Gustavo Sathler Dias
-    Disciplina:  Heuristicas e Metaheuristicas
+    Copyright 2011 Luiz Gustavo Sathler Dias
+   	Projeto Orientado em Computacao 2
+	Classe de definicao de Grafo
 */
 
 #ifndef GRAPH_H_
@@ -14,6 +15,8 @@ class Graph {
         void AddEdge(int i, int j);
         void Print();
         void DeleteEdge(int i, int j);
+		float GetCost(int i, int j) const;
+	private:
         int **adjacencyMatrix_;
         int nVertex_;
 };
