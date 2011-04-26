@@ -4,7 +4,7 @@
 	Implementacao da estrutura Grafo
 */
 
-#include "grafo.h"
+#include "graph.h"
 #include <stdio.h>
 
 Graph::Graph(int nVertex) {
@@ -37,8 +37,8 @@ void Graph::DeleteEdge(int i, int j) {
     adjacencyMatrix_[i][j] = -1;
 }
 
-int Graph::GetCost() const {
-	return adjacencyMatrix_[i][j];
+float Graph::GetCost() const {
+    return adjacencyMatrix_[i][j];
 }
 
 void Graph::Print() {
