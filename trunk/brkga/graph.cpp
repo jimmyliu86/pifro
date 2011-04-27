@@ -4,56 +4,48 @@
 	Implementacao da estrutura Grafo
 */
 
-#include "graph.h"
+#include "./graph.h"
+
 #include <stdio.h>
 
-Graph::Graph(int nVertex) {
-    this->nVertex_ = nVertex;
+Graph::Graph(int n) {
+    this->number_of_vertex_ = n;
 
-    adjacencyMatrix_ = new int*[nVertex];
-    for (int i = 0; i < nVertex; ++i) {
-        adjacencyMatrix_[i] = new int[nVertex];
-        for (int j = 0; j < nVertex; ++j)
-            adjacencyMatrix_[i][j] = -1;
-    }
-}
+    matrix_ = new int*[n];
+    list_ = new std::list<int>[n];
 
-Graph::Graph(const Graph& g) {
-    this->nVertex_ = g.nVertex_;
-
-    this->adjacencyMatrix_ = new int*[g.nVertex_];
-    for (int i = 0; i < g.nVertex_; ++i) {
-        this->adjacencyMatrix_[i] = new int[g.nVertex_];
-        for (int j = 0; j < g.nVertex_; ++j)
-            this->adjacencyMatrix_[i][j] = g.adjacencyMatrix_[i][j];
-    }
-}
-
-void Graph::AddEdge(int i, int j) {
-    adjacencyMatrix_[i][j] = 0;
-}
-
-void Graph::DeleteEdge(int i, int j) {
-    adjacencyMatrix_[i][j] = -1;
-}
-
-float Graph::GetCost() const {
-    return adjacencyMatrix_[i][j];
-}
-
-void Graph::Print() {
-    for (int i = 0; i < nVertex_; ++i) {
-        for (int j = 0; j <nVertex_; ++j) {
-            printf("%d ", adjacencyMatrix_[i][j]);
-        }
-        printf("\n");
+    for (int i = 0; i < n; ++i) {
+        matrix_[i] = new int[n];
+        for (int j = 0; j < n; ++j)
+            matrix_[i][j] = -1;
     }
 }
 
 Graph::~Graph() {
-    for (int i = 0; i < nVertex_; ++i)
-        delete[] adjacencyMatrix_[i];
-
-    delete[] adjacencyMatrix_;
+    for (int i = 0; i < number_of_vertex_; ++i)
+        delete[] matrix_[i];
+    delete[] matrix_;
+    delete[] list_;
 }
 
+void Graph::AddEdge(int i, int j) {
+    matrix_[i][j] = 0;
+    list_[i].push_back(j);
+}
+
+void Graph::DeleteEdge(int i, int j) {
+    matrix_[i][j] = -1;
+    list_[i].remove(j);
+}
+
+int Graph::GetCost(int i, int j) const {
+    return matrix_[i][j];
+}
+
+int Graph::Size() const {
+    return number_of_vertex_;
+}
+
+const std::list<int>& Graph::GetNeighbors(int i) const {
+    return list_[i];
+}

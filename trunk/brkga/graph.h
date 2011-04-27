@@ -1,24 +1,44 @@
 /*
     Copyright 2011 Luiz Gustavo Sathler Dias
    	Projeto Orientado em Computacao 2
-	Classe de definicao de Grafo
+	Classe de definicao de Grafo.
+    Representa o grafo como matriz e lista
+    de adjacencia.
 */
 
 #ifndef GRAPH_H_
 #define GRAPH_H_
 
+#include <list>
+
 class Graph {
     public:
-        explicit Graph(int nVertex);
-        explicit Graph(const Graph& g);
+        /* Construtor recebe numero de vertices
+           e aloca memoria para matriz e lista
+           de adjacencias */
+        explicit Graph(int n);
+
         ~Graph();
+
+        // Insere uma aresta no grafo
         void AddEdge(int i, int j);
-        void Print();
+
+        // Exclui uma aresta do grafo
         void DeleteEdge(int i, int j);
-        float GetCost(int i, int j) const;
+
+        // Retorna o peso de uma aresta
+        int GetCost(int i, int j) const;
+
+        // Retorna o numero de vertices do grafo
+        int Size() const;
+
+        // Retorna uma lista com os vizinhos do vertice i
+        const std::list<int> &GetNeighbors(int i) const;
+
     private:
-        int **adjacencyMatrix_;
-        int nVertex_;
+        int **matrix_;
+        std::list<int> *list_;
+        int number_of_vertex_;
 };
 
-#endif
+#endif  // GRAPH_H_
