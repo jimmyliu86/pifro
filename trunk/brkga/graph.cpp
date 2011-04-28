@@ -1,7 +1,7 @@
 /*
     Copyright 2011 Luiz Gustavo Sathler Dias
     Projeto Orientado em Computacao 2
-	Implementacao da estrutura Grafo
+    Implementacao da estrutura Grafo
 */
 
 #include "./graph.h"
@@ -42,10 +42,24 @@ int Graph::GetCost(int i, int j) const {
     return matrix_[i][j];
 }
 
+void Graph::SetCost(int i, int j, int cost) {
+    matrix_[i][j] = cost;
+}
+
 int Graph::Size() const {
     return number_of_vertex_;
 }
 
 const std::list<int>& Graph::GetNeighbors(int i) const {
     return list_[i];
+}
+
+void Graph::Print() {
+    for (int i = 0; i < number_of_vertex_; ++i) {
+        printf("[%d] ", i);
+        std::list<int>::iterator it;
+        for (it = list_[i].begin(); it != list_[i].end(); ++it)
+            printf("%d ", *it);
+        printf("\n");
+    }
 }

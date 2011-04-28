@@ -1,7 +1,7 @@
 /*
     Copyright 2011 Luiz Gustavo Sathler Dias
-   	Projeto Orientado em Computacao 2
-	Classe de definicao de Grafo.
+    Projeto Orientado em Computacao 2
+    Classe de definicao de Grafo.
     Representa o grafo como matriz e lista
     de adjacencia.
 */
@@ -28,12 +28,18 @@ class Graph {
 
         // Retorna o peso de uma aresta
         int GetCost(int i, int j) const;
-
+        
+        // Incrementa peso de uma aresta
+        void SetCost(int i, int j, int cost);
+        
         // Retorna o numero de vertices do grafo
         int Size() const;
 
         // Retorna uma lista com os vizinhos do vertice i
         const std::list<int> &GetNeighbors(int i) const;
+        
+        // Imprime grafo
+        void Print();
 
     private:
         int **matrix_;
