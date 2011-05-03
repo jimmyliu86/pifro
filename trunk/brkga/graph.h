@@ -6,8 +6,8 @@
     de adjacencia.
 */
 
-#ifndef GRAPH_H_
-#define GRAPH_H_
+#ifndef BRKGA_GRAPH_H_
+#define BRKGA_GRAPH_H_
 
 #include <list>
 
@@ -28,16 +28,16 @@ class Graph {
 
         // Retorna o peso de uma aresta
         int GetCost(int i, int j) const;
-        
+
         // Incrementa peso de uma aresta
         void SetCost(int i, int j, int cost);
-        
+
         // Retorna o numero de vertices do grafo
         int Size() const;
 
         // Retorna uma lista com os vizinhos do vertice i
         const std::list<int> &GetNeighbors(int i) const;
-        
+
         // Imprime grafo
         void Print();
 
@@ -47,4 +47,4 @@ class Graph {
         int number_of_vertex_;
 };
 
-#endif  // GRAPH_H_
+#endif  // BRKGA_GRAPH_H_

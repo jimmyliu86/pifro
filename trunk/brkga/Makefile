@@ -10,7 +10,7 @@ main : main.cpp graph.h instance.h
 graph: graph.cpp graph.h
 	$(CC) -g -c graph.cpp
 
-instance: instance.cpp instance.h graph.h
+instance: instance.cpp instance.h graph.h macros.h
 	$(CC) -g -c instance.cpp
 
 clean :

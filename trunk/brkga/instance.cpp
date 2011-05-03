@@ -7,18 +7,15 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-
-#include "instance.h"
+#include "./instance.h"
 
 Instance* Instance::instance_ = NULL;
 
 Instance::Instance() {
-    
 }
 
 Instance::~Instance() {
     delete g_;
-    // checar depois (luiz)
     delete[] instance_name_;
 }
 
@@ -35,8 +32,8 @@ void Instance::Initialize(const char* instance_filename) {
     instance_->ReadConnectionsFile(connections_filename);
     instance_->ReadRequestsFile(requests_filename);
 }
- 
-Instance* Instance::instance() {
+
+Instance* Instance::GetInstance() {
     if (instance_ == NULL) {
         printf("Instance not initialized\n");
         exit(1);
@@ -57,9 +54,12 @@ void Instance::Print() {
         printf("%d %d\n", it->first, it->second);
 }
 
+int Instance:: GetNumberOfRequest() const {
+    return number_of_request_;
+}
+
 // Le arquivo com as conexoes existententes na rede
 void Instance::ReadConnectionsFile(const char* connections_filename) {
-    
     FILE* connections_file = fopen(connections_filename, "r");
     if (connections_file == NULL) {
         printf("file %s not found\n", connections_filename);
@@ -69,8 +69,8 @@ void Instance::ReadConnectionsFile(const char* connections_filename) {
     // le numero de nos e numero de conexoes
     fscanf(connections_file, "%d %d", &number_of_node_,
            &number_of_edge_);
-    
-    // initializa grafo  
+
+    // initializa grafo
     g_ = new Graph(number_of_node_);
     int n1, n2;
     // adiciona conexoes no grafo que representa a topologia da rede
@@ -83,7 +83,6 @@ void Instance::ReadConnectionsFile(const char* connections_filename) {
 
 // Le arquivo com as requisicoes de trafego
 void Instance::ReadRequestsFile(const char* requests_filename) {
-    
     FILE* requests_file = fopen(requests_filename, "r");
     if (requests_file == NULL) {
         printf("file %s not found\n", requests_filename);

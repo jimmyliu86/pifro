@@ -4,9 +4,8 @@
     Implementacao da estrutura Grafo
 */
 
+#include <cstdio>
 #include "./graph.h"
-
-#include <stdio.h>
 
 Graph::Graph(int n) {
     this->number_of_vertex_ = n;

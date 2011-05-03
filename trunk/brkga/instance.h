@@ -4,22 +4,29 @@
     Classe de definicao da Instancia
 */
 
-#ifndef INSTANCE_H_
-#define INSTANCE_H_
+#ifndef BRKGA_INSTANCE_H_
+#define BRKGA_INSTANCE_H_
 
 #include <vector>
 #include <utility>
-
-#include "graph.h"
+#include "./graph.h"
+#include "./macros.h"
 
 class Instance {
     public:
 
         ~Instance();
+
         void Initialize(const char* instance_filename);
-        static Instance* instance();
+
+        // Retorna ponteiro para instancia inicializada
+        static Instance* GetInstance();
+
+        // Imprime os dados da instancia
         void Print();
-   
+
+        int GetNumberOfRequest() const;
+
     private:
 
         const char* instance_name_;
@@ -28,12 +35,19 @@ class Instance {
         int number_of_request_;
         Graph* g_;
         std::vector<std::pair<int, int> > request_;
-        
+
+        // Classe singleton
         static Instance* instance_;
+
+        // Construtor padrao
         Instance();
 
+        // Faz leitura dos arquivos com as conexoes e requisicoes
+        // de trafego
         void ReadConnectionsFile(const char* connection_file_name);
         void ReadRequestsFile(const char* request_file_name);
+
+        DISALLOW_COPY_AND_ASSIGN(Instance);
 };
 
-#endif  // INSTANCE_H_
+#endif  // BRKGA_INSTANCE_H_
