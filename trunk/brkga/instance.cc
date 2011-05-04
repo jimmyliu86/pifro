@@ -1,13 +1,11 @@
-/*
-    Copyright 2011 Luiz Gustavo Sathler Dias
-    Projeto Orientado em Computacao 2
-    Classe de implementacao de instancia
-*/
+// Copyright 2011 Universidade Federal de Minas Gerais
+// Projeto Orientado em Computação 2
+// Classe de implementação de instância.
 
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
 #include "./instance.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 Instance* Instance::instance_ = NULL;
 
@@ -24,11 +22,11 @@ void Instance::Initialize(const char* instance_filename) {
 
     char connections_filename[30];
     char requests_filename[30];
-    /* adicionar extensao .net e .trf ao nome da instancia.
-    Arquivo de conexoes e arquivo de requisicoes de trafego */
+    // Adiciona extensão .net e .trf ao nome da instância.
+    // Arquivo de conexões e arquivo de requisições de tráfego.
     sprintf(connections_filename, "%s.net", instance_filename);
     sprintf(requests_filename, "%s.trf", instance_filename);
-    // le dados da instancia
+    // Lê dados da instância.
     instance_->ReadConnectionsFile(connections_filename);
     instance_->ReadRequestsFile(requests_filename);
 }
@@ -58,22 +56,22 @@ int Instance:: GetNumberOfRequest() const {
     return number_of_request_;
 }
 
-// Le arquivo com as conexoes existententes na rede
+// Lê arquivo com as conexões existentes na rede.
 void Instance::ReadConnectionsFile(const char* connections_filename) {
     FILE* connections_file = fopen(connections_filename, "r");
     if (connections_file == NULL) {
         printf("file %s not found\n", connections_filename);
-        exit(0);
+        exit(1);
     }
 
-    // le numero de nos e numero de conexoes
+    // Lê número de nós e número de conexões
     fscanf(connections_file, "%d %d", &number_of_node_,
            &number_of_edge_);
 
-    // initializa grafo
+    // Initializa grafo.
     g_ = new Graph(number_of_node_);
     int n1, n2;
-    // adiciona conexoes no grafo que representa a topologia da rede
+    // Adiciona conexões no grafo que representa a topologia da rede.
     for (int i = 0; i < number_of_edge_; ++i) {
         fscanf(connections_file, "%d %d", &n1, &n2);
         g_->AddEdge(n1, n2);
@@ -81,7 +79,7 @@ void Instance::ReadConnectionsFile(const char* connections_filename) {
     fclose(connections_file);
 }
 
-// Le arquivo com as requisicoes de trafego
+// Lê arquivo com as requisicões de tráfego.
 void Instance::ReadRequestsFile(const char* requests_filename) {
     FILE* requests_file = fopen(requests_filename, "r");
     if (requests_file == NULL) {
@@ -89,10 +87,10 @@ void Instance::ReadRequestsFile(const char* requests_filename) {
         exit(1);
     }
 
-    // le numero de requisicoes
+    // Lê número de requisições.
     fscanf(requests_file, "%d", &number_of_request_);
     int r1, r2;
-    // le par de requisicoes de trafego
+    // Lê par de requisicões de tráfego.
     for (int i = 0; i < number_of_request_; ++i) {
         fscanf(requests_file, "%d %d", &r1, &r2);
         request_.push_back(std::pair<int, int>(r1, r2));

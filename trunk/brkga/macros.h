@@ -1,6 +1,6 @@
-/* Copyright 2011 Luiz Gustavo Sathler Dias
-   Projeto Orientado em Computacao 2
-   Definicao de macros usadas no programa */
+// Copyright 2011 Universidade Federal de Minas Gerais
+// Projeto Orientado em Computação 2
+// Definição de macros usadas no programa.
 
 #ifndef BRKGA_MACROS_H_
 #define BRKGA_MACROS_H_

@@ -39,7 +39,9 @@ class Graph {
         void Print();
 
     private:
+        // Matriz inicializada nesta classe.
         int** matrix_;
+        // Lista de Adjacência inicializada nesta classe.
         std::list<int>* list_;
         int number_of_vertex_;
 };

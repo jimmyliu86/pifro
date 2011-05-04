@@ -4,14 +4,14 @@ CC = g++
 all : $(OBJS)
 	$(CC) $(OBJS) -o poc2
 
-main : main.cpp graph.h instance.h
-	$(CC) -g -c main.cpp
+main : main.cc graph.h instance.h
+	$(CC) -g -c main.cc
 
-graph: graph.cpp graph.h
-	$(CC) -g -c graph.cpp
+graph: graph.cc graph.h
+	$(CC) -g -c graph.cc
 
-instance: instance.cpp instance.h graph.h macros.h
-	$(CC) -g -c instance.cpp
+instance: instance.cc instance.h graph.h macros.h
+	$(CC) -g -c instance.cc
 
 clean :
 	rm -f *.o
