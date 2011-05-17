@@ -43,6 +43,18 @@ void Graph::SetCost(int i, int j, int cost) {
     matrix_[i][j] = cost;
 }
 
+void Graph::IncrementCost(int i, int j) {
+    matrix_[i][j] += 1;
+}
+
+void Graph::DecrementCost(int i, int j) {
+    matrix_[i][j] -= 1;
+}
+
+bool Graph::IsEdge(int i, int j) const {
+    return (matrix_[i][j] >= 0);
+}
+
 int Graph::Size() const {
     return number_of_vertex_;
 }

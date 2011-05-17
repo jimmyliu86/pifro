@@ -1,4 +1,4 @@
-OBJS = main.o graph.o instance.o
+OBJS = main.o graph.o instance.o dijkstra.o
 CC = g++
 
 all : $(OBJS)
@@ -12,6 +12,12 @@ graph: graph.cc graph.h
 
 instance: instance.cc instance.h graph.h macros.h
 	$(CC) -g -c instance.cc
+
+dijkstra: dijkstra.cc dijkstra.h graph.h macros.h constants.h
+	$(CC) -g -c dijkstra.cc
+
+solution: solution.cc solution.h graph.h
+	$(CC) -g -c solution.cc
 
 clean :
 	rm -f *.o

@@ -29,6 +29,15 @@ class Graph {
         // Incrementa peso de uma aresta.
         void SetCost(int i, int j, int cost);
 
+        // Incrementa 1 unidade de uma aresta.
+        void IncrementCost(int i, int j);
+
+        // Decrementa 1 unidade de uma aresta.
+        void DecrementCost(int i, int j);
+
+        // Checa se aresta (i,j) existe.
+        bool IsEdge(int i, int j) const;
+
         // Retorna o numero de vértices do grafo.
         int Size() const;
 
