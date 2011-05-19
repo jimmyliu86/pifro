@@ -20,7 +20,10 @@ class Solution {
         void PrintToFile();
 
         // Retorna o custo da solução.
-        float GetCost(int pass);
+        float GetCost() const;
+
+        // Calcula o custo da solução.
+        float CalculateCost(int pass);
 
         // Adiciona a rota da conexão id_path à solução e
         // atualiza os fluxos nos enlaces da rede.

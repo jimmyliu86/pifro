@@ -4,6 +4,7 @@
 
 #include "./solution.h"
 #include <math.h>
+#include <stdio.h>
 #include "./constants.h"
 
 
@@ -17,7 +18,11 @@ Solution::~Solution() {
     delete[] path_;
 }
 
-float Solution::GetCost(int pass) {
+float Solution::GetCost() const {
+    return cost_;
+}
+
+float Solution::CalculateCost(int pass) {
     cost_ = 0.0f;
     for (int i = 0; i < g_->Size(); ++i) {
         for (int j = 0; j < g_->Size(); ++j) {
@@ -29,9 +34,6 @@ float Solution::GetCost(int pass) {
 }
 
 void Solution::AddPath(int id_path, const std::list<int>& tpath) {
-    // Limpar rota id_path.
-    path_[id_path].clear();
-
     std::list<int>::const_iterator it1, it2;
     int size = tpath.size();
     it1 = tpath.begin();
@@ -51,7 +53,7 @@ void Solution::DeletePath(int id_path) {
     std::list<int>::iterator it1, it2;
     int size = path_[id_path].size(), cnt = 0;
     it1 = path_[id_path].begin();
-
+    
     while (size-- > 1) {
         it2 = it1;
         ++it2;
@@ -80,4 +82,14 @@ float Solution::EdgeCost(int pass, int i, int j) const {
         total = ratio * kRoadmCost;
     }
     return total;
+}
+
+void Solution::PrintToFile() {
+    for (int i = 0; i < number_of_request_; ++i) {
+        std::list<int>::iterator it;
+        for (it = path_[i].begin(); it != path_[i].end(); ++it) {
+            printf("%d ", *it);
+        }
+        printf("\n");
+    }
 }

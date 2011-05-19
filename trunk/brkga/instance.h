@@ -12,10 +12,11 @@
 
 class Instance {
     public:
-        // Destrutor padrão
+        // Destrutor padrão.
         ~Instance();
 
-        void Initialize(const char* instance_filename);
+        static void Initialize(const char* connections_filename,
+                        const char* requests_filename);
 
         // Retorna ponteiro para instância inicializada.
         static Instance* GetInstance();
@@ -25,6 +26,12 @@ class Instance {
         
         // Retorna número de requisições.
         int GetNumberOfRequest() const;
+
+        // Retorna Grafo com topologia da rede.
+        Graph* GetGraph();
+
+        // Retorna conjunto de requisições.
+        const std::vector<std::pair<int, int> >& GetRequest() const;
 
     private:
         const char* instance_name_;
@@ -49,6 +56,9 @@ class Instance {
         // Faz leitura dos arquivos com as conexões e requisições de tráfego.
         void ReadConnectionsFile(const char* connection_file_name);
         void ReadRequestsFile(const char* request_file_name);
+
+        // Extrai nome da instância.
+        void ExtractInstanceName(const char* filename);        
 
         DISALLOW_COPY_AND_ASSIGN(Instance);
 };

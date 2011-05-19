@@ -52,7 +52,7 @@ void Graph::DecrementCost(int i, int j) {
 }
 
 bool Graph::IsEdge(int i, int j) const {
-    return (matrix_[i][j] >= 0);
+    return (matrix_[i][j] > 0);
 }
 
 int Graph::Size() const {
@@ -70,5 +70,13 @@ void Graph::Print() {
         for (it = list_[i].begin(); it != list_[i].end(); ++it)
             printf("%d ", *it);
         printf("\n");
+    }
+}
+
+void Graph::PrintMatrix() {
+    for (int i = 0; i < number_of_vertex_; ++i) {
+        for (int j = 0; j < number_of_vertex_; ++j)
+            if (matrix_[i][j] > 0)
+                printf("%d %d %d\n", i, j, matrix_[i][j]);
     }
 }

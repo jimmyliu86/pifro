@@ -47,6 +47,9 @@ class Graph {
         // Imprime grafo.
         void Print();
 
+        // Imprime matriz.
+        void PrintMatrix();
+
     private:
         // Matriz inicializada nesta classe.
         int** matrix_;

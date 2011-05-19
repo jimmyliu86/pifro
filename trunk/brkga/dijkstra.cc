@@ -5,10 +5,8 @@
 #include "./dijkstra.h"
 #include <float.h>
 #include <math.h>
-#include <queue>
-#include <functional>
-#include <utility>
 #include "./constants.h"
+#include "./heap.h"
 
 Dijkstra::Dijkstra() {
 }
@@ -52,18 +50,6 @@ void Dijkstra::Initialize(Graph* g, int start_pass) {
     p_ = start_pass;
 }
 
-struct my_greater {
-    public:
-        bool operator()(const std::pair<int, float>& elem1,
-                        const std::pair<int, float>& elem2) const {
-            return elem1.second > elem2.second;
-        }
-};
-
-// bool Greater(std::pair<int, float>& elem1, std::pair<int, float>& elem2) {
-//    return elem1.second > elem2.second;
-// }
-
 // Executa o algoritmo de Dijkstra a partir do vértice source.
 void Dijkstra::Execute(int source) {
     distance_.resize(g_->Size());
@@ -77,38 +63,24 @@ void Dijkstra::Execute(int source) {
     // Distância da raiz igual a 0.
     distance_[source] = 0.0f;
 
-    std::priority_queue<std::pair<int, float>,
-    std::vector<std::pair<int, float> >, my_greater> Q;
-    // Insere source na fila de prioridades.
-    Q.push(std::pair<int, float>(source, 0.0f));
-
+    HeapMin Q(distance_, distance_.size());
+    Q.MakeHeap();
     // Enquanto fila não estiver vazia.
-    while (!Q.empty()) {
-        std::pair<int, float> cur = Q.top();
-        Q.pop();
-        int vertex = cur.first;
-        float d = cur.second;
-        // Verifica se a distância atual é menor que
-        // distance_[vertex]. Evita processamento de
-        // entradas antigas.
-        if (d <= distance_[vertex]) {
-            std::list<int> neighbors = g_->GetNeighbors(vertex);
-            std::list<int>::iterator it;
-            for (it = neighbors.begin(); it != neighbors.end();
-                 ++it) {
-                float cost = EdgeCost(vertex, *it);
-                // Verifica se existe um caminho mais barato para it.
-                if (distance_[*it] > distance_[vertex] + cost) {
-                    distance_[*it] = distance_[vertex] + cost;
-                    Q.push(std::pair<int, float>(*it, distance_[*it]));
-                }
+    while (!Q.Empty()) {
+        int vertex = Q.ExtractMin();
+        
+        std::list<int> neighbors = g_->GetNeighbors(vertex);
+        std::list<int>::iterator it;
+        for (it = neighbors.begin(); it != neighbors.end();
+             ++it) {
+            float cost = distance_[vertex] + EdgeCost(vertex, *it);
+            // Verifica se existe um caminho mais barato para it.
+            if (distance_[*it] > cost) {
+                Q.DecreaseKey(*it, cost);
+                ascendent_[*it] = vertex;
             }
         }
     }
-//    for (int i = 0;i < g_->Size(); i++) {
-//        printf("%f ", distance_[i]);
-//    }
-//    printf("\n");
 }
 
 // Reconstroi o caminho da raiz até o destino
