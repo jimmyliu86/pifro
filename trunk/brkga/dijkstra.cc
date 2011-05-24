@@ -51,7 +51,7 @@ void Dijkstra::Initialize(Graph* g, int start_pass) {
 }
 
 // Executa o algoritmo de Dijkstra a partir do vértice source.
-void Dijkstra::Execute(int source) {
+void Dijkstra::Execute(int source, int destination) {
     distance_.resize(g_->Size());
     ascendent_.resize(g_->Size());
     // Inicializa distancia como infinito
@@ -69,6 +69,8 @@ void Dijkstra::Execute(int source) {
     while (!Q.Empty()) {
         int vertex = Q.ExtractMin();
         
+        if (vertex == destination) return;
+ 
         std::list<int> neighbors = g_->GetNeighbors(vertex);
         std::list<int>::iterator it;
         for (it = neighbors.begin(); it != neighbors.end();

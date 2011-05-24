@@ -17,9 +17,13 @@ class Heuristic {
         // Executa uma das heurísticas (Greedy ou PSC)
         // Depende do parâmetro startup
         // iteration indica o número máximo de iterações.
-        void Execute(int startup, int iteration);
+        float Execute(const std::vector<Request>& getRequest,
+                     int startup,
+                     int iteration);
         
         void GetSolution(Solution *S);
+
+        void PrintToFile(float cost);
     private:
         Solution *s_;
         Instance *instance_;

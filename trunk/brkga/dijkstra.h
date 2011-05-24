@@ -26,7 +26,7 @@ class Dijkstra {
         void Initialize(Graph* g, int start_pass);
 
         // Executa o algoritmo de Dijkstra.
-        void Execute(int source);
+        void Execute(int source, int destination);
 
         // Salva o caminho do vértice raiz até o vértice destino
         // na lista path.

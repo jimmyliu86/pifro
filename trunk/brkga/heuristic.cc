@@ -5,6 +5,10 @@
 #include "./heuristic.h"
 
 #include <float.h>
+#include <sys/resource.h>
+#include <sys/time.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "./constants.h"
 #include "./dijkstra.h"
@@ -18,12 +22,24 @@ Heuristic::~Heuristic() {
 
 }
 
-void Heuristic::Execute(int startup, int iteration) {
+// Função temporária. Mover para solução. 
+void Heuristic::PrintToFile(float cost) {
+    char fout_name[40];
+    sprintf(fout_name, "%s.out", instance_->GetName());
+    FILE *fout = fopen(fout_name, "w");
+    fprintf(fout, "%.0f\n", cost);
+}
+
+
+
+float Heuristic::Execute(const std::vector<Request>& getRequest,
+                        int startup,
+                        int iteration) {
     Dijkstra d;
     float cost, min_cost = FLT_MAX;
     std::list<int> path;
-    std::pair<int, int> r;
-    std::vector<std::pair<int, int> > request = instance_->GetRequest();
+    Request r;
+    std::vector<Request> request = getRequest;
 
     for (int i = startup; i < startup + iteration; ++i) {
         // Processa cada uma das requisições.
@@ -32,8 +48,8 @@ void Heuristic::Execute(int startup, int iteration) {
             s_->DeletePath(j);
             path.clear();
             d.Initialize(instance_->GetGraph(), i);
-            d.Execute(r.first);
-            if (d.GetPath(r.first, r.second, &path) == false) {
+            d.Execute(r.src, r.dst);
+            if (d.GetPath(r.src, r.dst, &path) == false) {
                 printf("path not found\n");
             }
             s_->AddPath(j, path);
@@ -48,14 +64,13 @@ void Heuristic::Execute(int startup, int iteration) {
                 break;
         } else {
             cost = s_->CalculateCost(i);
-        }
+          }
     }
-    printf("Min Cost\n");
-    printf("%.0f\n", min_cost);
-    //s_->PrintToFile();
-    //printf("\n====\n\n");
-    //Graph* t = instance_->GetGraph();
-    //t->PrintMatrix();
+    for (int j = 0; j < request.size(); ++j)
+        s_->DeletePath(j);
+
+    //PrintToFile(min_cost);
+    return min_cost;
 }
 
 

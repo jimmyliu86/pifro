@@ -10,6 +10,12 @@
 #include "./graph.h"
 #include "./macros.h"
 
+typedef struct Request {
+    int src;
+    int dst;
+    float key;
+}Request;
+
 class Instance {
     public:
         // Destrutor padrão.
@@ -31,8 +37,10 @@ class Instance {
         Graph* GetGraph();
 
         // Retorna conjunto de requisições.
-        const std::vector<std::pair<int, int> >& GetRequest() const;
+        const std::vector<Request>& GetRequest() const;
 
+        // Retorna nome da instância.
+        const char* GetName() const;
     private:
         const char* instance_name_;
         int number_of_node_;
@@ -43,7 +51,7 @@ class Instance {
         Graph* g_;
 
         // Par de requisição (origem,destino).
-        std::vector<std::pair<int, int> > request_;
+        std::vector<Request> request_;
 
         // Ponteiro para instância. Classe Instance permite
         // que apenas um objeto seja criado (singleton).

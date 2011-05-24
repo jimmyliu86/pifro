@@ -25,5 +25,8 @@ heuristic: heuristic.cc heuristic.h instance.h solution.h dijkstra.h
 heap: heap.cc heap.h
 	$(CC) -g -c heap.cc
 
+tester: tester.cc tester.h instance.h heuristic.h
+	$(CC) -g -c tester.cc
+
 clean :
 	rm -f *.o

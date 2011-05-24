@@ -27,7 +27,8 @@ int main(int argc, char* argv[]) {
     }
     printf("%s %s\n", connections_filename, requests_filename);
     Instance::Initialize(connections_filename, requests_filename);
+    Instance *instance = Instance::GetInstance();
     Heuristic heuristic;
-    heuristic.Execute(0, 10);
+    heuristic.Execute(instance->GetRequest(), 0, 100);
     return 0;
 }

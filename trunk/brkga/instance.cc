@@ -22,7 +22,7 @@ void Instance::Initialize(const char* connections_filename,
     // Inicializa construtor.
     instance_ = new Instance();
     // Lê dados da instância.
-    instance_->ExtractInstanceName(connections_filename);
+    instance_->ExtractInstanceName(requests_filename);
     instance_->ReadConnectionsFile(connections_filename);
     instance_->ReadRequestsFile(requests_filename);
 }
@@ -43,9 +43,9 @@ void Instance::Print() {
     printf("Topology:\n");
     g_->Print();
     printf("Requests:\n");
-    std::vector<std::pair<int, int> >::iterator it;
+    std::vector<Request>::iterator it;
     for (it = request_.begin(); it != request_.end(); ++it)
-        printf("%d %d\n", it->first, it->second);
+        printf("%d %d\n", it->src, it->dst);
 }
 
 int Instance::GetNumberOfRequest() const {
@@ -56,7 +56,7 @@ Graph* Instance::GetGraph() {
     return g_;
 }
 
-const std::vector<std::pair<int, int> >& Instance::GetRequest() const {
+const std::vector<Request>& Instance::GetRequest() const {
     return request_;
 }
 
@@ -91,16 +91,27 @@ void Instance::ReadRequestsFile(const char* requests_filename) {
     // Lê número de requisições.
     fscanf(requests_file, "%d", &number_of_request_);
     int r1, r2;
+    Request r;
+    request_.reserve(number_of_request_);
     // Lê par de requisicões de tráfego.
     for (int i = 0; i < number_of_request_; ++i) {
-        fscanf(requests_file, "%d %d", &r1, &r2);
-        request_.push_back(std::pair<int, int>(r1, r2));
+        fscanf(requests_file, "%d %d", &r.src, &r.dst);
+        request_.push_back(r);
     }
+
     fclose(requests_file);
 }
 
 void Instance::ExtractInstanceName(const char* filename) {
     char tmp[30];
-    sscanf(filename, "%[^.]", tmp);
+    sscanf(filename, "%s", tmp);
+    int length = strlen(tmp);
+    // erase extension
+    length -= 4;
+    tmp[length] = '\0';
     instance_name_ = strdup(tmp);
+}
+
+const char* Instance::GetName() const {
+    return instance_name_;
 }
