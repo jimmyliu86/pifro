@@ -14,6 +14,7 @@
 #include <algorithm>
 
 #include "./heuristic.h"
+#include "./genetic_algorithm.h"
 
 Tester::Tester() {
 }
@@ -47,6 +48,7 @@ void Tester::GeneratePermutation(std::vector<Request>& request) {
     request.reserve(unchanged_.size());
     for (int i = 0; i < unchanged_.size(); ++i) {
         request.push_back(unchanged_[i]);
+        request[i].key = rand() / static_cast<float>(RAND_MAX);
     }
     std::sort(request.begin(), request.end(), my_comparison());
 }
@@ -59,7 +61,8 @@ void Tester::Execute(int type) {
         case PSC:
             ExecutePsc();
             break;
-        case BRKGA:
+        case GENETICA:
+            ExecuteGeneticAlgorithm();
             break;
         default:
             printf("invalid option\n");
@@ -120,6 +123,12 @@ void Tester::ExecutePsc() {
         if(telapsed > 600.0f) {
             break;
         }
+		//printf("%.0f\n", min_cost);
     }
     Print(min_cost);
+}
+
+void Tester::ExecuteGeneticAlgorithm() {
+    GeneticAlgorithm ga(100, 25, 70, 5, 0.70f, unchanged_);
+    ga.Execute();
 }

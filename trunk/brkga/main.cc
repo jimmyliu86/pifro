@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 #include "./instance.h"
-#include "./heuristic.h"
+#include "./tester.h"
 
 int main(int argc, char* argv[]) {
     char connections_filename[128];
@@ -28,7 +28,11 @@ int main(int argc, char* argv[]) {
     printf("%s %s\n", connections_filename, requests_filename);
     Instance::Initialize(connections_filename, requests_filename);
     Instance *instance = Instance::GetInstance();
-    Heuristic heuristic;
-    heuristic.Execute(instance->GetRequest(), 0, 100);
+    //Heuristic heuristic;
+    //heuristic.Execute(instance->GetRequest(), 0, 100);
+	Tester test;
+	test.Initialize(instance);
+	//test.Execute(GENETICA);
+	//test.Execute(PSC);
     return 0;
 }

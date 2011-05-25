@@ -13,6 +13,7 @@
 typedef struct Request {
     int src;
     int dst;
+    int id;
     float key;
 }Request;
 

@@ -96,6 +96,7 @@ void Instance::ReadRequestsFile(const char* requests_filename) {
     // Lê par de requisicões de tráfego.
     for (int i = 0; i < number_of_request_; ++i) {
         fscanf(requests_file, "%d %d", &r.src, &r.dst);
+        r.id = i;
         request_.push_back(r);
     }
 

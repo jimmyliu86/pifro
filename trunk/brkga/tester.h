@@ -8,7 +8,7 @@
 #include <vector>
 #include "./instance.h"
 
-enum {GREEDY, PSC, BRKGA};
+enum {GREEDY, PSC, GENETICA};
 
 class Tester {
     public:
@@ -30,7 +30,7 @@ class Tester {
         // Invoca execução da heurística Psc.
         void ExecutePsc();
         // Invoca execução do algoritmo genético.
-        //void ExecuteBrkga();
+        void ExecuteGeneticAlgorithm();
         // Gera Permutação de Requisições.
         void GeneratePermutation(std::vector<Request>& request);
 };
