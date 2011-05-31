@@ -28,11 +28,12 @@ class GeneticAlgorithm {
         void SortPopulation();
         void UpdateCrossoverPopulation();
         void Crossover();
+        void Crossover2();
         void GenerateMutation();
         void SaveBestIndividual();
         void CalculateFitness();
         void PrintToFile(float time);
-        void Execute();
+        float Execute();
     private:
         std::vector<Chromosome> population_;
         std::vector<Chromosome> cross_pop_;

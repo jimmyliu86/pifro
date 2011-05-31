@@ -36,10 +36,10 @@ void GeneticAlgorithm::InitializePopulation() {
         Chromosome individual;
         Request g;
         for (int j = 0; j < original_.size(); ++j) {
-			g.src = original_[j].src;
-			g.dst = original_[j].dst;
+            g.src = original_[j].src;
+            g.dst = original_[j].dst;
             g.id = original_[j].id;
-			g.key = rand() / static_cast<float>(RAND_MAX);
+            g.key = rand() / static_cast<float>(RAND_MAX);
             individual.gen.push_back(g);
         }
 		population_.push_back(individual);
@@ -84,11 +84,36 @@ void GeneticAlgorithm::UpdateCrossoverPopulation() {
     for (int i = 0; i < size_setB_; ++i) {
         for (int j = 0; j < original_.size(); ++j)
             population_[k].gen[j] = cross_pop_[i].gen[j];
+        std::sort(population_[k].gen.begin(), population_[k].gen.end(), compare_key);
         ++k;
     }
 }
 
+// Crossover baseado em biased key genetic algorithm.
 void GeneticAlgorithm::Crossover() {
+    int current = 0;
+    for (int i = 0; i < size_setB_; ++i) {
+        int elite = rand() % size_setA_;
+        int non_elite = (rand() % size_setB_) + size_setA_;
+        float crossover;
+        for (int j = 0; j < original_.size(); ++j) {
+            crossover = rand() / static_cast<float>(RAND_MAX);
+            if(crossover < prob_crossover_) {
+                cross_pop_[current].gen[j].key = population_[elite].gen[j].key;
+            }
+            else {
+                cross_pop_[current].gen[j].key = population_[non_elite].gen[j].key;
+            }
+            cross_pop_[current].gen[j].src = original_[j].src;
+            cross_pop_[current].gen[j].dst = original_[j].dst;
+        }
+        ++current;
+    }
+    UpdateCrossoverPopulation();
+}
+
+// Crossover baseado em algoritmo genético tradicional.
+void GeneticAlgorithm::Crossover2() {
     std::vector<int> mask;
     std::list<int> unfilled;
     mask.resize(original_.size());
@@ -137,7 +162,6 @@ void GeneticAlgorithm::GenerateMutation() {
         ++start;
     }
     start = population_.size() - size_setC_;
-    // FIXME sort that portion of new individuals. Check right index !
     for (int i = start; i < population_.size(); ++i)
         std::sort(population_[i].gen.begin(),population_[i].gen.end(),
                   compare_key);
@@ -167,7 +191,7 @@ void GeneticAlgorithm::PrintToFile(float time) {
     printf("%.0f\n", best_individual_.cost);
 }
 
-void GeneticAlgorithm::Execute() {
+float GeneticAlgorithm::Execute() {
     struct rusage times;
     float telapsed;
 
@@ -192,5 +216,6 @@ void GeneticAlgorithm::Execute() {
             break;
         }
     }
-    PrintToFile(telapsed);
+    //PrintToFile(telapsed);
+    return best_individual_.cost;
 }

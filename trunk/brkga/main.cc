@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "./instance.h"
@@ -25,7 +26,8 @@ int main(int argc, char* argv[]) {
                 exit(1);
         }
     }
-    printf("%s %s\n", connections_filename, requests_filename);
+    //printf("%s %s\n", connections_filename, requests_filename);
+    srand(time(NULL));
     Instance::Initialize(connections_filename, requests_filename);
     Instance *instance = Instance::GetInstance();
     //Heuristic heuristic;
@@ -33,6 +35,6 @@ int main(int argc, char* argv[]) {
 	Tester test;
 	test.Initialize(instance);
 	//test.Execute(GENETICA);
-	//test.Execute(PSC);
+    test.Execute(PSC_T);
     return 0;
 }

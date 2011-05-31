@@ -40,7 +40,6 @@ float Heuristic::Execute(const std::vector<Request>& getRequest,
     std::list<int> path;
     Request r;
     std::vector<Request> request = getRequest;
-
     for (int i = startup; i < startup + iteration; ++i) {
         // Processa cada uma das requisições.
         for (int j = 0; j < request.size(); ++j) {

@@ -64,6 +64,12 @@ void Tester::Execute(int type) {
         case GENETICA:
             ExecuteGeneticAlgorithm();
             break;
+        case GREEDY_T:
+            ExecuteGreedyT();
+            break;
+        case PSC_T:
+            ExecutePscT();
+            break;
         default:
             printf("invalid option\n");
             exit(1);
@@ -71,7 +77,7 @@ void Tester::Execute(int type) {
 }
 
 void Tester::Print(float cost) {
-    FILE* output = fopen(output_name_, "w");
+    FILE* output = fopen(output_name_, "ab");
     if (output == NULL) {
         printf("cant open file\n");
         exit(1);
@@ -88,7 +94,7 @@ void Tester::ExecuteGreedy() {
     
     while (true) {
         GeneratePermutation(request);
-        cost = greedy.Execute(request, 0, 100);
+        cost = greedy.Execute(request, 5, 100);
         if (cost < min_cost)
             min_cost = cost;
         
@@ -112,7 +118,7 @@ void Tester::ExecutePsc() {
 
     while (true) {
         GeneratePermutation(request);
-        cost = psc.Execute(request, 5, 100);
+        cost = psc.Execute(request, 0, 100);
         if (cost < min_cost)
             min_cost = cost;
         
@@ -130,5 +136,35 @@ void Tester::ExecutePsc() {
 
 void Tester::ExecuteGeneticAlgorithm() {
     GeneticAlgorithm ga(100, 25, 70, 5, 0.70f, unchanged_);
-    ga.Execute();
+    float min_cost = ga.Execute();
+    Print(min_cost);
+}
+
+void Tester::ExecuteGreedyT() {
+    std::vector<Request> request;
+    Heuristic greedy;
+    float cost, min_cost = FLT_MAX;
+    int iteration = 20; 
+    while (iteration-- > 0) {
+        GeneratePermutation(request);
+        cost = greedy.Execute(request, 5, 100);
+        if (cost < min_cost)
+            min_cost = cost;
+    }
+    Print(min_cost);
+}
+
+void Tester::ExecutePscT() {
+    std::vector<Request> request;
+    Heuristic psc;    
+    float cost, min_cost = FLT_MAX;
+    int iteration = 20;
+
+    while (iteration-- > 0) {
+        GeneratePermutation(request);
+        cost = psc.Execute(request, 0, 100);
+        if (cost < min_cost)
+            min_cost = cost;
+    }
+    Print(min_cost);
 }

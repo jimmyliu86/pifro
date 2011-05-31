@@ -8,7 +8,7 @@
 #include <vector>
 #include "./instance.h"
 
-enum {GREEDY, PSC, GENETICA};
+enum {GREEDY, PSC, GENETICA, GREEDY_T, PSC_T};
 
 class Tester {
     public:
@@ -33,6 +33,12 @@ class Tester {
         void ExecuteGeneticAlgorithm();
         // Gera Permutação de Requisições.
         void GeneratePermutation(std::vector<Request>& request);
+        // Invoca execução da heurística Greedy tradicional
+        // Usa apenas 20 permutações.
+        void ExecuteGreedyT();
+        // Invoca execução da heurística Psc tradicional
+        // Usa apenas 20 permutações.
+        void ExecutePscT();
 };
 
 #endif  // PIFRO_TESTER_H_
