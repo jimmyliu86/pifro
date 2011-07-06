@@ -32,12 +32,17 @@ void Tester::Initialize(Instance *instance) {
     unchanged_.reserve(instance->GetNumberOfRequest());
     for (it = tmp.begin(); it!= tmp.end(); ++it)
         unchanged_.push_back(*it);
+    
+    //for (int i = 0; i < unchanged_.size(); ++i) {
+    //    printf("%d %d %d\n", unchanged_[i].src,
+    //                         unchanged_[i].dst,
+    //                         unchanged_[i].hop);
+    //}
 }
 
 
 struct my_comparison {
     public:
-        // FIXME
         bool operator()(const Request& a, const Request& b) const {
             return a.key < b.key;
         }
@@ -135,7 +140,7 @@ void Tester::ExecutePsc() {
 }
 
 void Tester::ExecuteGeneticAlgorithm() {
-    GeneticAlgorithm ga(100, 25, 70, 5, 0.70f, unchanged_);
+    GeneticAlgorithm ga(100, 20, 70, 10, 0.70f, unchanged_);
     float min_cost = ga.Execute();
     Print(min_cost);
 }

@@ -30,11 +30,12 @@ int main(int argc, char* argv[]) {
     srand(time(NULL));
     Instance::Initialize(connections_filename, requests_filename);
     Instance *instance = Instance::GetInstance();
+    instance->CalculateHops();
     //Heuristic heuristic;
     //heuristic.Execute(instance->GetRequest(), 0, 100);
-	Tester test;
-	test.Initialize(instance);
-	//test.Execute(GENETICA);
-    test.Execute(PSC_T);
+    Tester test;
+    test.Initialize(instance);
+    test.Execute(GENETICA);
+    //test.Execute(PSC_T);
     return 0;
 }

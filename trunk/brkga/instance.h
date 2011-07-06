@@ -15,7 +15,10 @@ typedef struct Request {
     int dst;
     int id;
     float key;
+    int hop;
 }Request;
+
+enum {NET_TYPE, SND_TYPE};
 
 class Instance {
     public:
@@ -42,8 +45,12 @@ class Instance {
 
         // Retorna nome da instância.
         const char* GetName() const;
+
+        // Calcula a distância (em saltos) de origem ao destino.
+        void CalculateHops();
     private:
         const char* instance_name_;
+        int instance_type_;
         int number_of_node_;
         int number_of_edge_;
         int number_of_request_;
@@ -68,6 +75,10 @@ class Instance {
 
         // Extrai nome da instância.
         void ExtractInstanceName(const char* filename);        
+
+        // Realiza busca em profundidade a partir do nó fonte
+        // de uma requisição.
+        void BreadthFirst(Request& i);
 
         DISALLOW_COPY_AND_ASSIGN(Instance);
 };

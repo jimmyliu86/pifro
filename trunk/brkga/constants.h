@@ -6,7 +6,7 @@
 #define PIFRO_CONSTANTS_H_
 
 // Capacidade do Roadm.
-const int kRoadmCapacity = 10;
+const int kRoadmCapacity = 100;
 // Custo da instalação do Roadm.
 const float kRoadmCost = 1000.0f;
 // Parâmetro da heurística PSC. Quanto

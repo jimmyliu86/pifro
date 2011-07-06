@@ -14,6 +14,10 @@
 
 #include "./heuristic.h"
 
+bool compare_hop(const Request& i, const Request& j) {
+    return i.hop > j.hop;
+} 
+
 GeneticAlgorithm::GeneticAlgorithm(int population_size,
                                      int size_of_setA,
                                      int size_of_setB,
@@ -26,6 +30,9 @@ GeneticAlgorithm::GeneticAlgorithm(int population_size,
     size_setC_ = size_of_setC;
     original_ = request;
     prob_crossover_ = prob_crossover;
+
+    // Pre-ordena requisições por caminho mais curto.
+    std::sort(original_.begin(), original_.end(), compare_hop);
 }
 
 void GeneticAlgorithm::InitializePopulation() {
@@ -40,6 +47,7 @@ void GeneticAlgorithm::InitializePopulation() {
             g.dst = original_[j].dst;
             g.id = original_[j].id;
             g.key = rand() / static_cast<float>(RAND_MAX);
+            g.hop = original_[j].hop;
             individual.gen.push_back(g);
         }
 		population_.push_back(individual);
@@ -58,9 +66,9 @@ void GeneticAlgorithm::InitializePopulation() {
 
 GeneticAlgorithm::~GeneticAlgorithm() {
 }
-
+// Função de custo alterada para (i.key + i.hop). Ordenação decrescente.
 bool compare_key(const Request& i, const Request& j) {
-    return i.key < j.key;
+    return (i.key+i.hop) > (j.key+j.hop);
 }
 
 bool compare_cost(const Chromosome& i, const Chromosome& j) {
@@ -212,7 +220,7 @@ float GeneticAlgorithm::Execute() {
         telapsed = times.ru_utime.tv_sec +
     times.ru_utime.tv_usec*0.000001;
        // printf("%.4lf\n",ttranscorrido);
-        if(telapsed > 600.0f) {
+        if(telapsed > 1200.0f) {
             break;
         }
     }
