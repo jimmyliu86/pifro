@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2
 // Definição de Classe Tester.
 
@@ -21,7 +22,7 @@ class Tester {
         // Executa uma das heurísticas correspondentes.
         void Execute(int type);
         // Imprime custo da melhor solução.
-        void Print(float cost);
+        void Print(double cost);
     private:
         std::vector<Request> unchanged_;
         char* output_name_;

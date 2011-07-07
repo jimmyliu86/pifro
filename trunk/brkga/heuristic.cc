@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2
 // Classe de definição das heurísticas Greedy e PSC.
 
@@ -23,20 +24,20 @@ Heuristic::~Heuristic() {
 }
 
 // Função temporária. Mover para solução. 
-void Heuristic::PrintToFile(float cost) {
+void Heuristic::PrintToFile(double cost) {
     char fout_name[40];
     sprintf(fout_name, "%s.out", instance_->GetName());
     FILE *fout = fopen(fout_name, "w");
-    fprintf(fout, "%.0f\n", cost);
+    fprintf(fout, "%.0lf\n", cost);
 }
 
 
 
-float Heuristic::Execute(const std::vector<Request>& getRequest,
+double Heuristic::Execute(const std::vector<Request>& getRequest,
                         int startup,
                         int iteration) {
     Dijkstra d;
-    float cost, min_cost = FLT_MAX;
+    double cost, min_cost = DBL_MAX;
     std::list<int> path;
     Request r;
     std::vector<Request> request = getRequest;

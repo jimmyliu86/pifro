@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2
 // Classe de implementação da solução do problema.
 
@@ -18,11 +19,11 @@ Solution::~Solution() {
     delete[] path_;
 }
 
-float Solution::GetCost() const {
+double Solution::GetCost() const {
     return cost_;
 }
 
-float Solution::CalculateCost(int pass) {
+double Solution::CalculateCost(int pass) {
     cost_ = 0.0f;
     for (int i = 0; i < g_->Size(); ++i) {
         for (int j = 0; j < g_->Size(); ++j) {

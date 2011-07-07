@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2]
 // Definição da classe Algoritmo genético.
 
@@ -11,7 +12,7 @@
 
 typedef struct Chromosome {
     std::vector<Request> gen;
-    float cost;
+    double cost;
 }Chromosome;
 
 class GeneticAlgorithm {
@@ -33,7 +34,7 @@ class GeneticAlgorithm {
         void SaveBestIndividual();
         void CalculateFitness();
         void PrintToFile(float time);
-        float Execute();
+        double Execute();
     private:
         std::vector<Chromosome> population_;
         std::vector<Chromosome> cross_pop_;

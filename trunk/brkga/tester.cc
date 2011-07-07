@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2
 // Implementação da Classe Tester.
 
@@ -81,13 +82,13 @@ void Tester::Execute(int type) {
     }
 }
 
-void Tester::Print(float cost) {
+void Tester::Print(double cost) {
     FILE* output = fopen(output_name_, "ab");
     if (output == NULL) {
         printf("cant open file\n");
         exit(1);
     }
-    fprintf(output, "%.0f\n", cost);
+    fprintf(output, "%.0lf\n", cost);
 }
 
 void Tester::ExecuteGreedy() {
@@ -95,7 +96,7 @@ void Tester::ExecuteGreedy() {
     float telapsed;
     std::vector<Request> request;
     Heuristic greedy;
-    float cost, min_cost = FLT_MAX;
+    double cost, min_cost = DBL_MAX;
     
     while (true) {
         GeneratePermutation(request);
@@ -119,7 +120,7 @@ void Tester::ExecutePsc() {
     float telapsed;
     std::vector<Request> request;
     Heuristic psc;    
-    float cost, min_cost = FLT_MAX;
+    double cost, min_cost = DBL_MAX;
 
     while (true) {
         GeneratePermutation(request);
@@ -141,14 +142,14 @@ void Tester::ExecutePsc() {
 
 void Tester::ExecuteGeneticAlgorithm() {
     GeneticAlgorithm ga(100, 20, 70, 10, 0.70f, unchanged_);
-    float min_cost = ga.Execute();
+    double min_cost = ga.Execute();
     Print(min_cost);
 }
 
 void Tester::ExecuteGreedyT() {
     std::vector<Request> request;
     Heuristic greedy;
-    float cost, min_cost = FLT_MAX;
+    double cost, min_cost = DBL_MAX;
     int iteration = 20; 
     while (iteration-- > 0) {
         GeneratePermutation(request);
@@ -162,7 +163,7 @@ void Tester::ExecuteGreedyT() {
 void Tester::ExecutePscT() {
     std::vector<Request> request;
     Heuristic psc;    
-    float cost, min_cost = FLT_MAX;
+    double cost, min_cost = DBL_MAX;
     int iteration = 20;
 
     while (iteration-- > 0) {

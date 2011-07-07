@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2
 // Classe de definição das heurísticas Greedy e PSC.
 
@@ -17,13 +18,13 @@ class Heuristic {
         // Executa uma das heurísticas (Greedy ou PSC)
         // Depende do parâmetro startup
         // iteration indica o número máximo de iterações.
-        float Execute(const std::vector<Request>& getRequest,
+        double Execute(const std::vector<Request>& getRequest,
                      int startup,
                      int iteration);
         
         void GetSolution(Solution *S);
 
-        void PrintToFile(float cost);
+        void PrintToFile(double cost);
     private:
         Solution *s_;
         Instance *instance_;

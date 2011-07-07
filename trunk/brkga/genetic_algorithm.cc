@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2
 // Implementação da classe algoritmo genético.
 
@@ -61,7 +62,7 @@ void GeneticAlgorithm::InitializePopulation() {
 
     // Inicializa melhor individuo.
     best_individual_.gen.resize(original_.size());
-    best_individual_.cost = FLT_MAX;
+    best_individual_.cost = DBL_MAX;
 }
 
 GeneticAlgorithm::~GeneticAlgorithm() {
@@ -176,17 +177,17 @@ void GeneticAlgorithm::GenerateMutation() {
 }
 
 void GeneticAlgorithm::SaveBestIndividual() {
-    float cost_elite = population_[0].cost;
+    double cost_elite = population_[0].cost;
     if (cost_elite < best_individual_.cost) {
         best_individual_.cost = cost_elite;
         for (int i = 0; i < original_.size(); ++i)
             best_individual_.gen[i] = population_[0].gen[i];
-        // printf("cost %.0f\n"m cost_elite);
+        // printf("cost %.0lf\n"m cost_elite);
     }
 }
 
 void GeneticAlgorithm::CalculateFitness() {
-    float cost;
+    double cost;
     Heuristic psc;
     for (int i = 0; i < population_.size(); ++i) {
         cost = psc.Execute(population_[i].gen, 0, 100);
@@ -196,10 +197,10 @@ void GeneticAlgorithm::CalculateFitness() {
 
 void GeneticAlgorithm::PrintToFile(float time) {
     //printf("%f\n", time);
-    printf("%.0f\n", best_individual_.cost);
+    printf("%.0lf\n", best_individual_.cost);
 }
 
-float GeneticAlgorithm::Execute() {
+double GeneticAlgorithm::Execute() {
     struct rusage times;
     float telapsed;
 
@@ -220,7 +221,7 @@ float GeneticAlgorithm::Execute() {
         telapsed = times.ru_utime.tv_sec +
     times.ru_utime.tv_usec*0.000001;
        // printf("%.4lf\n",ttranscorrido);
-        if(telapsed > 1200.0f) {
+        if(telapsed > 600.0f) {
             break;
         }
     }

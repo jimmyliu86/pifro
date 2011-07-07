@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
 // Projeto Orientado em Computação 2
 // Classe de definição da solução do problema.
 
@@ -20,10 +21,10 @@ class Solution {
         void PrintToFile();
 
         // Retorna o custo da solução.
-        float GetCost() const;
+        double GetCost() const;
 
         // Calcula o custo da solução.
-        float CalculateCost(int pass);
+        double CalculateCost(int pass);
 
         // Adiciona a rota da conexão id_path à solução e
         // atualiza os fluxos nos enlaces da rede.
@@ -35,7 +36,7 @@ class Solution {
 
     private:
         // Custo da solução.
-        float cost_;
+        double cost_;
         int number_of_request_;
         // Guarda as rotas das conexões. Ownership: Solution.
         std::list<int>* path_;

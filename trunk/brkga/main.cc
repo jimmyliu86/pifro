@@ -1,4 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais
+// Autor: Luiz Gustavo Sathler Dias
+// Projeto Orientado em Computação 2
 
 #include <stdio.h>
 #include <string.h>
