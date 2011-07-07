@@ -33,8 +33,6 @@ int main(int argc, char* argv[]) {
     Instance::Initialize(connections_filename, requests_filename);
     Instance *instance = Instance::GetInstance();
     instance->CalculateHops();
-    //Heuristic heuristic;
-    //heuristic.Execute(instance->GetRequest(), 0, 100);
     Tester test;
     test.Initialize(instance);
     test.Execute(GENETICA);
