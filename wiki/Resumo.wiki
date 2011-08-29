@@ -8,4 +8,4 @@ Tipicamente, existe um grande número de enlaces de fibra ótica já posicionada
 
 *Palavras-chave*: algoritmo genético de chaves aleatórias, busca local, fibra ótica, heurística construtiva, otimização, redes WDM.
 
-<wiki:gadget url="http://pifro.googlecode.com/svn/trunk/instances/site.xml"/>
+<wiki:gadget url="http://pifro.googlecode.com/svn/trunk/instances/site.xml" width="640" height="480" />
