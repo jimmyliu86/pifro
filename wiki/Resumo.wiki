@@ -1,4 +1,5 @@
 #summary Resumo
+#labels Featured
 #sidebar Sumario
 = Resumo =
 <wiki:toc />
