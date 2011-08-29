@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <Module>
   <ModulePrefs title="remote content example" />
-  <Content type="url" href="http://pifro.googlecode.com/svn/trunk/instances/documentacao.html" />
+  <Content type="url" href="http://dcc.ufmg.br/~lgsd/pifro/" />
 </Module>
