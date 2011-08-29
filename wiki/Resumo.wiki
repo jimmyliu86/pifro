@@ -9,3 +9,5 @@ Tipicamente, existe um grande número de enlaces de fibra ótica já posicionada
 Para conhecer mais sobre o projeto visite a página http://homepages.dcc.ufmg.br/~lgsd/pifro/
 
 *Palavras-chave*: algoritmo genético de chaves aleatórias, busca local, fibra ótica, heurística construtiva, otimização, redes WDM.
+
+<wiki:gadget url="http://pifro.googlecode.com/svn/trunk/instances/site.xml" />
