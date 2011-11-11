@@ -14,14 +14,18 @@
 int main(int argc, char* argv[]) {
     char connections_filename[128];
     char requests_filename[128];
+    char alg[128];
     int p;
-    while ((p = getopt(argc, argv, "n:t:")) != -1) {
+    while ((p = getopt(argc, argv, "n:t:a:")) != -1) {
         switch(p) {
             case 'n':
                 strcpy(connections_filename, optarg);
                 break;
             case 't':
                 strcpy(requests_filename, optarg);
+                break;
+            case 'a':
+                strcpy(alg, optarg);
                 break;
             default:
                 printf("Invalid parameter\n");
@@ -35,7 +39,15 @@ int main(int argc, char* argv[]) {
     instance->CalculateHops();
     Tester test;
     test.Initialize(instance);
-    test.Execute(GENETICA);
-    //test.Execute(PSC_T);
+
+    if (strcmp(alg, "PSC") == 0) {
+      test.Execute(PSC_T);
+    } else if (strcmp(alg, "MS-PSC") == 0) {
+      test.Execute(PSC);
+    } else if (strcmp(alg, "GA") == 0) {
+       test.Execute(GENETICA);
+    } else {
+      printf("Você esqueceu o -a [GA:PSC]\n");
+    }
     return 0;
 }

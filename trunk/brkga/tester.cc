@@ -33,7 +33,7 @@ void Tester::Initialize(Instance *instance) {
     unchanged_.reserve(instance->GetNumberOfRequest());
     for (it = tmp.begin(); it!= tmp.end(); ++it)
         unchanged_.push_back(*it);
-    
+
     //for (int i = 0; i < unchanged_.size(); ++i) {
     //    printf("%d %d %d\n", unchanged_[i].src,
     //                         unchanged_[i].dst,
@@ -97,13 +97,13 @@ void Tester::ExecuteGreedy() {
     std::vector<Request> request;
     Heuristic greedy;
     double cost, min_cost = DBL_MAX;
-    
+
     while (true) {
         GeneratePermutation(request);
         cost = greedy.Execute(request, 5, 100);
         if (cost < min_cost)
             min_cost = cost;
-        
+
         getrusage(0, &times);
         telapsed = times.ru_utime.tv_sec +
         times.ru_utime.tv_usec*0.000001;
@@ -119,25 +119,27 @@ void Tester::ExecutePsc() {
     struct rusage times;
     float telapsed;
     std::vector<Request> request;
-    Heuristic psc;    
+    Heuristic psc;
     double cost, min_cost = DBL_MAX;
 
     while (true) {
         GeneratePermutation(request);
         cost = psc.Execute(request, 0, 100);
-        if (cost < min_cost)
-            min_cost = cost;
-        
         getrusage(0, &times);
         telapsed = times.ru_utime.tv_sec +
         times.ru_utime.tv_usec*0.000001;
+        if (cost < min_cost) {
+           min_cost = cost;
+           printf("PSC - custo: %lf, tempo: %lf\n", min_cost, telapsed);
+	}
+
         // printf("%.4lf\n",telapsed); 10 minutos.
-        if(telapsed > 600.0f) {
+        if(telapsed > 3*600.0f) {
             break;
         }
 		//printf("%.0f\n", min_cost);
     }
-    Print(min_cost);
+    //Print(min_cost);
 }
 
 void Tester::ExecuteGeneticAlgorithm() {
@@ -150,7 +152,7 @@ void Tester::ExecuteGreedyT() {
     std::vector<Request> request;
     Heuristic greedy;
     double cost, min_cost = DBL_MAX;
-    int iteration = 20; 
+    int iteration = 20;
     while (iteration-- > 0) {
         GeneratePermutation(request);
         cost = greedy.Execute(request, 5, 100);
@@ -162,7 +164,7 @@ void Tester::ExecuteGreedyT() {
 
 void Tester::ExecutePscT() {
     std::vector<Request> request;
-    Heuristic psc;    
+    Heuristic psc;
     double cost, min_cost = DBL_MAX;
     int iteration = 20;
 
@@ -172,5 +174,11 @@ void Tester::ExecutePscT() {
         if (cost < min_cost)
             min_cost = cost;
     }
-    Print(min_cost);
+    struct rusage times;
+    float telapsed;
+    getrusage(0, &times);
+    telapsed = times.ru_utime.tv_sec +
+    times.ru_utime.tv_usec*0.000001;
+    printf("PSC - custo: %lf, tempo: %lf\n", min_cost, telapsed);
+    //Print(min_cost);
 }

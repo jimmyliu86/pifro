@@ -17,7 +17,7 @@
 
 bool compare_hop(const Request& i, const Request& j) {
     return i.hop > j.hop;
-} 
+}
 
 GeneticAlgorithm::GeneticAlgorithm(int population_size,
                                      int size_of_setA,
@@ -146,7 +146,7 @@ void GeneticAlgorithm::Crossover2() {
         // de indivíduo não-elite.
             int j = 0, unfilled_position;
             while(!unfilled.empty() && j < original_.size()) {
-                int index_non_elite = population_[non_elite].gen[j].id;   
+                int index_non_elite = population_[non_elite].gen[j].id;
                 if (mask[index_non_elite] == 0) {
                     unfilled_position = unfilled.front();
                     unfilled.pop_front();
@@ -182,7 +182,11 @@ void GeneticAlgorithm::SaveBestIndividual() {
         best_individual_.cost = cost_elite;
         for (int i = 0; i < original_.size(); ++i)
             best_individual_.gen[i] = population_[0].gen[i];
-        // printf("cost %.0lf\n"m cost_elite);
+
+        struct rusage times;
+        getrusage(0, &times);
+        float telapsed = times.ru_utime.tv_sec + times.ru_utime.tv_usec*0.000001;
+        printf("GA - custo: %lf, tempo: %lf\n", cost_elite, telapsed);
     }
 }
 
@@ -221,7 +225,7 @@ double GeneticAlgorithm::Execute() {
         telapsed = times.ru_utime.tv_sec +
     times.ru_utime.tv_usec*0.000001;
        // printf("%.4lf\n",ttranscorrido);
-        if(telapsed > 600.0f) {
+        if(telapsed > 3*600.0f) {
             break;
         }
     }
