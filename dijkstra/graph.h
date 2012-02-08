@@ -18,7 +18,8 @@ class Graph {
   int num_vertices_;
 
   // Lista de adjacências direcionada do grafo.
-  // forward_star_[v] armazena a lista de vizinhos de 'v';
+  // forward_star_[u] armazena a lista de vizinhos de 'u'.
+  // Cada elemento em forward_star_[u] é um 'pair' <v, weight(u,v)>.
   std::vector<std::list<std::pair<int, float>>> forward_star_;
 
  public:
