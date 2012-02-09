@@ -43,17 +43,15 @@ int main(int argc, char** argv) {
   ifstream fin(argv[1]);  // Arquivo com o grafo.
   int n;  // Número de vértices.
   int m;  // número de arestas.
-  list<Arc> arcs;  // Lista de arcos. Cada aresta é formada por dois arcos.
   fin >> n >> m;
+  Graph g(n);
   for (int i = 0; i < m; i++) {
     int u, v;
     float w;
     fin >> u >> v >> w;
-    arcs.push_back(Arc(u, v, w));
-    arcs.push_back(Arc(v, u, w));
+    g.AddEdge(u, v, w);
   }
 
-  Graph g(n, arcs);
   for (int i = 0; i < n; i ++) {
     for (int j = i + 1; j < n; j ++) {
       list<int> path;  // Vértices no caminho.

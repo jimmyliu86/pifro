@@ -23,8 +23,17 @@ class Graph {
   std::vector<std::list<std::pair<int, float>>> forward_star_;
 
  public:
-  // Construtor. Recebe o número de vértices 'n' e a lista de arcos 'arcs'.
+  // Constrói um grafo direcionado com 'n' vértices e nenhum arco.
+  Graph(int n);
+
+  // Constrói um grafo direcionado com 'n' vértices e com os arcos em 'arcs'.
   Graph(int n, const std::list<Arc>& arcs);
+
+  // Adiciona um arco '(u, v)' com peso 'w'.
+  void AddArc(int u, int v, float w);
+
+  // Adiciona uma aresta '[i, j]' com peso 'w'.
+  void AddEdge(int u, int v, float w);
 
   // Retorna o caminho mais curto entre dois terminais (usando Reverse
   // Dijkstra).  Os vértices no caminho são retornados através de path, caso
