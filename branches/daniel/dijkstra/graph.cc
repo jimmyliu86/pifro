@@ -10,12 +10,22 @@
 using std::list;
 using std::vector;
 
-Graph::Graph(int n, const list<Arc>& arcs)
-    : num_vertices_(n),
-      forward_star_(n) {
+Graph::Graph(int n) : num_vertices_(n), forward_star_(n) {
+}
+
+Graph::Graph(int n, const list<Arc>& arcs) : num_vertices_(n),forward_star_(n) {
   for (list<Arc>::const_iterator it = arcs.begin(); it != arcs.end(); it++) {
     forward_star_[it->u].push_back(std::make_pair(it->v, it->weight));
   }
+}
+
+void Graph::AddArc(int u, int v, float w) {
+  forward_star_[u].push_back(std::make_pair(v, w));
+}
+
+void Graph::AddEdge(int u, int v, float w) {
+  AddArc(u, v, w);
+  AddArc(v, u, w);
 }
 
 float Graph::dijkstra(int s, int t, list<int> *path) {
