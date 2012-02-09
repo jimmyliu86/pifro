@@ -1,6 +1,7 @@
 #ifndef BRANCHES_DANIEL_DIJKSTRA_GRAPH_H_
 #define BRANCHES_DANIEL_DIJKSTRA_GRAPH_H_
 
+#include <cstdlib>
 #include <list>
 #include <vector>
 #include <utility>
