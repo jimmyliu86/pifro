@@ -14,9 +14,6 @@ struct Arc {
 
 class Graph {
  private:
-  // Número de vértices.
-  int num_vertices_;
-
   // Lista de adjacências direcionada do grafo.
   // forward_star_[u] armazena a lista de vizinhos de 'u'.
   // Cada elemento em forward_star_[u] é um 'pair' <v, weight(u,v)>.
@@ -24,7 +21,7 @@ class Graph {
 
  public:
   // Constrói um grafo direcionado com 'n' vértices e nenhum arco.
-  Graph(int n);
+  explicit Graph(int n);
 
   // Constrói um grafo direcionado com 'n' vértices e com os arcos em 'arcs'.
   Graph(int n, const std::list<Arc>& arcs);
@@ -34,6 +31,11 @@ class Graph {
 
   // Adiciona uma aresta '[i, j]' com peso 'w'.
   void AddEdge(int u, int v, float w);
+
+  // Número de vértices.
+  inline int num_vertices() {
+    return forward_star_.size();
+  }
 
   // Retorna o caminho mais curto entre dois terminais (usando Reverse
   // Dijkstra).  Os vértices no caminho são retornados através de path, caso

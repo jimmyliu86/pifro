@@ -1,5 +1,5 @@
-#ifndef _HEAP_H
-#define _HEAP_H
+#ifndef BRANCHES_DANIEL_DIJKSTRA_HEAP_H_
+#define BRANCHES_DANIEL_DIJKSTRA_HEAP_H_
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,15 +10,15 @@ typedef float HeapKeys;
 
 struct Heap {
   int Size;
-  int *Index;
-  int *Value;
+  int* Index;
+  int* Value;
   HeapKeys *Key;
 };
 
 inline static Heap* HeapInit(int maxitems) {
   Heap* h = (Heap*) malloc(sizeof(Heap));
-  h->Index = (int*) calloc(maxitems, sizeof(int));
-  h->Value = (int*) malloc(maxitems * sizeof(int));
+  h->Index = (int*) calloc(maxitems, sizeof(*h->Index));
+  h->Value = (int*) malloc(maxitems * sizeof(*h->Value));
   h->Key = (HeapKeys*) malloc(maxitems * sizeof(HeapKeys));
   h->Size = 0;
   return h;
@@ -56,7 +56,7 @@ inline static void HeapDecKey(Heap *h, int value, HeapKeys key) {
     }
     PlaceValue(h, nodeParent, iCurrent);  // Else move the parent down.
   }
-  PlaceValue(h, value, iCurrent );  // Put the node in the hole.
+  PlaceValue(h, value, iCurrent);  // Put the node in the hole.
 }
 
 inline static void HeapInsert(Heap *h, int value, HeapKeys key) {
@@ -80,43 +80,44 @@ inline static void HeapDelMin(Heap *h) {
   node = Value[h->Size];
   nodekey = key[node];
   for (iCurrent = 0;
-       /* break when value <= min */;
+       // break when value <= min.
        iCurrent = iGoodChild ) {
     iFirstChild = (iCurrent << LOG_HEAP_DEGREE) + 1;
-    iLastChild = Min( iFirstChild + (1 << LOG_HEAP_DEGREE) - 1, h->Size - 1 );
+    iLastChild = Min(iFirstChild + (1 << LOG_HEAP_DEGREE) - 1, h->Size - 1);
     if ( iFirstChild >= h->Size )  // At the end of the tree.
       break;
     minValue = key[Value[iFirstChild]];
     iGoodChild = iFirstChild;  // The child with the min.
     for (iChild = iFirstChild+1; iChild <= iLastChild; iChild++ )
-      if (key[Value[iChild]] < minValue ) {  // New min.
+      if (key[Value[iChild]] < minValue) {  // New min.
         minValue = key[Value[iChild]];
         iGoodChild = iChild;
       }
     if (nodekey <= minValue) {  // No need to move down-er.
       break;
     }
-    PlaceValue(h, Value[iGoodChild], iCurrent );
+    PlaceValue(h, Value[iGoodChild], iCurrent);
   }
   PlaceValue(h, node, iCurrent);  // Value goes in hole.
 }
 
 inline static void HeapPrint(Heap *h) {
-   int iValue, iChild;
-   fprintf(stderr, "\nTHE HEAP: size %i", h->Size);
-   for ( iValue = 0; iValue < h->Size; iValue++ ) {
-      fprintf(stderr,"\npos %i (%i,%lf): ", iValue, h->Value[iValue], h->Key[h->Value[iValue]]);
-      for (iChild = (iValue << LOG_HEAP_DEGREE) + 1;
-           iChild <= (iValue + 1) << LOG_HEAP_DEGREE  &&  iChild < h->Size;
-           iChild++ ) {
-         fprintf(stderr, "(%i,%lf) ", h->Value[iChild], h->Key[h->Value[iChild]]);
-         if (h->Key[h->Value[iChild]] < h->Key[h->Value[iValue]] ) {
-           fprintf(stderr, "** bad bad bad **");
-           exit(0);
-         }
+  int iValue, iChild;
+  fprintf(stderr, "\nTHE HEAP: size %i", h->Size);
+  for (iValue = 0; iValue < h->Size; iValue++) {
+    fprintf(stderr, "\npos %i (%i,%lf): ",
+            iValue, h->Value[iValue], h->Key[h->Value[iValue]]);
+    for (iChild = (iValue << LOG_HEAP_DEGREE) + 1;
+         iChild <= (iValue + 1) << LOG_HEAP_DEGREE  &&  iChild < h->Size;
+         iChild++ ) {
+      fprintf(stderr, "(%i,%lf) ", h->Value[iChild], h->Key[h->Value[iChild]]);
+      if (h->Key[h->Value[iChild]] < h->Key[h->Value[iValue]]) {
+        fprintf(stderr, "** bad bad bad **");
+        exit(0);
       }
-   }
-   fprintf(stderr, "\n\n");
+    }
+  }
+  fprintf(stderr, "\n\n");
 }
 
-#endif
+#endif  // BRANCHES_DANIEL_DIJKSTRA_HEAP_H_
