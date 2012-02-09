@@ -39,8 +39,7 @@ float Graph::dijkstra(int s, int t, list<int> *path) {
 
   // Calcula o caminho mais curto.
   Heap* H = HeapInit(num_vertices_);
-  HeapSetKeys(H, distance);
-  HeapInsert(H, s);
+  HeapInsert(H, s, distance[s]);
   while (HeapSize(H) != 0) {
     int i = HeapMin(H);
     if (i == t) break;  // Para quando encontra 't'.
@@ -54,10 +53,10 @@ float Graph::dijkstra(int s, int t, list<int> *path) {
         parent[j] = i;
         if (distance[j] == FLT_MAX) {
           distance[j] = value;
-          HeapInsert(H, j);
+          HeapInsert(H, j, value);
         } else {
           distance[j] = value;
-          HeapDecKey(H, j);
+          HeapDecKey(H, j, value);
         }
       }
     }

@@ -6,120 +6,111 @@
 
 #define LOG_HEAP_DEGREE  2
 
-typedef int HeapKeys;
-typedef float HeapValues;
+typedef float HeapKeys;
 
 struct Heap {
   int Size;
-  HeapKeys *Pos;
-  HeapKeys *Node;
-  HeapValues *key;
+  int *Index;
+  int *Value;
+  HeapKeys *Key;
 };
 
-inline static Heap* HeapInit(HeapKeys maxitems) {
+inline static Heap* HeapInit(int maxitems) {
   Heap* h = (Heap*) malloc(sizeof(Heap));
-  h->Node = (HeapKeys*) malloc(maxitems * sizeof(HeapKeys));
-  h->Pos = (HeapKeys*) calloc(maxitems, sizeof(HeapKeys));
+  h->Index = (int*) calloc(maxitems, sizeof(int));
+  h->Value = (int*) malloc(maxitems * sizeof(int));
+  h->Key = (HeapKeys*) malloc(maxitems * sizeof(HeapKeys));
   h->Size = 0;
   return h;
 }
 
 inline static void HeapFree(Heap *h) {
-  free(h->Node);
-  free(h->Pos);
+  free(h->Index);
+  free(h->Value);
+  free(h->Key);
   free(h);
-}
-
-inline static void HeapSetKeys(Heap *h, HeapValues *k) {
-  h->key = k;
 }
 
 inline static int HeapSize(Heap *h) {
   return h->Size;
 }
 
-inline static void PLACE_NODE(Heap* h, const HeapKeys& v, const HeapKeys& i) {
-  h->Node[i] = (v);
-  h->Pos[v] = (i);
+inline static void PlaceValue(Heap* h, int value, int index) {
+  h->Value[index] = value;
+  h->Index[value] = index;
 }
 
-inline static HeapKeys HeapMin(Heap *h) {
-  return h->Node[0];
+inline static int HeapMin(Heap *h) {
+  return h->Value[0];
 }
 
-inline static void HeapDecKey(Heap *h, HeapKeys v) {
-   HeapKeys iCurrent, iParent;
-   HeapKeys nodeParent;
-   HeapValues x;
-   HeapValues *key = h->key;
-   HeapKeys *Pos = h->Pos;
-   HeapKeys *Node = h->Node;
-   x=key[v];
-   for (iCurrent = Pos[v], iParent = (Pos[v]-1) >> LOG_HEAP_DEGREE;
-	iCurrent > 0;
-	iCurrent = iParent, iParent = (iParent-1) >> LOG_HEAP_DEGREE ) {
-      nodeParent = Node[iParent];
-      if ( x >= key[nodeParent] )   /* we are in the right place*/
-	 break;
-      PLACE_NODE(h, nodeParent, iCurrent);     /* else move the parent down*/
-   }
-   PLACE_NODE(h, v, iCurrent );              /* put the node in the hole*/
+inline static void HeapDecKey(Heap *h, int value, HeapKeys key) {
+  h->Key[value] = key;
+  int iCurrent = h->Index[value];
+  for (int iParent = (h->Index[value] - 1) >> LOG_HEAP_DEGREE;
+      iCurrent > 0;
+      iCurrent = iParent, iParent = (iParent - 1) >> LOG_HEAP_DEGREE ) {
+    int nodeParent = h->Value[iParent];
+    if (h->Key[value] >= h->Key[nodeParent]) {  // We are in the right place.
+      break;
+    }
+    PlaceValue(h, nodeParent, iCurrent);  // Else move the parent down.
+  }
+  PlaceValue(h, value, iCurrent );  // Put the node in the hole.
 }
 
-inline static void HeapInsert(Heap *h, HeapKeys v) {
-  PLACE_NODE(h, v, h->Size);
+inline static void HeapInsert(Heap *h, int value, HeapKeys key) {
+  PlaceValue(h, value, h->Size);
   h->Size++;
-  HeapDecKey(h, v);
+  HeapDecKey(h, value, key);
 }
 
-inline static HeapKeys Min(const HeapKeys& a, const HeapKeys& b) {
+inline static int Min(const int& a, const int& b) {
   return a < b ? a : b;
 }
 
 inline static void HeapDelMin(Heap *h) {
-   HeapKeys iCurrent, iChild, iGoodChild, iFirstChild, iLastChild;
-   HeapValues minValue;      /* min value of children of us (dbl for prec.)*/
-   HeapKeys node;
-   HeapValues nodekey;
-   HeapValues *key = h->key;
-   HeapKeys *Node = h->Node;
-   h->Size--;
-   node=Node[h->Size];
-   nodekey=key[node];
-   for ( iCurrent = 0;
-	 /* break when value <= min */;
-	 iCurrent = iGoodChild ) {
-      iFirstChild = (iCurrent << LOG_HEAP_DEGREE) + 1;
-      iLastChild = Min( iFirstChild + (1 << LOG_HEAP_DEGREE) - 1, h->Size - 1 );
-      if ( iFirstChild >= h->Size )                 /* at the end of the tree*/
-	 break;
-      minValue = key[Node[iFirstChild]];
-      iGoodChild = iFirstChild;                  /* the child with the min*/
-      for (iChild = iFirstChild+1; iChild <= iLastChild; iChild++ )
-	if ( key[Node[iChild]] < minValue ) {   /* new min*/
-          minValue = key[Node[iChild]];
-	  iGoodChild = iChild;
-	}
-      if ( nodekey <= minValue )             /* no need to move down-er*/
-	 break;
-      PLACE_NODE(h, Node[iGoodChild], iCurrent );
-   }                                             /* end for*/
-   PLACE_NODE(h, node, iCurrent );                /* Node goes in hole*/
+  int iCurrent, iChild, iGoodChild, iFirstChild, iLastChild;
+  HeapKeys minValue;
+  int node;
+  HeapKeys nodekey;
+  HeapKeys *key = h->Key;
+  int *Value = h->Value;
+  h->Size--;
+  node = Value[h->Size];
+  nodekey = key[node];
+  for (iCurrent = 0;
+       /* break when value <= min */;
+       iCurrent = iGoodChild ) {
+    iFirstChild = (iCurrent << LOG_HEAP_DEGREE) + 1;
+    iLastChild = Min( iFirstChild + (1 << LOG_HEAP_DEGREE) - 1, h->Size - 1 );
+    if ( iFirstChild >= h->Size )  // At the end of the tree.
+      break;
+    minValue = key[Value[iFirstChild]];
+    iGoodChild = iFirstChild;  // The child with the min.
+    for (iChild = iFirstChild+1; iChild <= iLastChild; iChild++ )
+      if (key[Value[iChild]] < minValue ) {  // New min.
+        minValue = key[Value[iChild]];
+        iGoodChild = iChild;
+      }
+    if (nodekey <= minValue) {  // No need to move down-er.
+      break;
+    }
+    PlaceValue(h, Value[iGoodChild], iCurrent );
+  }
+  PlaceValue(h, node, iCurrent);  // Value goes in hole.
 }
 
 inline static void HeapPrint(Heap *h) {
-   HeapKeys iNode, iChild;
-   HeapValues *key = h->key;
-   HeapKeys *Node = h->Node;
-   int Size = h->Size;
-   fprintf(stderr, "\nTHE HEAP: size %i", Size);
-   for ( iNode = 0; iNode < Size; iNode++ ) {
-      fprintf(stderr,"\npos %i (%i,%lf): ", (int)iNode, (int)Node[iNode], key[Node[iNode]]);
-      for (iChild = (iNode << LOG_HEAP_DEGREE) + 1;
-           iChild <= (iNode+1) << LOG_HEAP_DEGREE  &&  iChild < Size;
+   int iValue, iChild;
+   fprintf(stderr, "\nTHE HEAP: size %i", h->Size);
+   for ( iValue = 0; iValue < h->Size; iValue++ ) {
+      fprintf(stderr,"\npos %i (%i,%lf): ", iValue, h->Value[iValue], h->Key[h->Value[iValue]]);
+      for (iChild = (iValue << LOG_HEAP_DEGREE) + 1;
+           iChild <= (iValue + 1) << LOG_HEAP_DEGREE  &&  iChild < h->Size;
            iChild++ ) {
-         fprintf(stderr, "(%i,%lf) ", (int)Node[iChild], key[Node[iChild]]);
-         if ( key[Node[iChild]] < key[Node[iNode]] ) {
+         fprintf(stderr, "(%i,%lf) ", h->Value[iChild], h->Key[h->Value[iChild]]);
+         if (h->Key[h->Value[iChild]] < h->Key[h->Value[iValue]] ) {
            fprintf(stderr, "** bad bad bad **");
            exit(0);
          }
