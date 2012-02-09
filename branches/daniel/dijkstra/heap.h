@@ -79,9 +79,7 @@ inline static void HeapDelMin(Heap *h) {
   h->Size--;
   node = Value[h->Size];
   nodekey = key[node];
-  for (iCurrent = 0;
-       // break when value <= min.
-       iCurrent = iGoodChild ) {
+  for (iCurrent = 0; /* break when value <= min.*/; iCurrent = iGoodChild ) {
     iFirstChild = (iCurrent << LOG_HEAP_DEGREE) + 1;
     iLastChild = Min(iFirstChild + (1 << LOG_HEAP_DEGREE) - 1, h->Size - 1);
     if ( iFirstChild >= h->Size )  // At the end of the tree.
