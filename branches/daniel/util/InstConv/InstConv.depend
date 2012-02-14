@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1329180769 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\src\sndconv.cpp
+	"SNDConv.h"
+
+1329180769 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\include\sndconv.h
+	"Request.h"
+	"Vertex.h"
+	<vector>
+	<math.h>
+	<fstream>
+	<iostream>
+	<cstdlib>
+	<string.h>
+
+1329180554 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\main.cpp
+	<iostream>
+	"SNDConv.h"
+
+1328971432 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\src\graph.cpp
+	"Graph.h"
+
+1328971391 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\include\graph.h
+	"Vertex.h"
+	<vector>
+	<iostream>
+	<cstdlib>
+
+1328971609 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\src\vertex.cpp
+	"Vertex.h"
+
+1329054459 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\include\vertex.h
+	<string.h>
+	<iostream>
+	<cstdlib>
+
+1329104533 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\src\request.cpp
+	"Request.h"
+
+1329104533 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\instconv\include\request.h
+	<string.h>
+	<iostream>
+	<cstdlib>
+
