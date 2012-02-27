@@ -18,7 +18,7 @@ class Graph{
              //void addEdge(int src, int dst, float weight);
              void deleteEdge(int vertex);
              std::vector<Vertex> getNeighbors(int vertex);
-             
+
              void loadFromSNDFile(char* filename);
              void print();
              void printWithWeight();

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PIFRO2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="PIFRO2" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add directory="include" />
+					<Add directory="src" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="BreadthFirst.cpp" />
+		<Unit filename="BreadthFirst.h" />
+		<Unit filename="Comparision.h" />
+		<Unit filename="Demand.cpp" />
+		<Unit filename="Demand.h" />
+		<Unit filename="Dijkstra.cpp" />
+		<Unit filename="Dijkstra.h" />
+		<Unit filename="Graph.cpp" />
+		<Unit filename="Graph.h" />
+		<Unit filename="Greedy.cpp" />
+		<Unit filename="Greedy.h" />
+		<Unit filename="Macros.h" />
+		<Unit filename="Request.cpp" />
+		<Unit filename="Request.h" />
+		<Unit filename="Vertex.cpp" />
+		<Unit filename="Vertex.h" />
+		<Unit filename="include\Constants.h" />
+		<Unit filename="include\Functions.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="rngs.cpp" />
+		<Unit filename="rngs.h" />
+		<Unit filename="rvgs.cpp" />
+		<Unit filename="rvgs.h" />
+		<Unit filename="src\Functions.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

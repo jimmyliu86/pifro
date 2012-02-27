@@ -1,0 +1,152 @@
+# depslib dependency file v1.0
+1327431426 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\breadthfirst.cpp
+	"./BreadthFirst.h"
+
+1327431262 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\breadthfirst.h
+	"./Macros.h"
+	"./Vertex.h"
+	<vector>
+	<queue>
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<queue>
+
+1326819106 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\macros.h
+
+1329257605 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\vertex.h
+	"./Macros.h"
+
+1329423618 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\dijkstra.cpp
+	"./Dijkstra.h"
+	<string.h>
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<queue>
+
+1329423252 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\dijkstra.h
+	"./Macros.h"
+	"./Graph.h"
+	"./Request.h"
+	"./Vertex.h"
+
+1330312955 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\graph.h
+	"./Macros.h"
+	"./Vertex.h"
+	<vector>
+
+1327779010 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\request.h
+	"./Macros.h"
+
+1330262686 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\graph.cpp
+	"./Graph.h"
+	<list>
+	<iostream>
+	<cstdlib>
+	<fstream>
+
+1329191646 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\demand.cpp
+	"./Demand.h"
+	"./BreadthFirst.h"
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<queue>
+	<vector>
+	<algorithm>
+	"./Comparision.h"
+
+1327786142 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\demand.h
+	"./Macros.h"
+	"./Request.h"
+	"./Graph.h"
+	<vector>
+
+1327779406 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\comparision.h
+
+1330311808 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\greedy.cpp
+	"./Greedy.h"
+
+1330312845 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\greedy.h
+	"./rvgs.h"
+	"./Macros.h"
+	"./Graph.h"
+	"./Request.h"
+	"./Vertex.h"
+	"./Demand.h"
+	"./Dijkstra.h"
+	"./Functions.h"
+	<cmath>
+	<vector>
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<queue>
+	<time.h>
+	<string.h>
+	<algorithm>
+	"./Comparision.h"
+
+1327779010 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\request.cpp
+	"Request.h"
+
+1329257605 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\vertex.cpp
+	"./Vertex.h"
+	<iostream>
+	<cstdlib>
+
+1327334876 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\rngs.cpp
+	<stdio.h>
+	<time.h>
+	"rngs.h"
+
+1327334876 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\rngs.h
+
+1327334810 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\rvgs.cpp
+	<math.h>
+	"rngs.h"
+	"rvgs.h"
+
+1327334810 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\rvgs.h
+
+1329423275 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\main.cpp
+	<cstdlib>
+	<iostream>
+	"Vertex.h"
+	"Graph.h"
+	"Demand.h"
+	"Dijkstra.h"
+	"./Greedy.h"
+	"./rvgs.h"
+
+1329268353 source:f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\src\functions.cpp
+	"Functions.h"
+
+1329268576 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\include\functions.h
+	<cmath>
+	<cmath>
+	<vector>
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<queue>
+	<time.h>
+	<string.h>
+	<algorithm>
+	"Constants.h"
+
+1329271334 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\include\constants.h
+	<vector>
+	<cmath>
+	<vector>
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<queue>
+	<time.h>
+	<string.h>
+	<algorithm>
+
+1329267594 f:\material aulas\cefet\mestrado\dissertação\workspace dev c++\pifro2\constants.h
+

@@ -47,6 +47,16 @@ int Vertex::getPrevious(){
     return Previous;
 }
 
+float Vertex::getCost()
+{
+    return Cost;
+}
+
+float Vertex::getIncCost()
+{
+    return IncCost;
+}
+
 bool Vertex::getEnabled(){
      return Enabled;
 }
@@ -79,6 +89,16 @@ void Vertex::setProperties(int number, int visited, float weight){
 
 void Vertex::setPrevious(int previous){
      Previous = previous;
+}
+
+void Vertex::setCost(float cost)
+{
+    Cost = cost;
+}
+
+void Vertex::setIncCost(float inccost)
+{
+    IncCost = inccost;
 }
 
 void Vertex::setEnabled(bool enabled){
