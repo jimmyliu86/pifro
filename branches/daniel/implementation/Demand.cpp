@@ -6,6 +6,8 @@
 #include <fstream>
 #include <queue>
 #include <vector>
+#include <algorithm>
+
 #include "./Comparision.h"
 using namespace std;
 
@@ -16,7 +18,7 @@ Demand::Demand(){
 Demand::Demand(char* filename, int tipo, std::vector<Vertex>*& adjlist, int qtvertex){
          if(tipo == 0){
                  loadFromTRFFile(filename, adjlist, qtvertex);
-         }            
+         }
 }
 
 std::vector<Request>& Demand::getVecRequest(){
@@ -28,7 +30,7 @@ void Demand::setVecRequest(std::vector<Request> vecrequest){
 }
 
 int Demand::getQtRequest(){
-    return QtRequest;   
+    return QtRequest;
 }
 
 void Demand::setQtRequest(int qtrequest){
@@ -45,16 +47,16 @@ void Demand::loadFromTRFFile(char* filename, std::vector<Vertex>*& adjlist, int 
      Request request;
      int src, dst;
      float qt;
-     
+
      BreadthFirst bfs;
-     
+
      vector<int> visited;
-     
+
      for(int i=0; i<QtRequest; i++){
              fin >> src;
              fin >> dst;
              fin >> qt;
-             
+
              request.setSrc(src);
              request.setDst(dst);
              request.setQt(qt);
@@ -64,12 +66,12 @@ void Demand::loadFromTRFFile(char* filename, std::vector<Vertex>*& adjlist, int 
              //cout << "======================================\n";
              //cout << "QTROADM: " << request.getQtROADM() << " - i: " << i << endl;
              VecRequest.push_back(request);
-     }  
-     fin.close();      
-     
+     }
+     fin.close();
+
      //bfs.getQtROADM(adjlist, 5, 10, qtvertex);
      //bfs.printWay();
-     std::sort(VecRequest.begin(), VecRequest.end(), comparison_request_by_qtroadm());
+     sort(VecRequest.begin(), VecRequest.end(), comparison_request_by_qtroadm());
      //cout << "QT: " << VecRequest.begin().getQtROADM()<<endl;
 }
 

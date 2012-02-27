@@ -10,18 +10,21 @@ using namespace std;
 Dijkstra::Dijkstra(){
 }
 
+Dijkstra::Dijkstra(int qtpaths)
+{
+    Paths = new std::vector<int>[qtpaths];
+}
 
-
-float Dijkstra::getCostByDijkstra(std::vector<Vertex>* adjlist, int qtvertex, int src, int dst){
+float Dijkstra::getCostByDijkstra(std::vector<Vertex>* adjlist, int qtvertex, int src, int dst, int idpath){
 
       int dis[qtvertex], vis[qtvertex], prev[qtvertex];
       memset(vis,0,sizeof(vis));
       memset (dis, 0x7f, sizeof (dis));
       memset(prev, -1, sizeof(prev));
-      
+
       dis[src] = 0;
-      
-      while (1)
+
+      while (true)
       {
               int i, n = -1;
 
@@ -35,8 +38,12 @@ float Dijkstra::getCostByDijkstra(std::vector<Vertex>* adjlist, int qtvertex, in
 
               for (i = 0; i < adjlist[n].size (); i++)
                       // Aresta n -> LAdj[n][i].first com custo LAdj[n][i].second
-                      if (dis[adjlist[n][i].getNumber()] > dis[n] + adjlist[n][i].getWeight()){
+                      /*if (dis[adjlist[n][i].getNumber()] > dis[n] + adjlist[n][i].getWeight()){
                               dis[adjlist[n][i].getNumber()] = dis[n] + adjlist[n][i].getWeight();
+                              prev[adjlist[n][i].getNumber()] = n;
+                      }*/
+                      if (dis[adjlist[n][i].getNumber()] > dis[n] + adjlist[n][i].getIncCost()){
+                              dis[adjlist[n][i].getNumber()] = dis[n] + adjlist[n][i].getIncCost();
                               prev[adjlist[n][i].getNumber()] = n;
                       }
         }
@@ -45,25 +52,26 @@ float Dijkstra::getCostByDijkstra(std::vector<Vertex>* adjlist, int qtvertex, in
       //Vetor de distâncias
       /*cout << "Distance: " << endl;
       for(int i = 0; i<qtvertex; i++){
-                  cout << "Posicao: " << i << " - " << dis[i] << " - " << endl; 
+                  cout << "Posicao: " << i << " - " << dis[i] << " - " << endl;
       }
-      cout << endl << endl;     */ 
+      cout << endl << endl;     */
 
       //Vetor de antecessores
       int tmp = dst;
       //cout << "PRED: " << pred[dst-1] << endl;
       cout << "Predecessor: ";
-      
+
       while(tmp != -1){
-                  cout << tmp << " - "; 
+                  cout << tmp << " - ";
+                  Paths[idpath].push_back(tmp);
                   //tmp = pred[tmp];
                   tmp = prev[tmp];
-                  
+
       }
       cout << endl;
-      
-      return dis[dst];      
-      
+
+      return dis[dst];
+
 }
 
 
