@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="include\Request.h" open="1" top="0" tabpos="6">
+	<File name="include\Request.h" open="0" top="0" tabpos="6">
 		<Cursor position="288" topLine="0" />
 	</File>
-	<File name="include\SNDConv.h" open="1" top="0" tabpos="2">
-		<Cursor position="81" topLine="0" />
+	<File name="include\SNDConv.h" open="0" top="0" tabpos="2">
+		<Cursor position="291" topLine="0" />
 	</File>
-	<File name="include\Vertex.h" open="1" top="0" tabpos="4">
+	<File name="include\Vertex.h" open="0" top="0" tabpos="0">
 		<Cursor position="38" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="183" topLine="0" />
+	<File name="main.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="324" topLine="0" />
 	</File>
-	<File name="src\Request.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="313" topLine="28" />
+	<File name="src\Request.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="313" topLine="0" />
 	</File>
 	<File name="src\SNDConv.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="7331" topLine="253" />
+		<Cursor position="8022" topLine="287" />
 	</File>
-	<File name="src\Vertex.cpp" open="1" top="0" tabpos="5">
+	<File name="src\Vertex.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="196" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

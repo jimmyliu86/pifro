@@ -294,7 +294,9 @@ void SNDConv::ConvertFile()
     fou << vecRequest.size() << endl;
     for(i=0; i<vecRequest.size(); i++)
     {
-        fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << vecRequest[i].getQt() << endl;
+        //MBPS TO GBPS CONVERSION HERE!!!!
+        //fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << vecRequest[i].getQt() << endl;
+        fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << ceilf(vecRequest[i].getQt() / 1000) << endl;
     }
     fou.close();
 
