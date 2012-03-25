@@ -127,6 +127,9 @@ void SNDConv::ConvertFile()
             fin >> name;
             fin >> name2;
             cout << "NAME: " << name << " - NAME2: " << name2 << endl;
+            fin >> tmp;
+            fin >> tmp;
+            cout << "TMP TMP: " << tmp << endl;
             src = -1;
             dst = -1;
             x = 0;
@@ -152,6 +155,7 @@ void SNDConv::ConvertFile()
         {
             break;
         }
+        /*fin >> tmp;
         fin >> tmp;
         fin >> tmp;
         fin >> tmp;
@@ -159,8 +163,14 @@ void SNDConv::ConvertFile()
         fin >> tmp;
         fin >> tmp;
         fin >> tmp;
-        fin >> tmp;
-        fin >> tmp;
+        fin >> tmp;*/
+
+        cout << "RESULTADO DE STRCMP: " << strcmp(tmp,")") << endl;
+        while(strcmp(tmp,")"))
+        {
+            fin >> tmp;
+        }
+        cout << "COUT FINAL: " << tmp << endl;
         cout << "LINKS: " << tmp << " - SRC: " << src << " - DST: " << dst << endl;
 
     }
@@ -295,8 +305,8 @@ void SNDConv::ConvertFile()
     for(i=0; i<vecRequest.size(); i++)
     {
         //MBPS TO GBPS CONVERSION HERE!!!!
-        //fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << vecRequest[i].getQt() << endl;
-        fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << ceilf(vecRequest[i].getQt() / 1000) << endl;
+        fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << vecRequest[i].getQt() << endl;
+        //fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << ceilf(vecRequest[i].getQt() / 1000) << endl;
     }
     fou.close();
 
