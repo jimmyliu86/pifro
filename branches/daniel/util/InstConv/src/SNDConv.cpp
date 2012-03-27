@@ -55,6 +55,17 @@ void SNDConv::ConvertFile()
     //Gerando o Vector com os dados dos Vértices
     vector<Vertex> VecVertex;
     ifstream fin(Filename);
+
+    if(fin.is_open() == 0)
+    {
+        cout << "Invalid Filename, please retry with other file\n\n\n";
+        return;
+    }
+
+    char conv;
+    cout << "Convert from MBPS to GBPS? [y/n]";
+    cin >> conv;
+
     string name, name2;
     char tmp[100];
     float latitude, longitude;
@@ -305,7 +316,17 @@ void SNDConv::ConvertFile()
     for(i=0; i<vecRequest.size(); i++)
     {
         //MBPS TO GBPS CONVERSION HERE!!!!
-        fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << vecRequest[i].getQt() << endl;
+        if(conv == 'n')
+        {
+            fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << vecRequest[i].getQt() << endl;
+        }
+        else if(conv == 'y')
+        {
+            fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << ceilf(vecRequest[i].getQt() / 1000) << endl;
+        }else{
+            cout << "Invalid conversion option\n\n\n";
+            return;
+        }
         //fou << vecRequest[i].getIsrc() << " " << vecRequest[i].getIdst() << " " << ceilf(vecRequest[i].getQt() / 1000) << endl;
     }
     fou.close();
@@ -332,4 +353,5 @@ void SNDConv::ConvertFile()
         j = 0;
     }
     fou.close();
+    cout << "Success file conversion";
 }
