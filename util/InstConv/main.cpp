@@ -5,13 +5,12 @@ using namespace std;
 
 int main()
 {
-    char file[256];
-    cout << "Caminho do arquivo a ser convertido: ";
+    char file[256], conv;
+    cout << "Path to file for convert: ";
     cin >> file;
-
 
     SNDConv objSNDConv(file);
     objSNDConv.ConvertFile();
-    cout << "Conversao do arquivo " << file << " concluida!";
+    //cout << "Conversao do arquivo " << file << " concluida!";
     return 0;
 }
