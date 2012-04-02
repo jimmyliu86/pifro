@@ -11,21 +11,21 @@ class Request{
              int getDst();
              int getQtROADM();
              float getDistance();
-             float getQt();
+             int getQt();
              float getKey();
              void setSrc(int src);
              void setDst(int dst);
              void setQtROADM(int qtroadm);
              void setDistance(float distance);
-             void setQt(float qt);
+             void setQt(int qt);
              void setKey(float key);
-             
-             
-             
+
+
+
       private:
-              int Src, Dst, QtROADM;
-              float Distance, Qt, Key;
-              
-              
+              int Src, Dst, QtROADM, Qt;
+              float Distance, Key;
+
+
 };
 #endif

@@ -34,7 +34,7 @@ float Request::getDistance(){
     return Distance;
 }
 
-float Request::getQt(){
+int Request::getQt(){
     return Qt;
 }
 
@@ -58,7 +58,7 @@ void Request::setDistance(float distance){
      Distance = distance;
 }
 
-void Request::setQt(float qt){
+void Request::setQt(int qt){
      Qt = qt;
 }
 

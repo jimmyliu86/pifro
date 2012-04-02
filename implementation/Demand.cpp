@@ -46,9 +46,9 @@ void Demand::loadFromTRFFile(char* filename, std::vector<Vertex>*& adjlist, int 
      fin >> QtRequest;
      Request request;
      int src, dst;
-     float qt;
+     int qt;
 
-     BreadthFirst bfs;
+     //=====>BreadthFirst bfs;
 
      vector<int> visited;
 
@@ -60,7 +60,7 @@ void Demand::loadFromTRFFile(char* filename, std::vector<Vertex>*& adjlist, int 
              request.setSrc(src);
              request.setDst(dst);
              request.setQt(qt);
-             request.setQtROADM(bfs.getQtROADM(adjlist, src, dst, qtvertex));
+             //====>request.setQtROADM(bfs.getQtROADM(adjlist, src, dst, qtvertex));
              //cout << "SRC: " << src << " - DST: " << dst << " - ";
 // ------>>> bfs.printWay();
              //cout << "======================================\n";
@@ -71,7 +71,7 @@ void Demand::loadFromTRFFile(char* filename, std::vector<Vertex>*& adjlist, int 
 
      //bfs.getQtROADM(adjlist, 5, 10, qtvertex);
      //bfs.printWay();
-     sort(VecRequest.begin(), VecRequest.end(), comparison_request_by_qtroadm());
+     //====>>>>sort(VecRequest.begin(), VecRequest.end(), comparison_request_by_qtroadm());
      //cout << "QT: " << VecRequest.begin().getQtROADM()<<endl;
 }
 

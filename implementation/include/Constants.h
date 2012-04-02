@@ -14,11 +14,12 @@
 
 using namespace std;
 
-const float ROADMCost = 20000000;
-const float OACost = ROADMCost / 2;
-const float OTCost = ROADMCost * 0.10;
-const float LOA = 100;
-const float LOT = 500;
-const float U = 100;
+//const float ROADMCost = 20000000; /* ROADM Price */
+const float ROADMCost = 500000; /* ROADM Price */
+const float OACost = ROADMCost / 2; /* Optical Amplifier Price */
+const float OTCost = ROADMCost * 0.10; /* Optical Transponder Price */
+const float LOA = 100; /* Distance for install Optical Amplifier (KM) */
+const float LOT = 500; /* Distance for install Optical Transponder (aproximative valeu by Antonakopoulos and Zhang */
+const float U = 100; /* Demands suported per fiber */
 
 #endif // PIFRO2_CONSTANTS_H

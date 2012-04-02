@@ -7,9 +7,12 @@ using namespace std;
 Vertex::Vertex(){
            Number = -1;
            Visited = -1;
-           Weight = -1;
+           Weight = 0;
            Color = -1;
            Level = -1;
+           Cost = 0;
+           IncCost = 0;
+           QtRequests = 0;
 }
 
 Vertex::Vertex(int number, int visited, float weight){
@@ -18,6 +21,9 @@ Vertex::Vertex(int number, int visited, float weight){
            Weight = weight;
            Color = -1;
            Level = -1;
+           Cost = 0;
+           IncCost = 0;
+           QtRequests = 0;
 }
 
 Vertex::~Vertex(){
@@ -59,6 +65,10 @@ float Vertex::getIncCost()
 
 bool Vertex::getEnabled(){
      return Enabled;
+}
+
+int Vertex::getQtRequests(){
+    return QtRequests;
 }
 
 void Vertex::setNumber(int number){
@@ -103,6 +113,10 @@ void Vertex::setIncCost(float inccost)
 
 void Vertex::setEnabled(bool enabled){
      Enabled = enabled;
+}
+
+void Vertex::setQtRequests(int qtrequests){
+    QtRequests = qtrequests;
 }
 
 void Vertex::print(){
