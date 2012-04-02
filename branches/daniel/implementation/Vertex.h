@@ -17,6 +17,8 @@ class Vertex{
              float getCost();
              float getIncCost();
              bool getEnabled();
+             int getQtRequests();
+
              void setNumber(int number);
              void setVisited(int visited);
              void setWeight(float weight);
@@ -26,12 +28,13 @@ class Vertex{
              void setCost(float cost);
              void setIncCost(float inccost);
              void setEnabled(bool enabled);
+             void setQtRequests(int qtrequests);
 
              void setProperties(int number, int visited, float weight);
              void print();
 
       private:
-              int Number, Visited, Color, Level, Previous;
+              int Number, Visited, Color, Level, Previous, QtRequests;
               float Weight, Cost, IncCost;
               bool Enabled;
               //DISALLOW_COPY_AND_ASSIGN(Vertex);

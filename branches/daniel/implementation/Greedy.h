@@ -26,7 +26,9 @@ using namespace std;
 class Greedy{
 
       public:
+             Functions functions;
              Greedy();
+             Greedy(int qtRequests);
              void setGDemand(Demand& demand);
              void setGGraph(Graph& graph);
              Demand getGDemand();
@@ -34,11 +36,17 @@ class Greedy{
 
 
              void DemandSort(std::vector<Request>& vecrequest);
-             float execute(std::vector<Vertex>*& adjlist, std::vector<Request>& vecrequest, int qtvertex, int timeexec);
+             void DemandSwap(std::vector<Request>& vecrequest);
+             float deletePath(Graph& graph, int path, int qtvertex, int qtrequests);
+             float addPath(Graph& graph, int path, int qtvertex, int qtrequests);
+             float execute(Graph& graph, std::vector<Request>& vecrequest, int qtvertex, bool regenerateDijkstra);
+             float executeWithRefine(Graph& graph, std::vector<Request>& vecrequest, int qtvertex, bool regenerateDijkstra);
 
       private:
               Graph GGraph;
               Demand GDemand;
+              float MinCost;
+              Dijkstra ObjDijkstra;
 };
 
 #endif

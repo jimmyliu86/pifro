@@ -5,19 +5,23 @@
 #include "./Graph.h"
 #include "./Request.h"
 #include "./Vertex.h"
+#include "./Functions.h"
 
 class Dijkstra{
 
       public:
+             //std::vector<Vertex>* Paths;
+             std::vector<int>* Paths;
+
              Dijkstra();
              Dijkstra(int qtpaths);
-             float getCostByDijkstra(std::vector<Vertex>* adjlist, int qtvertex, int src, int dst, int idpath);
+             float getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, int src, int dst, int idpath);
              void DeletePath(int idpath);
              void setCostByDijkstra(float cost);
+             void setAllGraphEdgeIncCost(Graph& graph, int qtvertex, int qtrequests);
 
       private:
              float CostByDijkstra;
-             std::vector<int>* Paths;
 
 };
 

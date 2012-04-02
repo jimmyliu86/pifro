@@ -32,14 +32,20 @@
 		<Unit filename="Request.h" />
 		<Unit filename="Vertex.cpp" />
 		<Unit filename="Vertex.h" />
+		<Unit filename="include\BRKGA.h" />
 		<Unit filename="include\Constants.h" />
 		<Unit filename="include\Functions.h" />
+		<Unit filename="include\MTRand.h" />
+		<Unit filename="include\Population.h" />
+		<Unit filename="include\SampleDecoder.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="rngs.cpp" />
 		<Unit filename="rngs.h" />
 		<Unit filename="rvgs.cpp" />
 		<Unit filename="rvgs.h" />
 		<Unit filename="src\Functions.cpp" />
+		<Unit filename="src\SampleDecoder.cpp" />
+		<Unit filename="src\samplecode.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

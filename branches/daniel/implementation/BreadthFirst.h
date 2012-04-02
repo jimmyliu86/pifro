@@ -14,7 +14,7 @@
 using namespace std;
 
 class BreadthFirst{
-      
+
       public:
               BreadthFirst();
               float getKmDistance();
@@ -23,12 +23,13 @@ class BreadthFirst{
               void setWay(vector<int> way);
               int getQtROADM(std::vector<Vertex>*& adjlist, int src, int dst, int qtvertex);
               float calculateDistance(int src, int dst, std::vector<Vertex>*& adjlist);
-              
+
+              float setCostOfWay(int src, int dst, std::vector<Vertex>*& adjlist);
               void printWay();
       private:
               float KmDistance;
               std::vector<int> Way;
-             
+
 };
 
 #endif
