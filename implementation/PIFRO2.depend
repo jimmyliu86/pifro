@@ -195,7 +195,7 @@
 
 1327779406 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\comparision.h
 
-1333337076 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\dijkstra.cpp
+1333437722 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\dijkstra.cpp
 	"./Dijkstra.h"
 	<string.h>
 	<iostream>
@@ -204,21 +204,21 @@
 	<queue>
 	<algorithm>
 
-1332881763 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\dijkstra.h
+1333416271 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\dijkstra.h
 	"./Macros.h"
 	"./Graph.h"
 	"./Request.h"
 	"./Vertex.h"
 	"./Functions.h"
 
-1333078824 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\graph.cpp
+1333484890 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\graph.cpp
 	"./Graph.h"
 	<list>
 	<iostream>
 	<cstdlib>
 	<fstream>
 
-1333338660 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\greedy.cpp
+1333515931 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\greedy.cpp
 	"./Greedy.h"
 
 1333341100 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\greedy.h
@@ -256,7 +256,7 @@
 	<algorithm>
 	"Constants.h"
 
-1332134299 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\constants.h
+1333438148 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\constants.h
 	<vector>
 	<cmath>
 	<vector>
@@ -276,7 +276,7 @@
 	<iostream>
 	<cstdlib>
 
-1333229059 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\main.cpp
+1333484972 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\main.cpp
 	<cstdlib>
 	<iostream>
 	"Vertex.h"
@@ -298,7 +298,7 @@
 	"rngs.h"
 	"rvgs.h"
 
-1333084848 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\functions.cpp
+1333438319 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\functions.cpp
 	"Functions.h"
 
 1313435820 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\sampledecoder.cpp

@@ -11,7 +11,7 @@ class Dijkstra{
 
       public:
              //std::vector<Vertex>* Paths;
-             std::vector<int>* Paths;
+             vector<vector<int> > Paths;
 
              Dijkstra();
              Dijkstra(int qtpaths);

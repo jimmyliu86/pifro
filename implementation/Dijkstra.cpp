@@ -15,7 +15,11 @@ Dijkstra::Dijkstra(){
 Dijkstra::Dijkstra(int qtpaths)
 {
     //Paths = new std::vector<Vertex>[qtpaths];
-    Paths = new std::vector<int>[qtpaths];
+    //Paths = new std::vector<int>[qtpaths];
+
+    /*vector<int> tmp;
+    for(int i=0;i<qtpaths;i++);*/
+      Paths.resize(qtpaths);
 }
 
 float Dijkstra::getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, int src, int dst, int idpath){
@@ -54,7 +58,7 @@ float Dijkstra::getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, i
                       break;
               vis[n] = 1;
 
-              for (i = 0; i < adjlist[n].size(); i++)
+              for (i = 1; i < adjlist[n].size(); i++)
                       // Aresta n -> LAdj[n][i].first com custo LAdj[n][i].second
                       /*if (dis[adjlist[n][i].getNumber()] > dis[n] + adjlist[n][i].getWeight()){
                               dis[adjlist[n][i].getNumber()] = dis[n] + adjlist[n][i].getWeight();
