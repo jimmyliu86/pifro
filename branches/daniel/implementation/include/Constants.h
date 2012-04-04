@@ -19,7 +19,7 @@ const float ROADMCost = 500000; /* ROADM Price */
 const float OACost = ROADMCost / 2; /* Optical Amplifier Price */
 const float OTCost = ROADMCost * 0.10; /* Optical Transponder Price */
 const float LOA = 100; /* Distance for install Optical Amplifier (KM) */
-const float LOT = 500; /* Distance for install Optical Transponder (aproximative valeu by Antonakopoulos and Zhang */
+const float LOT = 500; /* Distance for install Optical Transponder (aproximate value by Antonakopoulos and Zhang) */
 const float U = 100; /* Demands suported per fiber */
 
 #endif // PIFRO2_CONSTANTS_H
