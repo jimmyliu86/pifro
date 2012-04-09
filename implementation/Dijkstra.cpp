@@ -80,8 +80,16 @@ float Dijkstra::getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, i
       cout << endl << endl;     */
 
       //Vetor de antecessores
-      cout << endl << "Requisition - [SRC: " << src << " - DST: " << dst << "] : \n";
+
+
+
+
+      //cout << endl << "Requisition - [SRC: " << src << " - DST: " << dst << "] : \n";
       int tmp = dst;
+
+
+
+
       //cout << "PRED: " << pred[dst-1] << endl;
       //cout << "Predecessor: ";
       vector<int> dijpath;
@@ -98,7 +106,9 @@ float Dijkstra::getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, i
       reverse(dijpath.begin(), dijpath.end());
 
 
-      if(Paths[idpath].size() > 0)
+
+
+      /*if(Paths[idpath].size() > 0)
       {
           cout << "Before execution the path is: ";
           for(int i=0; i<Paths[idpath].size(); i++)
@@ -106,7 +116,9 @@ float Dijkstra::getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, i
                cout << Paths[idpath][i] << " - ";
           }
       }
-      cout << endl;
+      cout << endl;*/
+
+
 
       Paths[idpath].clear();
       Paths[idpath] = dijpath;
@@ -116,12 +128,21 @@ float Dijkstra::getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, i
       Paths[idpath].push_back(dijpath[p]);
       }*/
 
-      cout << "After execution the path is: ";
+
+
+
+
+      /*cout << "After execution the path is: ";
       for(int i=0; i<Paths[idpath].size(); i++)
       {
            cout << Paths[idpath][i] << " - ";
       }
-      cout << endl;
+      cout << endl;*/
+
+
+
+
+
 
       /*cout << "PATH: ";
       for(int i=0; i<Paths[idpath].size(); i++)

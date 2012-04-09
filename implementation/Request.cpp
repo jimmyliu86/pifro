@@ -38,6 +38,11 @@ int Request::getQt(){
     return Qt;
 }
 
+int Request::getId()
+{
+    return Id;
+}
+
 float Request::getKey(){
       return Key;
 }
@@ -64,4 +69,9 @@ void Request::setQt(int qt){
 
 void Request::setKey(float key){
      Key = key;
+}
+
+void Request::setId(int id)
+{
+    Id = id;
 }

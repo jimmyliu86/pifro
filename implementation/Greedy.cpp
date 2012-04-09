@@ -39,7 +39,7 @@ void Greedy::DemandSort(std::vector<Request>& vecrequest)
     {
         vecrequest[i].setKey(rand() / static_cast<float>(Uniform(0,1)));
     }
-    sort(vecrequest.begin(), vecrequest.end(), comparison_request_by_key());
+    sort(vecrequest.begin(), vecrequest.end(), comparision_request_by_key());
 }
 
 void Greedy::DemandSwap(std::vector<Request>& vecrequest)
@@ -56,8 +56,10 @@ float Greedy::execute(Graph& graph, std::vector<Request>& vecrequest, int qtvert
 {
     if(regenerateDijkstra)
     {
-        Dijkstra dijkstra(vecrequest.size());
-        ObjDijkstra = dijkstra;
+        //Dijkstra dijkstra(vecrequest.size());
+        ObjDijkstra.Paths.clear();
+        ObjDijkstra.Paths.resize(vecrequest.size());
+        //ObjDijkstra = dijkstra;
     }
 
     for(int p=0; p<vecrequest.size(); p++)
@@ -68,16 +70,16 @@ float Greedy::execute(Graph& graph, std::vector<Request>& vecrequest, int qtvert
     }
 
     //refine(graph, vecrequest, qtvertex);
-    long totalcost = 0;
-    for(int p = 0; p < qtvertex; p++)
+    float totalcost = graph.getTotalCost();
+    /*for(int p = 0; p < qtvertex; p++)
     {
         for(int x = 1; x < graph.getAdjList()[p].size(); x++)
         {
             totalcost += graph.getAdjList()[p][x].getCost();
         }
-    }
+    }*/
 
-    MinCost = totalcost;
+    //MinCost = totalcost;
     return totalcost;
 
 }
@@ -85,14 +87,14 @@ float Greedy::execute(Graph& graph, std::vector<Request>& vecrequest, int qtvert
 float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
 {
 
-    cout << "DIJKSTRA PATH FOR DELETE: ";
+    /*cout << "DIJKSTRA PATH FOR DELETE: ";
     for(int v=0; v<ObjDijkstra.Paths[path].size(); v++)
     {
         cout << ObjDijkstra.Paths[path][v] << " - ";
     }
-    cout << endl;
+    cout << endl;*/
 
-    cout << "DELETED PATH: \n";
+    //cout << "DELETED PATH: \n";
 
     vector<int> path_cp = ObjDijkstra.Paths[path];
     for(int i=0; i<path_cp.size() - 1; i++)
@@ -106,7 +108,7 @@ float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
                 int w = graph.getNeighbors(z)[x].getQtRequests();
                 float l = graph.getNeighbors(z)[x].getWeight();
                 graph.getNeighbors(z)[x].setCost(functions.fwdm(w, l));
-                cout << "Deleting: " << graph.getNeighbors(z)[x].getNumber() << " - Path_CP: Z: " << z << " - Path_CP: ZPROX: " << zprox << " - Qt:" << qtrequests << endl;
+                //cout << "Deleting: " << graph.getNeighbors(z)[x].getNumber() << " - Path_CP: Z: " << z << " - Path_CP: ZPROX: " << zprox << " - Qt:" << qtrequests << endl;
                 break;
             }
             x++;
@@ -115,10 +117,10 @@ float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
 
 
 
-    cout << endl << endl;
-    graph.printWithQtRequests();
+    //cout << endl << endl;
+    //graph.printWithQtRequests();
 
-    float totalcost = 0;
+    /*float totalcost = 0;
     for(int p = 0; p < qtvertex; p++)
     {
         for(int x = 1; x < graph.getAdjList()[p].size(); x++)
@@ -128,20 +130,36 @@ float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
         }
     }
 
+    //return totalcost;*/
+    float totalcost = graph.getTotalCost();
+    if(totalcost < 0)
+    {
+        cout << "Negative Actual Cost found: \n";
+        graph.printWithQtRequests();
+        cout << "DIJKSTRA PATH FOR DELETE: \n";
+        for(int v=0; v<ObjDijkstra.Paths[path].size(); v++)
+        {
+            cout << ObjDijkstra.Paths[path][v] << " - ";
+        }
+        cout << endl;
+        system("PAUSE");
+    }
     return totalcost;
+
 }
 
 
 float Greedy::addPath(Graph& graph, int path, int qtvertex, int qtrequests)
 {
-    cout << "DIJKSTRA PATH FOR ADD: ";
+
+    /*cout << "DIJKSTRA PATH FOR DELETE: ";
     for(int v=0; v<ObjDijkstra.Paths[path].size(); v++)
     {
         cout << ObjDijkstra.Paths[path][v] << " - ";
     }
-    cout << endl;
+    cout << endl;*/
 
-    cout << "ADDED PATH: \n";
+    //cout << "DELETED PATH: \n";
 
     vector<int> path_cp = ObjDijkstra.Paths[path];
     for(int i=0; i<path_cp.size() - 1; i++)
@@ -155,7 +173,7 @@ float Greedy::addPath(Graph& graph, int path, int qtvertex, int qtrequests)
                 int w = graph.getNeighbors(z)[x].getQtRequests();
                 float l = graph.getNeighbors(z)[x].getWeight();
                 graph.getNeighbors(z)[x].setCost(functions.fwdm(w, l));
-                cout << "Adding: " << graph.getNeighbors(z)[x].getNumber() << " - Path_CP: Z: " << z << " - Path_CP: ZPROX: " << zprox << " - Qt:" << qtrequests << " - NEW COST: " << graph.getNeighbors(z)[x].getCost() << " - FWDM(w,l): " << functions.fwdm(w, l) << " - w: " << w << " - l: " << l << endl;
+                //cout << "Deleting: " << graph.getNeighbors(z)[x].getNumber() << " - Path_CP: Z: " << z << " - Path_CP: ZPROX: " << zprox << " - Qt:" << qtrequests << endl;
                 break;
             }
             x++;
@@ -163,10 +181,11 @@ float Greedy::addPath(Graph& graph, int path, int qtvertex, int qtrequests)
     }
 
 
-    cout << endl << endl;
-    graph.printWithQtRequests();
 
-    float totalcost = 0;
+    //cout << endl << endl;
+    //graph.printWithQtRequests();
+
+    /*float totalcost = 0;
     for(int p = 0; p < qtvertex; p++)
     {
         for(int x = 1; x < graph.getAdjList()[p].size(); x++)
@@ -176,25 +195,41 @@ float Greedy::addPath(Graph& graph, int path, int qtvertex, int qtrequests)
         }
     }
 
+    //return totalcost;*/
+    float totalcost = graph.getTotalCost();
+    if(totalcost < 0)
+    {
+        cout << "Negative Actual Cost found: \n";
+        graph.printWithQtRequests();
+        cout << "DIJKSTRA PATH FOR ADD: \n";
+        for(int v=0; v<ObjDijkstra.Paths[path].size(); v++)
+        {
+            cout << ObjDijkstra.Paths[path][v] << " - ";
+        }
+        cout << endl;
+        system("PAUSE");
+    }
     return totalcost;
+
 }
 
 
-float Greedy::executeWithRefine(Graph& graph, std::vector<Request>& vecrequest, int qtvertex,  bool regenerateDijkstra)
+float Greedy::executeWithRefine(Graph& graph, std::vector<Request>& vecrequest)
 {
     float act = 0;
-    act = execute(graph, vecrequest, qtvertex, true);
-    MinCost = act;
-    graph.printWithQtRequests();
-    cout << endl << "Cost execute without refinement:::::: " << act<< endl;
+    graph.cleanCosts();
+    act = execute(graph, vecrequest, graph.getQtVertex(), true);
+    this->MinCost = act;
+    //graph.printWithQtRequests();
+    //cout << endl << "Cost execute without refinement:::::: " << act<< endl;
 
     int actrequest = 0, path_ch = 1, min_cost_ch = 0;
     vector<int> actpath;
 
     //float prev_mincos = MinCost;
-    system("PAUSE");
+    //system("PAUSE");
 
-    cout << "Original PATHS: ";
+    /*cout << "Original PATHS: ";
     for(int x = 0; x < vecrequest.size(); x++)
     {
 
@@ -202,18 +237,18 @@ float Greedy::executeWithRefine(Graph& graph, std::vector<Request>& vecrequest, 
             cout << ObjDijkstra.Paths[x][i] << " - ";
 
         cout << endl;
-    }
+    }*/
 
 
     //com actrequest = 0 ao ser declarado forço a primeira execução do loop while
     while(((path_ch > 0) || (min_cost_ch > 0)) || (actrequest < vecrequest.size()))
-    //while((path_ch > 0) || (min_cost_ch > 0))
-    //while(actrequest < vecrequest.size())
+        //while((path_ch > 0) || (min_cost_ch > 0))
+        //while(actrequest < vecrequest.size())
     {
         path_ch = 0;
         min_cost_ch = 0;
 
-        act = deletePath(graph, 0, qtvertex, vecrequest[0].getQt());
+        act = deletePath(graph, 0, graph.getQtVertex(), vecrequest[0].getQt());
 
         /*cout << "PATH BEFORE: ";
         for(int i = 0; i < ObjDijkstra.Paths[0].size(); i++)
@@ -251,22 +286,22 @@ float Greedy::executeWithRefine(Graph& graph, std::vector<Request>& vecrequest, 
             //Resolvendo o problema da última rota excluída e novamente adicionada
             actpath.clear();
             actpath = ObjDijkstra.Paths[i];
-            if(i == vecrequest.size() - 1)
-            {
-                ObjDijkstra.setAllGraphEdgeIncCost(graph, qtvertex, vecrequest[i].getQt());
-                ObjDijkstra.getCostByDijkstra(graph.getAdjList(), qtvertex, vecrequest[i].getSrc(), vecrequest[i].getDst(), i);
-                act = addPath(graph, i, qtvertex, vecrequest[i].getQt());
-            }
-            else
+            if(i < vecrequest.size() - 1)
             {
                 //actpath.clear();
                 //actpath = ObjDijkstra.Paths[i];
-                deletePath(graph, i, qtvertex, vecrequest[i].getQt());
-                ObjDijkstra.setAllGraphEdgeIncCost(graph, qtvertex, vecrequest[i].getQt());
-                ObjDijkstra.getCostByDijkstra(graph.getAdjList(), qtvertex, vecrequest[i].getSrc(), vecrequest[i].getDst(), i);
-                cout << "AFTER ADD PATH THE COST IS: ";
+                deletePath(graph, i, graph.getQtVertex(), vecrequest[i].getQt());
+                ObjDijkstra.setAllGraphEdgeIncCost(graph, graph.getQtVertex(), vecrequest[i].getQt());
+                ObjDijkstra.getCostByDijkstra(graph.getAdjList(), graph.getQtVertex(), vecrequest[i].getSrc(), vecrequest[i].getDst(), i);
+                //cout << "AFTER ADD PATH THE COST IS: ";
 
-                act = addPath(graph, i, qtvertex, vecrequest[i].getQt());
+                act = addPath(graph, i, graph.getQtVertex(), vecrequest[i].getQt());
+            }
+            else
+            {
+                ObjDijkstra.setAllGraphEdgeIncCost(graph, graph.getQtVertex(), vecrequest[i].getQt());
+                ObjDijkstra.getCostByDijkstra(graph.getAdjList(), graph.getQtVertex(), vecrequest[i].getSrc(), vecrequest[i].getDst(), i);
+                act = addPath(graph, i, graph.getQtVertex(), vecrequest[i].getQt());
             }
 
 
@@ -287,7 +322,10 @@ float Greedy::executeWithRefine(Graph& graph, std::vector<Request>& vecrequest, 
             }
             //DemandSwap(vecrequest);
             //graph.printWithQtRequests();
-            cout << "\nCOST OF THIS NETWORK: " << act << endl;
+
+
+            // --> cout << "\nCOST OF THIS NETWORK: " << act << endl;
+
 
             //cout << "GRAPH WITH ADD COST: " << endl;
             //graph.printWithQtRequests();

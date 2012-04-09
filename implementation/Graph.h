@@ -5,6 +5,7 @@
 #include "./Vertex.h"
 
 #include <vector>
+#include <math.h>
 
 class Graph{
       public:
@@ -20,6 +21,8 @@ class Graph{
              void deleteEdge(int vertex);
              std::vector<Vertex>& getNeighbors(int vertex);
 
+             float getTotalCost();
+             void cleanCosts();
              void loadFromSNDFile(char* filename);
              void print();
              void printWithWeight();

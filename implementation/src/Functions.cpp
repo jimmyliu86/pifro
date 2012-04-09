@@ -25,7 +25,7 @@ float Functions::fwdm(int w, float l)
     //OT
     c3 = (1 / LOT) * 2 * OTCost;
 
-    fret = c1 * ceilf(w / U) + c2 * l * ceilf(w / U) + c3 * w * l;
+    fret = c1 * ceil(w / U) + c2 * l * ceil(w / U) + c3 * w * l;
 
     return fret;
 }

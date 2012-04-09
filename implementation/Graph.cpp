@@ -89,10 +89,40 @@ void Graph::loadFromSNDFile(char* filename)
         fin >> src;
         fin >> dst;
         fin >> weight;
-        addEdge(src, dst, weight);
+        //double weightr = roundIt(weight, pow(10,-2));
+        addEdge(src, dst, weight );
     }
 
     fin.close();
+}
+
+float Graph::getTotalCost()
+{
+    float totalcost = 0;
+    for(int p = 0; p < QtVertex; p++)
+    {
+        for(int x = 1; x < AdjList[p].size(); x++)
+        {
+            //cout << "TOTALCOST: " << graph.getAdjList()[p][x].getCost() << endl;
+            totalcost += AdjList[p][x].getCost();
+        }
+    }
+
+    return totalcost;
+}
+
+void Graph::cleanCosts()
+{
+    for(int i=0; i<QtVertex; i++)
+    {
+        for(int x=1; x<AdjList[i].size(); x++)
+        {
+            //cout  << "->" << AdjList[i][x].getWeight() << "->" << "[" << AdjList[i][x].getNumber() << "] ";
+            AdjList[i][x].setCost(0);
+            AdjList[i][x].setIncCost(0);
+        }
+        //cout << endl;
+    }
 }
 
 void Graph::print()
