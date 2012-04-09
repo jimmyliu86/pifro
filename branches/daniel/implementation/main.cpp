@@ -2,13 +2,15 @@
 #include <iostream>
 
 
-
+#include <time.h>
 #include "Vertex.h"
 #include "Graph.h"
 #include "Demand.h"
 #include "Dijkstra.h"
 #include "Greedy.h"
 #include "rvgs.h"
+
+#include "BRKGA.h"
 
 using namespace std;
 
@@ -19,7 +21,10 @@ int main(int argc, char *argv[])
     //v.print();
     //Vertex tmp(2,0,0);
     //Vertex tmp2(1,0,0);
+    time_t t2 = time(NULL);
+    cout << "T2: " << t2 << endl;
 
+    cout.precision(100);
 
     Graph g("f:/instance1/atlanta/atlanta.net",0);
     //g.loadFromSNDFile("abilene.net");
@@ -38,8 +43,21 @@ int main(int argc, char *argv[])
     //cout << "Custo Dijkstra: " << x << endl;
 
     Greedy greedy;
-    cout.precision(50);
-    cout << "\n\n\nGREEDY COST: US$ " << (greedy.executeWithRefine(g, d.getVecRequest(), g.getQtVertex(), true)) << endl;
+    //cout.precision(50);
+    cout << "\n\n\nGREEDY COST: US$ " << (greedy.executeWithRefine(g, d.getVecRequest())) / 1000000 << endl;
+    g.printWithQtRequests();
+    //system("PAUSE");
+
+
+
+
+
+
+    Graph g2("f:/instance1/atlanta/atlanta.net",0);
+    Demand d2("f:/instance1/atlanta/atlanta.trf",0, g.getAdjList(), g.getQtVertex());
+    BRKGA ga(100, 20, 70, 10, 0.70f, d.getVecRequest(), g);
+    cout << "Best Fitness for BRKGAWithGreedy: US$ " << ga.ExecuteWithGreedy(600) / 1000000 << endl;
+    system("PAUSE");
 
     //g.printWithWeight();
     //Dijkstra dijkstra(d.getVecRequest().size());

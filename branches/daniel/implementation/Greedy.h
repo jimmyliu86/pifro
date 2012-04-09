@@ -40,7 +40,7 @@ class Greedy{
              float deletePath(Graph& graph, int path, int qtvertex, int qtrequests);
              float addPath(Graph& graph, int path, int qtvertex, int qtrequests);
              float execute(Graph& graph, std::vector<Request>& vecrequest, int qtvertex, bool regenerateDijkstra);
-             float executeWithRefine(Graph& graph, std::vector<Request>& vecrequest, int qtvertex, bool regenerateDijkstra);
+             float executeWithRefine(Graph& graph, std::vector<Request>& vecrequest);
 
       private:
               Graph GGraph;

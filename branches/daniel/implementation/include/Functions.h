@@ -1,7 +1,7 @@
 #ifndef PIFRO2_FUNCTIONS_H
 #define PIFRO2_FUNCTIONS_H
 
-#include <cmath>
+#include <math.h>
 #include <cmath>
 #include <vector>
 #include <iostream>
