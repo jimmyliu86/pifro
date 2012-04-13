@@ -23,30 +23,32 @@
 #include "./Comparision.h"
 using namespace std;
 
-class Greedy{
+class Greedy {
 
-      public:
-             Functions functions;
-             Greedy();
-             Greedy(int qtRequests);
-             void setGDemand(Demand& demand);
-             void setGGraph(Graph& graph);
-             Demand getGDemand();
-             Graph getGGraph();
+public:
+  Functions functions;
+  Greedy();
+  Greedy(int qtRequests);
+  void setGDemand(Demand& demand);
+  void setGGraph(Graph& graph);
+  Demand getGDemand();
+  Graph getGGraph();
+  void setObjDijkstra(Dijkstra& objdijkstra);
 
 
-             void DemandSort(std::vector<Request>& vecrequest);
-             void DemandSwap(std::vector<Request>& vecrequest);
-             float deletePath(Graph& graph, int path, int qtvertex, int qtrequests);
-             float addPath(Graph& graph, int path, int qtvertex, int qtrequests);
-             float execute(Graph& graph, std::vector<Request>& vecrequest, int qtvertex, bool regenerateDijkstra);
-             float executeWithRefine(Graph& graph, std::vector<Request>& vecrequest);
+  void DemandSort(std::vector<Request>& vecrequest);
+  void DemandSwap(std::vector<Request>& vecrequest);
+  float deletePath(Graph& graph, int path, int qtvertex, int qtrequests);
+  float addPath(Graph& graph, int path, int qtvertex, int qtrequests);
+  float execute(Graph& graph, std::vector<Request>& vecrequest, int qtvertex, bool regenerateDijkstra);
+  float executeWithRefine(Graph& graph, std::vector<Request>& vecrequest);
+  float executeWithRefine(Graph graph, std::vector<Request> vecrequest, std::vector<int> permutation);
 
-      private:
-              Graph GGraph;
-              Demand GDemand;
-              float MinCost;
-              Dijkstra ObjDijkstra;
+private:
+  Graph GGraph;
+  Demand GDemand;
+  float MinCost;
+  Dijkstra ObjDijkstra;
 };
 
 #endif

@@ -23,6 +23,7 @@ class Graph{
 
              float getTotalCost();
              void cleanCosts();
+             void cleanColors();
              void loadFromSNDFile(char* filename);
              void print();
              void printWithWeight();
