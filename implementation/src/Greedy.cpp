@@ -91,7 +91,6 @@ float Greedy::execute(Graph& graph, std::vector<Request>& vecrequest, int qtvert
 float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
 {
 
-
   /*cout << "DIJKSTRA PATH FOR ADD: ";
   for(int v=0; v<ObjDijkstra.Paths[path].size(); v++)
   {
@@ -132,9 +131,11 @@ float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
     }
   }
 
-   //cout << endl << endl;
-   //graph.printWithQtRequests();
-   //system("PAUSE");
+  /*cout << endl << endl;
+  graph.printWithQtRequests();
+  graph.printWithCost();
+  cout << "TOTAL COST: " << graph.getTotalCost();
+  system("PAUSE");*/
   /*float totalcost = 0;
   for(int p = 0; p < qtvertex; p++)
   {
@@ -147,7 +148,7 @@ float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
 
   //return totalcost;*/
   float totalcost = graph.getTotalCost();
-  if(totalcost < 0) {
+  /*if(totalcost < 0) {
     cout << "Negative Actual Cost found: \n";
     graph.printWithQtRequests();
     cout << "DIJKSTRA PATH FOR ADD: \n";
@@ -156,8 +157,9 @@ float Greedy::deletePath(Graph& graph, int path, int qtvertex, int qtrequests)
     }
     cout << endl;
     system("PAUSE");
-  }
+  }*/
   return totalcost;
+
 
 }
 
@@ -205,9 +207,11 @@ float Greedy::addPath(Graph& graph, int path, int qtvertex, int qtrequests)
     }
   }
 
-   //cout << endl << endl;
-   //graph.printWithQtRequests();
-   //system("PAUSE");
+  /*cout << endl << endl;
+  graph.printWithQtRequests();
+  graph.printWithCost();
+  cout << "TOTAL COST: " << graph.getTotalCost();
+  system("PAUSE");*/
   /*float totalcost = 0;
   for(int p = 0; p < qtvertex; p++)
   {
@@ -220,7 +224,7 @@ float Greedy::addPath(Graph& graph, int path, int qtvertex, int qtrequests)
 
   //return totalcost;*/
   float totalcost = graph.getTotalCost();
-  if(totalcost < 0) {
+  /*if(totalcost < 0) {
     cout << "Negative Actual Cost found: \n";
     graph.printWithQtRequests();
     cout << "DIJKSTRA PATH FOR ADD: \n";
@@ -229,7 +233,7 @@ float Greedy::addPath(Graph& graph, int path, int qtvertex, int qtrequests)
     }
     cout << endl;
     system("PAUSE");
-  }
+  }*/
   return totalcost;
 
 }

@@ -1,5 +1,5 @@
-#ifndef PIRFRO2_CONSTANTS_H
-#define PIFRO2_CONSTANTS_H
+#ifndef PIFRO2_CONSTANTS_H_
+#define PIFRO2_CONSTANTS_H_
 
 #include <vector>
 #include <cmath>
@@ -22,4 +22,4 @@ const float LOA = 100; /* Distance for install Optical Amplifier (KM) */
 const float LOT = 500; /* Distance for install Optical Transponder (aproximate value by Antonakopoulos and Zhang) */
 const float U = 100; /* Demands suported per fiber */
 
-#endif // PIFRO2_CONSTANTS_H
+#endif // PIFRO2_CONSTANTS_H_

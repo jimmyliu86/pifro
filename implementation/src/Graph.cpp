@@ -1,10 +1,4 @@
 #include "./Graph.h"
-#include <list>
-
-#include <iostream>
-#include <cstdlib>
-#include <fstream>
-using namespace std;
 
 Graph::Graph()
 {
@@ -109,18 +103,19 @@ float Graph::getTotalCost()
         totalcost += AdjList[p][x].getCost();
         AdjList[p][x].setColor(0);
         //Reverso
+        //cout << "Somado : " << AdjList[p][0].getNumber() << " - " << AdjList[p][x].getNumber() << " - " << AdjList[p][x].getCost() << endl;
         int u = 1;
         while(u < AdjList[AdjList[p][x].getNumber()].size())
         {
-          if(AdjList[AdjList[p][x].getNumber()][u].getNumber() == AdjList[p][x].getNumber())
+          if(AdjList[AdjList[p][x].getNumber()][u].getNumber() == AdjList[p][0].getNumber())
           {
-            AdjList[x][u].setColor(0);
-            break;
+            AdjList[AdjList[p][x].getNumber()][u].setColor(0);
+            //cout << "Ignorando : " << AdjList[AdjList[p][x].getNumber()][0].getNumber() << " - " << AdjList[AdjList[p][x].getNumber()][u].getNumber() << " - Custo:" << AdjList[AdjList[p][x].getNumber()][u].getCost() << endl;
+            //break;
           }
           u++;
         }
       }
-
     }
   }
   cleanColors();
