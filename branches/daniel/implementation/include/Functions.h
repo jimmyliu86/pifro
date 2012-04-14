@@ -1,5 +1,5 @@
-#ifndef PIFRO2_FUNCTIONS_H
-#define PIFRO2_FUNCTIONS_H
+#ifndef PIFRO2_FUNCTIONS_H_
+#define PIFRO2_FUNCTIONS_H_
 
 #include <math.h>
 #include <cmath>
@@ -20,13 +20,13 @@ class Functions
 {
 
 public:
-    Functions();
-    ~Functions();
-    float fwdm(int w, float l);
+  Functions();
+  ~Functions();
+  float fwdm(int w, float l);
 
 private:
 
 };
 
-#endif // PIFRO2_FUNCTIONS_H
+#endif // PIFRO2_FUNCTIONS_H_
 

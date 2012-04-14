@@ -1,14 +1,15 @@
-#ifndef PIFRO_GREEDY_H_
-#define PIFRO_GREEDY_H_
+#ifndef PIFRO2_GREEDY_H_
+#define PIFRO2_GREEDY_H_
 
-#include "./rvgs.h"
-#include "./Macros.h"
-#include "./Graph.h"
-#include "./Request.h"
-#include "./Vertex.h"
-#include "./Demand.h"
-#include "./Dijkstra.h"
-#include "./Functions.h"
+#include "rvgs.h"
+#include "Macros.h"
+#include "Graph.h"
+#include "Request.h"
+#include "Vertex.h"
+#include "Demand.h"
+#include "Dijkstra.h"
+#include "Functions.h"
+#include "Comparision.h"
 
 #include <cmath>
 #include <vector>
@@ -20,7 +21,6 @@
 #include <string.h>
 #include <algorithm>
 
-#include "./Comparision.h"
 using namespace std;
 
 class Greedy {
@@ -51,4 +51,4 @@ private:
   Dijkstra ObjDijkstra;
 };
 
-#endif
+#endif //PIFRO2_GREEDY_H_

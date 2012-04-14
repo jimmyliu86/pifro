@@ -11,8 +11,8 @@
  *      Authors: Rodrigo Franco Toso <rtoso@cs.rutgers.edu>
  */
 
-#ifndef POPULATION_H
-#define POPULATION_H
+#ifndef PIFRO2_POPULATION_H_
+#define PIFRO2_POPULATION_H_
 
 #include <vector>
 #include <algorithm>
@@ -20,94 +20,98 @@
 #include <stdexcept>
 
 class Population {
-	template< class Decoder, class RNG >
-	friend class BRKGA;
+  template< class Decoder, class RNG >
+  friend class BRKGA;
 
 public:
-	unsigned getN() const;	// Size of each chromosome
-	unsigned getP() const;	// Size of population
+  unsigned getN() const;  // Size of each chromosome
+  unsigned getP() const;  // Size of population
 
-	//double operator()(unsigned i, unsigned j) const;	// Direct access to allele j of chromosome i
+  //double operator()(unsigned i, unsigned j) const;  // Direct access to allele j of chromosome i
 
-	// These methods REQUIRE fitness to be sorted, and thus a call to sortFitness() beforehand
-	// (this is done by BRKGA, so rest assured: everything will work just fine with BRKGA).
-	double getBestFitness() const;			// Returns the best fitness in this population
-	double getFitness(unsigned i) const;	// Returns the fitness of chromosome i
-	const std::vector< double >& getChromosome(unsigned i) const;	// Returns i-th best chromosome
+  // These methods REQUIRE fitness to be sorted, and thus a call to sortFitness() beforehand
+  // (this is done by BRKGA, so rest assured: everything will work just fine with BRKGA).
+  double getBestFitness() const;      // Returns the best fitness in this population
+  double getFitness(unsigned i) const;  // Returns the fitness of chromosome i
+  const std::vector< double >& getChromosome(unsigned i) const; // Returns i-th best chromosome
 
 private:
-	Population(const Population& other);
-	Population(unsigned n, unsigned p);
-	~Population();
+  Population(const Population& other);
+  Population(unsigned n, unsigned p);
+  ~Population();
 
-	std::vector< std::vector< double > > population;		// Population as vectors of prob.
-	std::vector< std::pair< double, unsigned > > fitness;	// Fitness (double) of a each chromosome
+  std::vector< std::vector< double > > population;    // Population as vectors of prob.
+  std::vector< std::pair< double, unsigned > > fitness; // Fitness (double) of a each chromosome
 
-	void sortFitness();									// Sorts 'fitness' by its first parameter
-	void setFitness(unsigned i, double f);				// Sets the fitness of chromosome i
-	std::vector< double >& getChromosome(unsigned i);	// Returns a chromosome
+  void sortFitness();                 // Sorts 'fitness' by its first parameter
+  void setFitness(unsigned i, double f);        // Sets the fitness of chromosome i
+  std::vector< double >& getChromosome(unsigned i); // Returns a chromosome
 
-	double& operator()(unsigned i, unsigned j);		// Direct access to allele j of chromosome i
-	std::vector< double >& operator()(unsigned i);	// Direct access to chromosome i
+  double& operator()(unsigned i, unsigned j);   // Direct access to allele j of chromosome i
+  std::vector< double >& operator()(unsigned i);  // Direct access to chromosome i
 };
 
 Population::Population(const Population& pop) :
-		population(pop.population),
-		fitness(pop.fitness) {
+  population(pop.population),
+  fitness(pop.fitness) {
 }
 
 Population::Population(const unsigned n, const unsigned p) :
-		population(p, std::vector< double >(n, 0.0)), fitness(p) {
-	if(p == 0) { throw std::range_error("Population size p cannot be zero."); }
-	if(n == 0) { throw std::range_error("Chromosome size n cannot be zero."); }
+  population(p, std::vector< double >(n, 0.0)), fitness(p) {
+  if(p == 0) {
+    throw std::range_error("Population size p cannot be zero.");
+  }
+  if(n == 0) {
+    throw std::range_error("Chromosome size n cannot be zero.");
+  }
 }
 
 Population::~Population() {
 }
 
 unsigned Population::getN() const {
-	return population[0].size();
+  return population[0].size();
 }
 
 unsigned Population::getP() const {
-	return population.size();
+  return population.size();
 }
 
 double Population::getBestFitness() const {
-	return getFitness(0);
+  return getFitness(0);
 }
 
 double Population::getFitness(unsigned i) const {
-	return fitness[i].first;
+  return fitness[i].first;
 }
 
 const std::vector< double >& Population::getChromosome(unsigned i) const {
-	return population[ fitness[i].second ];
+  return population[ fitness[i].second ];
 }
 
 std::vector< double >& Population::getChromosome(unsigned i) {
-	return population[ fitness[i].second ];
+  return population[ fitness[i].second ];
 }
 
 void Population::setFitness(unsigned i, double f) {
-	fitness[i].first = f;
-	fitness[i].second = i;
+  fitness[i].first = f;
+  fitness[i].second = i;
 }
 
 void Population::sortFitness() {
-	sort(fitness.begin(), fitness.end());
+  sort(fitness.begin(), fitness.end());
 }
 
 //double Population::operator()(unsigned chromosome, unsigned allele) const {
-//	return population[chromosome][allele];
+//  return population[chromosome][allele];
 //}
 
 double& Population::operator()(unsigned chromosome, unsigned allele) {
-	return population[chromosome][allele];
+  return population[chromosome][allele];
 }
 
 std::vector< double >& Population::operator()(unsigned chromosome) {
-	return population[chromosome];
+  return population[chromosome];
 }
 
-#endif
+#endif //PIFRO2_POPULATION_H_

@@ -1,20 +1,20 @@
-#ifndef PIFRO_COMPARISIONS_H_
-#define PIFRO_COMPARISIONS_H_
+#ifndef PIFRO2_COMPARISIONS_H_
+#define PIFRO2_COMPARISIONS_H_
 
 
 struct comparision_request_by_qtroadm {
-    public:
-        bool operator()(Request a, Request b) {
-            return a.getQtROADM() < b.getQtROADM();
-        }
+public:
+  bool operator()(Request a, Request b) {
+    return a.getQtROADM() < b.getQtROADM();
+  }
 };
 
 
 struct comparision_request_by_key {
-    public:
-        bool operator()(Request a, Request b) {
-            return a.getKey() < b.getKey();
-        }
+public:
+  bool operator()(Request a, Request b) {
+    return a.getKey() < b.getKey();
+  }
 };
 
 /*struct comparision_chromosome_by_cost {
@@ -31,4 +31,4 @@ struct comparision_ranking_by_cost {
         }
 };*/
 
-#endif
+#endif //PIFRO2_COMPARISIONS_H_
