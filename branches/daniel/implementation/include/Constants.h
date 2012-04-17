@@ -1,25 +1,22 @@
-#ifndef PIFRO2_CONSTANTS_H_
-#define PIFRO2_CONSTANTS_H_
+// Copyright 2012 CEFET MG
+// Autor: Daniel Morais dos Reis
+// Implementacao dos experimentos para PIFRO
 
-#include <vector>
-#include <cmath>
-#include <vector>
-#include <iostream>
-#include <cstdlib>
-#include <fstream>
-#include <queue>
-#include <time.h>
-#include <string.h>
-#include <algorithm>
+#ifndef _PIFRO2_INCLUDE_CONSTANTS_H_
+#define _PIFRO2_INCLUDE_CONSTANTS_H_
 
-using namespace std;
+//  ROADM Price
+const float ROADMCost = 500000;
+//  Optical Amplifier Price
+const float OACost = ROADMCost / 2;
+//  Optical Transponder Price
+const float OTCost = ROADMCost * 0.10;
+//  Distance for install Optical Amplifier (KM)
+const float LOA = 100;
+//  Distance for install Optical Transponder
+//  (aproximative value by Antonakopoulos and Zhang)
+const float LOT = 500;
+//  Demands suported per fiber
+const float U = 100;
 
-//const float ROADMCost = 20000000; /* ROADM Price */
-const float ROADMCost = 500000; /* ROADM Price */
-const float OACost = ROADMCost / 2; /* Optical Amplifier Price */
-const float OTCost = ROADMCost * 0.10; /* Optical Transponder Price */
-const float LOA = 100; /* Distance for install Optical Amplifier (KM) */
-const float LOT = 500; /* Distance for install Optical Transponder (aproximate value by Antonakopoulos and Zhang) */
-const float U = 100; /* Demands suported per fiber */
-
-#endif // PIFRO2_CONSTANTS_H_
+#endif  // _PIFRO2_INCLUDE_CONSTANTS_H_

@@ -16,36 +16,35 @@
 				</Compiler>
 			</Target>
 		</Build>
-		<Unit filename="BreadthFirst.cpp" />
-		<Unit filename="BreadthFirst.h" />
-		<Unit filename="Comparision.h" />
-		<Unit filename="Demand.cpp" />
-		<Unit filename="Demand.h" />
-		<Unit filename="Dijkstra.cpp" />
-		<Unit filename="Dijkstra.h" />
-		<Unit filename="Graph.cpp" />
-		<Unit filename="Graph.h" />
-		<Unit filename="Greedy.cpp" />
-		<Unit filename="Greedy.h" />
-		<Unit filename="Macros.h" />
-		<Unit filename="Request.cpp" />
-		<Unit filename="Request.h" />
-		<Unit filename="Vertex.cpp" />
-		<Unit filename="Vertex.h" />
 		<Unit filename="include\BRKGA.h" />
 		<Unit filename="include\BRKGADecoder.h" />
+		<Unit filename="include\BreadthFirst.h" />
+		<Unit filename="include\Comparision.h" />
 		<Unit filename="include\Constants.h" />
+		<Unit filename="include\Demand.h" />
+		<Unit filename="include\Dijkstra.h" />
 		<Unit filename="include\Functions.h" />
+		<Unit filename="include\Graph.h" />
+		<Unit filename="include\Greedy.h" />
 		<Unit filename="include\MTRand.h" />
+		<Unit filename="include\Macros.h" />
 		<Unit filename="include\Population.h" />
+		<Unit filename="include\Request.h" />
+		<Unit filename="include\Vertex.h" />
+		<Unit filename="include\rngs.h" />
+		<Unit filename="include\rvgs.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="rngs.cpp" />
-		<Unit filename="rngs.h" />
-		<Unit filename="rvgs.cpp" />
-		<Unit filename="rvgs.h" />
 		<Unit filename="src\BRKGADecoder.cpp" />
+		<Unit filename="src\BreadthFirst.cpp" />
+		<Unit filename="src\Demand.cpp" />
+		<Unit filename="src\Dijkstra.cpp" />
 		<Unit filename="src\Functions.cpp" />
-		<Unit filename="src\samplecode.cpp" />
+		<Unit filename="src\Graph.cpp" />
+		<Unit filename="src\Greedy.cpp" />
+		<Unit filename="src\Request.cpp" />
+		<Unit filename="src\Vertex.cpp" />
+		<Unit filename="src\rngs.cpp" />
+		<Unit filename="src\rvgs.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

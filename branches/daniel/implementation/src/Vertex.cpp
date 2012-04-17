@@ -1,8 +1,8 @@
-#include "./Vertex.h"
+// Copyright 2012 CEFET MG
+// Autor: Daniel Morais dos Reis
+// Implementacao dos experimentos para PIFRO
 
-#include <iostream>
-#include <cstdlib>
-using namespace std;
+#include "./Vertex.h"
 
 Vertex::Vertex() {
   Number = -1;
@@ -53,13 +53,11 @@ int Vertex::getPrevious() {
   return Previous;
 }
 
-float Vertex::getCost()
-{
+float Vertex::getCost() {
   return Cost;
 }
 
-float Vertex::getIncCost()
-{
+float Vertex::getIncCost() {
   return IncCost;
 }
 
@@ -101,13 +99,11 @@ void Vertex::setPrevious(int previous) {
   Previous = previous;
 }
 
-void Vertex::setCost(float cost)
-{
+void Vertex::setCost(float cost) {
   Cost = cost;
 }
 
-void Vertex::setIncCost(float inccost)
-{
+void Vertex::setIncCost(float inccost) {
   IncCost = inccost;
 }
 

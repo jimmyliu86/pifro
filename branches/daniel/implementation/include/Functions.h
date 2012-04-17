@@ -1,32 +1,22 @@
-#ifndef PIFRO2_FUNCTIONS_H_
-#define PIFRO2_FUNCTIONS_H_
+// Copyright 2012 CEFET MG
+// Autor: Daniel Morais dos Reis
+// Implementacao dos experimentos para PIFRO
+
+#ifndef _PIFRO2_INCLUDE_FUNCTIONS_H_
+#define _PIFRO2_INCLUDE_FUNCTIONS_H_
 
 #include <math.h>
 #include <cmath>
-#include <vector>
-#include <iostream>
-#include <cstdlib>
-#include <fstream>
-#include <queue>
-#include <time.h>
-#include <string.h>
-#include <algorithm>
 
-#include "Constants.h"
+#include "./Constants.h"
 
-using namespace std;
-
-class Functions
-{
-
-public:
-  Functions();
-  ~Functions();
-  float fwdm(int w, float l);
-
-private:
-
+class Functions {
+  public:
+    Functions();
+    ~Functions();
+    float fwdm(int w, float l);
+  private:
 };
 
-#endif // PIFRO2_FUNCTIONS_H_
+#endif  // _PIFRO2_INCLUDE_FUNCTIONS_H_
 

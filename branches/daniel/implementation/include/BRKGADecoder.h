@@ -1,28 +1,29 @@
-#ifndef PIFRO2_BRKGADECODER_H_
-#define PIFRO2_BRKGADECODER_H_
+// Copyright 2012 CEFET MG
+// Autor: Daniel Morais dos Reis
+// Implementacao dos experimentos para PIFRO
 
+#ifndef _PIFRO2_INCLUDE_BRKGADECODER_H_
+#define _PIFRO2_INCLUDE_BRKGADECODER_H_
+
+#include <time.h>
+#include <algorithm>
 #include <list>
 #include <vector>
-#include <algorithm>
-#include <time.h>
-#include "Graph.h"
-#include "Request.h"
-#include "Greedy.h"
 
-class BRKGADecoder
-{
-public:
-  BRKGADecoder();
-  BRKGADecoder(Graph& graph, std::vector<Request>& vecrequest);
-  virtual ~BRKGADecoder();
+#include "./Graph.h"
+#include "./Request.h"
+#include "./Greedy.h"
 
-  double decode(const std::vector< double >& chromosome) const;
+class BRKGADecoder {
+  public:
+    explicit BRKGADecoder(Graph& graph, std::vector<Request>& vecrequest);
+    virtual ~BRKGADecoder();
 
-protected:
+    double decode(const std::vector< double >& chromosome) const;
 
-private:
-  std::vector<Request> Vecrequest;
-  Graph objGraph;
+  private:
+    std::vector<Request> Vecrequest;
+    Graph objGraph;
 };
 
-#endif // PIFRO2_BRKGADECODER_H_
+#endif  // _PIFRO2_INCLUDE_BRKGADECODER_H_
