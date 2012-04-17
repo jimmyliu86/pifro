@@ -1,37 +1,41 @@
-#ifndef PIFRO2_DIJKSTRA_H_
-#define PIFRO2_DIJKSTRA_H_
+// Copyright 2012 CEFET MG
+// Autor: Daniel Morais dos Reis
+// Implementacao dos experimentos para PIFRO
 
-#include "Macros.h"
-#include "Graph.h"
-#include "Request.h"
-#include "Vertex.h"
-#include "Functions.h"
+#ifndef _PIFRO2_INCLUDE_DIJKSTRA_H_
+#define _PIFRO2_INCLUDE_DIJKSTRA_H_
 
-#include <string.h>
 #include <iostream>
-#include <cstdlib>
-#include <fstream>
-#include <queue>
 #include <algorithm>
+#include <vector>
+#include <string.h>
 
-using namespace std;
+#include "./Macros.h"
+#include "./Graph.h"
+#include "./Request.h"
+#include "./Vertex.h"
+#include "./Functions.h"
+
+using std::cout;
+using std::endl;
 
 class Dijkstra {
+  public:
+    std::vector<std::vector<int> > Paths;
 
-public:
-  //std::vector<Vertex>* Paths;
-  vector<vector<int> > Paths;
-
-  Dijkstra();
-  Dijkstra(int qtpaths);
-  float getCostByDijkstra(std::vector<Vertex>*& adjlist, int qtvertex, int src, int dst, int idpath);
-  void DeletePath(int idpath);
-  void setCostByDijkstra(float cost);
-  void setAllGraphEdgeIncCost(Graph& graph, int qtvertex, int qtrequests);
-
-private:
-  float CostByDijkstra;
+    Dijkstra();
+    explicit Dijkstra(int qtpaths);
+    float getCostByDijkstra(std::vector<Vertex>*& adjlist,
+                            int qtvertex,
+                            int src,
+                            int dst,
+                            int idpath);
+    void DeletePath(int idpath);
+    void setCostByDijkstra(float cost);
+    void setAllGraphEdgeIncCost(Graph& graph, int qtvertex, int qtrequests);
+  private:
+    float CostByDijkstra;
 
 };
 
-#endif //PIFRO2_DIJKSTRA_H_
+#endif  // _PIFRO2_INCLUDE_DIJKSTRA_H_

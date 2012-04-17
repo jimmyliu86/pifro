@@ -1,10 +1,5 @@
 #include "BRKGADecoder.h"
 
-BRKGADecoder::BRKGADecoder()
-{
-  //ctor
-}
-
 BRKGADecoder::BRKGADecoder(Graph& graph, std::vector<Request>& vecrequest)
 {
   objGraph = graph;

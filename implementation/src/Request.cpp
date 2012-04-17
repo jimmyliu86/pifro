@@ -1,4 +1,8 @@
-#include "Request.h"
+// Copyright 2012 CEFET MG
+// Autor: Daniel Morais dos Reis
+// Implementacao dos experimentos para PIFRO
+
+#include "./Request.h"
 
 Request::Request() {
   Src = 0;
@@ -37,8 +41,7 @@ int Request::getQt() {
   return Qt;
 }
 
-int Request::getId()
-{
+int Request::getId() {
   return Id;
 }
 
@@ -70,7 +73,6 @@ void Request::setKey(float key) {
   Key = key;
 }
 
-void Request::setId(int id)
-{
+void Request::setId(int id) {
   Id = id;
 }
