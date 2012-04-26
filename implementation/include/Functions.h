@@ -8,13 +8,13 @@
 #include <math.h>
 #include <cmath>
 
-#include "./Constants.h"
+#include "./constants.h"
 
 class Functions {
   public:
     Functions();
     ~Functions();
-    float fwdm(int w, float l);
+    float Fwdm(int w, float l);
   private:
 };
 

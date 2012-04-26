@@ -10,31 +10,31 @@
 #include <vector>
 #include <string.h>
 
-#include "./Macros.h"
-#include "./Graph.h"
-#include "./Request.h"
-#include "./Vertex.h"
-#include "./Functions.h"
+#include "./macros.h"
+#include "./graph.h"
+#include "./request.h"
+#include "./vertex.h"
+#include "./functions.h"
 
 using std::cout;
 using std::endl;
 
 class Dijkstra {
   public:
-    std::vector<std::vector<int> > Paths;
+    std::vector<std::vector<int> > paths_;
 
     Dijkstra();
     explicit Dijkstra(int qtpaths);
-    float getCostByDijkstra(std::vector<Vertex>*& adjlist,
+    float GetCostByDijkstra(std::vector<Vertex>*& adjlist,
                             int qtvertex,
                             int src,
                             int dst,
                             int idpath);
     void DeletePath(int idpath);
-    void setCostByDijkstra(float cost);
-    void setAllGraphEdgeIncCost(Graph& graph, int qtvertex, int qtrequests);
+    void SetCostByDijkstra(float cost);
+    void SetAllGraphEdgeIncCost(Graph& graph, int qtvertex, int qtrequests);
   private:
-    float CostByDijkstra;
+    float cost_by_dijkstra_;
 
 };
 

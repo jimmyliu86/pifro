@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "./Macros.h"
+#include "./macros.h"
 
 using std::cout;
 using std::endl;
@@ -18,33 +18,33 @@ class Vertex {
     explicit Vertex();
     explicit Vertex(int number, int visited, float weight);
     ~Vertex();
-    int getNumber();
-    int getVisited();
-    float getWeight();
-    int getColor();
-    int getLevel();
-    int getPrevious();
-    float getCost();
-    float getIncCost();
-    bool getEnabled();
-    int getQtRequests();
-    void setNumber(int number);
-    void setVisited(int visited);
-    void setWeight(float weight);
-    void setColor(int color);
-    void setLevel(int level);
-    void setPrevious(int previous);
-    void setCost(float cost);
-    void setIncCost(float inccost);
-    void setEnabled(bool enabled);
-    void setQtRequests(int qtrequests);
-    void setProperties(int number, int visited, float weight);
-    void print();
+    int GetNumber();
+    int GetVisited();
+    float GetWeight();
+    int GetColor();
+    int GetLevel();
+    int GetPrevious();
+    float GetCost();
+    float GetIncCost();
+    bool GetEnabled();
+    int GetQtRequests();
+    void SetNumber(int number);
+    void SetVisited(int visited);
+    void SetWeight(float weight);
+    void SetColor(int color);
+    void SetLevel(int level);
+    void SetPrevious(int previous);
+    void SetCost(float cost);
+    void SetIncCost(float inccost);
+    void SetEnabled(bool enabled);
+    void SetQtRequests(int qtrequests);
+    void SetProperties(int number, int visited, float weight);
+    void Print();
 
   private:
-    int Number, Visited, Color, Level, Previous, QtRequests;
-    float Weight, Cost, IncCost;
-    bool Enabled;
+    int number_, visited_, color_, level_, previous_, qt_requests_;
+    float weight_, cost_, inc_cost_;
+    bool enabled_;
 };
 
 #endif  // _PIFRO2_INCLUDE_VERTEX_H_

@@ -9,8 +9,8 @@
 #include <iostream>
 #include <fstream>
 
-#include "./Macros.h"
-#include "./Vertex.h"
+#include "./macros.h"
+#include "./vertex.h"
 
 using std::cout;
 using std::endl;
@@ -21,29 +21,29 @@ class Graph {
   public:
     Graph();
     explicit Graph(char* filename, int tipo);
-    std::vector<Vertex>*& getAdjList();
-    int**& getAdjMatrix();
-    int getQtVertex();
-    void setAdjList(std::vector<Vertex>* adjlist);
-    void setQtVertex(int qtvertex);
-    void addEdge(int src, int dst, float weight);
-    void deleteEdge(int vertex);
-    std::vector<Vertex>& getNeighbors(int vertex);
-    float getTotalCost();
-    void cleanCosts();
-    void cleanColors();
-    void loadFromSNDFile(char* filename);
-    void print();
-    void printWithWeight();
-    void printWithCost();
-    void printWithIncCost();
-    void printWithQtRequests();
+    std::vector<Vertex>*& GetAdjList();
+    int**& GetAdjMatrix();
+    int GetQtVertex();
+    void SetAdjList(std::vector<Vertex>* adjlist);
+    void SetQtVertex(int qtvertex);
+    void AddEdge(int src, int dst, float weight);
+    void DeleteEdge(int vertex);
+    std::vector<Vertex>& GetNeighbors(int vertex);
+    float GetTotalCost();
+    void CleanCosts();
+    void CleanColors();
+    void LoadFromSNDFile(char* filename);
+    void Print();
+    void PrintWithWeight();
+    void PrintWithCost();
+    void PrintWithIncCost();
+    void PrintWithQtRequests();
 
   private:
-    std::vector<Vertex>* AdjList;
-    int** AdjMatrix;
-    int QtVertex;
-    int QtEdge;
+    std::vector<Vertex>* adj_list_;
+    int** adj_matrix_;
+    int qt_vertex_;
+    int qt_edge_;
 };
 
 #endif  // _PIFRO2_INCLUDE_GRAPH_H_

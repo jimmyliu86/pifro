@@ -11,48 +11,48 @@
 #include <cstdlib>
 
 #include "./rvgs.h"
-#include "./Graph.h"
-#include "./Demand.h"
-#include "./Dijkstra.h"
-#include "./Functions.h"
+#include "./graph.h"
+#include "./demand.h"
+#include "./dijkstra.h"
+#include "./functions.h"
 
 using std::cout;
 
 class Greedy {
   public:
-    Functions functions;
+    Functions functions_;
     Greedy();
     explicit Greedy(int qtRequests);
-    void setGDemand(Demand& demand);
-    void setGGraph(Graph& graph);
-    Demand getGDemand();
-    Graph getGGraph();
-    void setObjDijkstra(Dijkstra& objdijkstra);
+    void SetDemand(Demand& demand);
+    void SetGraph(Graph& graph);
+    void SetDijkstra(Dijkstra& dijkstra);
+    Demand GetDemand();
+    Graph GetGraph();
     void DemandSort(std::vector<Request>& vecrequest);
     void DemandSwap(std::vector<Request>& vecrequest);
-    float deletePath(Graph& graph,
+    float DeletePath(Graph& graph,
                      int path,
                      int qtvertex,
                      int qtrequests);
-    float addPath(Graph& graph,
+    float AddPath(Graph& graph,
                   int path,
                   int qtvertex,
                   int qtrequests);
-    float execute(Graph& graph,
+    float Execute(Graph& graph,
                   std::vector<Request>& vecrequest,
                   int qtvertex,
                   bool regenerateDijkstra);
-    float executeWithRefine(Graph& graph,
+    float ExecuteWithRefine(Graph& graph,
                             std::vector<Request>& vecrequest);
-    float executeWithRefine(Graph graph,
+    float ExecuteWithRefine(Graph graph,
                             std::vector<Request> vecrequest,
                             std::vector<int> permutation);
 
   private:
-    Graph GGraph;
-    Demand GDemand;
-    float MinCost;
-    Dijkstra ObjDijkstra;
+    Graph graph_;
+    Demand demand_;
+    float min_cost_;
+    Dijkstra dijkstra_;
 };
 
 #endif  // _PIFRO2_INCLUDE_GREEDY_H_

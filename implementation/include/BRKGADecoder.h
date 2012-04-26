@@ -22,8 +22,8 @@ class BRKGADecoder {
     double decode(const std::vector< double >& chromosome) const;
 
   private:
-    std::vector<Request> Vecrequest;
-    Graph objGraph;
+    std::vector<Request> vec_request_;
+    Graph graph_;
 };
 
 #endif  // _PIFRO2_INCLUDE_BRKGADECODER_H_

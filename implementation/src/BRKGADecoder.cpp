@@ -2,8 +2,8 @@
 
 BRKGADecoder::BRKGADecoder(Graph& graph, std::vector<Request>& vecrequest)
 {
-  objGraph = graph;
-  Vecrequest = vecrequest;
+  graph_ = graph;
+  vec_request_ = vecrequest;
 }
 
 BRKGADecoder::~BRKGADecoder()
@@ -32,5 +32,5 @@ double BRKGADecoder::decode(const std::vector< double >& chromosome) const {
   // sample fitness is the first allele
   //return chromosome.front();
   Greedy greedy;
-  return greedy.executeWithRefine(objGraph, Vecrequest, permutation);
+  return greedy.ExecuteWithRefine(graph_, vec_request_, permutation);
 }

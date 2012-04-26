@@ -8,11 +8,11 @@
 #include <iostream>
 #include <vector>
 
-#include "./Macros.h"
-#include "./Request.h"
-#include "./Graph.h"
-#include "./BreadthFirst.h"
-#include "./Comparision.h"
+#include "./macros.h"
+#include "./request.h"
+#include "./graph.h"
+#include "./breadth_first.h"
+#include "./comparision.h"
 
 using std::cout;
 using std::endl;
@@ -26,22 +26,22 @@ class Demand {
                     int tipo,
                     std::vector<Vertex>*& adjlist,
                     int qtvertex);
-    std::vector<Request>& getVecRequest();
-    void setVecRequest(std::vector<Request> vecrequest);
-    int getQtRequest();
-    void setQtRequest(int qtrequest);
+    std::vector<Request>& GetVecRequest();
+    void SetVecRequest(std::vector<Request> vecrequest);
+    int GetQtRequest();
+    void SetQtRequest(int qtrequest);
 
-    void loadFromTRFFile(char* filename,
+    void LoadFromTRFFile(char* filename,
                          std::vector<Vertex>*& adjlist,
                          int qtvertex);
-    int qtROADMByBFS(std::vector<Vertex>*& adjlist,
+    int QtROADMByBFS(std::vector<Vertex>*& adjlist,
                      int src,
                      int dst,
                      int qtvertex);
-    void print();
+    void Print();
   private:
-    std::vector<Request> VecRequest;
-    int QtRequest;
+    std::vector<Request> vec_request_;
+    int qt_request_;
 };
 
 #endif  // _PIFRO2_INCLUDE_DEMAND_H_

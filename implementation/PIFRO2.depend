@@ -1,186 +1,155 @@
 # depslib dependency file v1.0
-1334420616 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\main.cpp
-	<cstdlib>
-	<iostream>
+1334641152 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\main.cpp
 	<time.h>
-	"Vertex.h"
-	"Graph.h"
-	"Demand.h"
-	"Dijkstra.h"
-	"Greedy.h"
-	"rvgs.h"
-	"MTRand.h"
-	"BRKGA.h"
-	"BRKGADecoder.h"
-
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\vertex.h
-	"./Macros.h"
-
-1334437982 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\macros.h
-
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\graph.h
-	"./Macros.h"
+	<cstdlib>
+	<vector>
 	"./Vertex.h"
+	"./Graph.h"
+	"./Demand.h"
+	"./Dijkstra.h"
+	"./Greedy.h"
+	"./rvgs.h"
+	"./MTRand.h"
+	"./BRKGA.h"
+	"./BRKGADecoder.h"
+
+1335395438 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\vertex.h
+	<iostream>
+	<cstdlib>
+	"./macros.h"
+
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\macros.h
+
+1335398418 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\graph.h
 	<vector>
+	<iostream>
+	<fstream>
+	"./macros.h"
+	"./vertex.h"
+
+1335411872 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\demand.h
+	<iostream>
+	<vector>
+	"./macros.h"
+	"./request.h"
+	"./graph.h"
+	"./breadth_first.h"
+	"./comparision.h"
+
+1335412174 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\request.h
+	"./macros.h"
+
+1335412201 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\dijkstra.h
+	<iostream>
+	<algorithm>
+	<vector>
+	<string.h>
+	"./macros.h"
+	"./graph.h"
+	"./request.h"
+	"./vertex.h"
+	"./functions.h"
+
+1335411872 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\functions.h
 	<math.h>
-	<iostream>
-	<cstdlib>
-	<fstream>
+	<cmath>
+	"./constants.h"
 
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\demand.h
-	"Macros.h"
-	"Request.h"
-	"Graph.h"
-	"BreadthFirst.h"
-	"Comparision.h"
-	<iostream>
-	<cstdlib>
-	<fstream>
-	<queue>
-	<vector>
-	<algorithm>
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\constants.h
 
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\request.h
-	"Macros.h"
-
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\dijkstra.h
-	"Macros.h"
-	"Graph.h"
-	"Request.h"
-	"Vertex.h"
-	"Functions.h"
-	<string.h>
-	<iostream>
-	<cstdlib>
-	<fstream>
-	<queue>
-	<algorithm>
-
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\functions.h
-	<math.h>
+1335398417 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\greedy.h
 	<cmath>
 	<vector>
 	<iostream>
 	<cstdlib>
-	<fstream>
-	<queue>
-	<time.h>
-	<string.h>
-	<algorithm>
-	"Constants.h"
+	"./rvgs.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./functions.h"
 
-1334437156 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\constants.h
-	<vector>
-	<cmath>
-	<vector>
-	<iostream>
-	<cstdlib>
-	<fstream>
-	<queue>
-	<time.h>
-	<string.h>
-	<algorithm>
+1334641078 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\rvgs.h
 
-1334437982 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\greedy.h
-	"rvgs.h"
-	"Macros.h"
-	"Graph.h"
-	"Request.h"
-	"Vertex.h"
-	"Demand.h"
-	"Dijkstra.h"
-	"Functions.h"
-	"Comparision.h"
-	<cmath>
-	<vector>
-	<iostream>
-	<cstdlib>
-	<fstream>
-	<queue>
-	<time.h>
-	<string.h>
-	<algorithm>
+1335412189 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\comparision.h
 
-1327334810 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\rvgs.h
-
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\comparision.h
-
-1295046546 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\mtrand.h
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\mtrand.h
 	<iostream>
 	<climits>
 	<cstdio>
 	<ctime>
 	<cmath>
 
-1313437302 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\brkga.h
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\brkga.h
 	<omp.h>
 	<algorithm>
 	<exception>
 	<stdexcept>
 	"Population.h"
 
-1311292548 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\population.h
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\population.h
 	<vector>
 	<algorithm>
 	<exception>
 	<stdexcept>
 
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\brkgadecoder.h
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\brkgadecoder.h
+	<time.h>
+	<algorithm>
 	<list>
 	<vector>
-	<algorithm>
-	<time.h>
-	"Graph.h"
-	"Request.h"
-	"Greedy.h"
-
-1334244948 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\brkgadecoder.cpp
-	"BRKGADecoder.h"
-
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\breadthfirst.cpp
-	"./BreadthFirst.h"
-
-1334438128 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\breadthfirst.h
-	"./Macros.h"
-	"./Vertex.h"
-	<vector>
-	<queue>
-	<iostream>
-	<cstdlib>
-	<fstream>
-	<queue>
-
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\demand.cpp
-	"Demand.h"
-
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\dijkstra.cpp
-	"./Dijkstra.h"
-
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\functions.cpp
-	"Functions.h"
-
-1334437452 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\graph.cpp
 	"./Graph.h"
-
-1334438665 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\greedy.cpp
+	"./Request.h"
 	"./Greedy.h"
 
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\request.cpp
-	"Request.h"
+1335411888 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\brkgadecoder.cpp
+	"BRKGADecoder.h"
 
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\vertex.cpp
-	"./Vertex.h"
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\breadthfirst.cpp
+	<queue>
+	<vector>
+	"./BreadthFirst.h"
+
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\breadthfirst.h
+	<queue>
+	<vector>
 	<iostream>
-	<cstdlib>
+	"./Macros.h"
+	"./Vertex.h"
 
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\rngs.cpp
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\demand.cpp
+	<vector>
+	"./Demand.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\dijkstra.cpp
+	<vector>
+	"./Dijkstra.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\functions.cpp
+	"./Functions.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\graph.cpp
+	<vector>
+	"./Graph.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\greedy.cpp
+	<algorithm>
+	<vector>
+	"./Greedy.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\request.cpp
+	"./Request.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\vertex.cpp
+	"./Vertex.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\rngs.cpp
 	<stdio.h>
 	<time.h>
 	"rngs.h"
 
-1327334876 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\rngs.h
+1334641078 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\rngs.h
 
-1334438128 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\rvgs.cpp
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\rvgs.cpp
 	<math.h>
 	"rngs.h"
 	"rvgs.h"
@@ -377,7 +346,7 @@
 1334546125 source:c:\cygwin\home\daniel\pifro2\src\heuristics.cpp
 	"Heuristics.h"
 
-1334641152 source:c:\cygwin\pifro2\main.cpp
+1334641014 source:c:\cygwin\pifro2\main.cpp
 	<time.h>
 	<cstdlib>
 	<vector>
@@ -531,4 +500,56 @@
 	<math.h>
 	"rngs.h"
 	"rvgs.h"
+
+1335413021 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\main.cc
+	<time.h>
+	<cstdlib>
+	<vector>
+	"./vertex.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./greedy.h"
+	"./rvgs.h"
+	"./MTRand.h"
+	"./BRKGA.h"
+	"./BRKGADecoder.h"
+
+1335411872 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\demand.cc
+	<vector>
+	"./demand.h"
+
+1335412219 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\dijkstra.cc
+	<vector>
+	"./dijkstra.h"
+
+1335411872 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\functions.cc
+	"./functions.h"
+
+1335412433 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\graph.cc
+	<vector>
+	"./graph.h"
+
+1335412949 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\greedy.cc
+	<algorithm>
+	<vector>
+	"./greedy.h"
+
+1335412966 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\request.cc
+	"./request.h"
+
+1335412989 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\vertex.cc
+	"./vertex.h"
+
+1335394717 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\breadth_first.h
+	<queue>
+	<vector>
+	<iostream>
+	"./macros.h"
+	"./vertex.h"
+
+1335411917 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\breadth_first.cc
+	<queue>
+	<vector>
+	"./breadth_first.h"
 
