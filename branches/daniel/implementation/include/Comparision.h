@@ -9,7 +9,7 @@
 struct comparision_request_by_qtroadm {
   public:
     bool operator()(Request a, Request b) {
-      return a.getQtROADM() < b.getQtROADM();
+      return a.GetQtROADM() < b.GetQtROADM();
   }
 };
 
@@ -17,7 +17,7 @@ struct comparision_request_by_qtroadm {
 struct comparision_request_by_key {
   public:
     bool operator()(Request a, Request b) {
-      return a.getKey() < b.getKey();
+      return a.GetKey() < b.GetKey();
   }
 };
 

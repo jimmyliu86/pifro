@@ -18,33 +18,33 @@
 		</Build>
 		<Unit filename="include\BRKGA.h" />
 		<Unit filename="include\BRKGADecoder.h" />
-		<Unit filename="include\BreadthFirst.h" />
-		<Unit filename="include\Comparision.h" />
-		<Unit filename="include\Constants.h" />
-		<Unit filename="include\Demand.h" />
-		<Unit filename="include\Dijkstra.h" />
-		<Unit filename="include\Functions.h" />
-		<Unit filename="include\Graph.h" />
-		<Unit filename="include\Greedy.h" />
 		<Unit filename="include\MTRand.h" />
-		<Unit filename="include\Macros.h" />
 		<Unit filename="include\Population.h" />
-		<Unit filename="include\Request.h" />
-		<Unit filename="include\Vertex.h" />
+		<Unit filename="include\breadth_first.h" />
+		<Unit filename="include\comparision.h" />
+		<Unit filename="include\constants.h" />
+		<Unit filename="include\demand.h" />
+		<Unit filename="include\dijkstra.h" />
+		<Unit filename="include\functions.h" />
+		<Unit filename="include\graph.h" />
+		<Unit filename="include\greedy.h" />
+		<Unit filename="include\macros.h" />
+		<Unit filename="include\request.h" />
 		<Unit filename="include\rngs.h" />
 		<Unit filename="include\rvgs.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include\vertex.h" />
+		<Unit filename="main.cc" />
 		<Unit filename="src\BRKGADecoder.cpp" />
-		<Unit filename="src\BreadthFirst.cpp" />
-		<Unit filename="src\Demand.cpp" />
-		<Unit filename="src\Dijkstra.cpp" />
-		<Unit filename="src\Functions.cpp" />
-		<Unit filename="src\Graph.cpp" />
-		<Unit filename="src\Greedy.cpp" />
-		<Unit filename="src\Request.cpp" />
-		<Unit filename="src\Vertex.cpp" />
+		<Unit filename="src\breadth_first.cc" />
+		<Unit filename="src\demand.cc" />
+		<Unit filename="src\dijkstra.cc" />
+		<Unit filename="src\functions.cc" />
+		<Unit filename="src\graph.cc" />
+		<Unit filename="src\greedy.cc" />
+		<Unit filename="src\request.cc" />
 		<Unit filename="src\rngs.cpp" />
 		<Unit filename="src\rvgs.cpp" />
+		<Unit filename="src\vertex.cc" />
 		<Extensions>
 			<code_completion />
 			<envvars />
