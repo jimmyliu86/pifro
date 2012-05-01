@@ -12,17 +12,23 @@
 
 int main(int argc, char* argv[]) {
     char net_file[128];
+    char trf_file[128];
     char *out_file = NULL;
     bool complete_graph = false;
-    int p;
+    int p = 0;
+    bool trf = false;
     
     // gera semente aleatoria
     srand(time(NULL));
     
-    while ((p = getopt(argc, argv, "a:p:ct:")) != -1) {
+    while ((p = getopt(argc, argv, "a:b:p:ct:")) != -1) {
         switch(p) {
             case 'a':
                 strncpy(net_file, optarg, 128);
+                break;
+            case 'b':
+	        trf = true;
+                strncpy(trf_file, optarg, 128);
                 break;
             case 'p':
                 out_file = optarg;
@@ -38,19 +44,33 @@ int main(int argc, char* argv[]) {
                 exit(1);
         }
     }
+    
+    Instance *instance = NULL;
+    
     //printf("%s %s\n", connections_filename, requests_filename);
+    if (trf) {
+        Instance::Initialize(net_file, trf_file);
+        instance = Instance::GetInstance();
     
-    Instance::Initialize(net_file);
-    Instance *instance = Instance::GetInstance();
+        instance->Print();
     
-    instance->Print();
+        instance->set_complete_graph(complete_graph);
     
-    instance->set_complete_graph(complete_graph);
+        instance->DumpNet(out_file);
+    } else {
+        Instance::Initialize(net_file);
+        instance = Instance::GetInstance();
     
-    instance->DumpNet(out_file);
+        instance->Print();
+    
+        instance->set_complete_graph(complete_graph);
+    
+        instance->DumpNet(out_file);
+    }
     
     delete instance;
     instance = NULL;
+    
     
     return 0;
 }
