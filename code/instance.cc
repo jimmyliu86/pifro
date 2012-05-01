@@ -25,12 +25,18 @@ Instance::~Instance() {
     instance_name_ = NULL;
 }
 
-void Instance::Initialize(const char* connections_filename) {
+void Instance::Initialize(const char* net_file) {
     // Inicializa construtor.
     instance_ = new Instance();
     // Lê dados da instância.
-    instance_->ExtractInstanceName(connections_filename);
-    instance_->ReadConnectionsFile(connections_filename);
+    instance_->ReadConnectionsFile(net_file);
+}
+
+void Instance::Initialize(const char* net_file, const char* trf_file) {
+    // Inicializa construtor.
+    instance_ = new Instance();
+    // Lê dados da instância.
+    instance_->ReadConnectionsFile(net_file, trf_file);
 }
 
 Instance* Instance::GetInstance() {
@@ -55,22 +61,16 @@ Graph* Instance::GetGraph() {
 
 // Lê arquivo com as conexões existentes na rede.
 void Instance::ReadConnectionsFile(const char* connections_filename) {
+    instance_type_ = NET_TYPE;
+  
     FILE* connections_file = fopen(connections_filename, "r");
     if (connections_file == NULL) {
         printf("file %s not found\n", connections_filename);
         exit(1);
     }
-    
-    if (instance_type_ == NET_TYPE) {
-         // Lê número de nós e número de conexões
-         fscanf(connections_file, "%d %d", &number_of_node_, &number_of_edge_);
-    }
-    
-    if (instance_type_ == TRF_TYPE) {
-         // Lê número de nós e número de conexões
-         fscanf(connections_file, "%d", &number_of_edge_);
-         number_of_node_ = (1 + sqrt(number_of_edge_*8 + 1))/2;
-    }
+
+    // Lê número de nós e número de conexões
+    fscanf(connections_file, "%d %d", &number_of_node_, &number_of_edge_);
     
     // Inicializa grafo.
     g_ = new Graph(number_of_node_);
@@ -78,22 +78,51 @@ void Instance::ReadConnectionsFile(const char* connections_filename) {
     float weight;
     // Adiciona conexões no grafo que representa a topologia da rede.
     for (int i = 0; i < number_of_edge_; ++i) {
-        if (instance_type_ == NET_TYPE) {
-            fscanf(connections_file, "%d %d %f", &n1, &n2, &weight);
-            g_->AddEdge(n1, n2);
-            g_->AddEdge(n2, n1);
-            g_->SetCost(n1, n2, 1);
-            g_->SetCost(n2, n1, 1);
-        }
-        else if (instance_type_ == TRF_TYPE) {
-            fscanf(connections_file, "%d %d %f", &n1, &n2, &weight);
-            g_->AddEdge(n1, n2);
-            g_->AddEdge(n2, n1);
-            g_->SetCost(n1, n2, 1);
-            g_->SetCost(n2, n1, 1);
-        }
+        fscanf(connections_file, "%d %d %f", &n1, &n2, &weight);
+        g_->AddEdge(n1, n2);
+        g_->AddEdge(n2, n1);
+        g_->SetCost(n1, n2, 1);
+        g_->SetCost(n2, n1, 1);
     }
     fclose(connections_file);
+}
+
+// Lê arquivo com as conexões existentes na rede.
+void Instance::ReadConnectionsFile(const char* connections_filename, const char* edge_filename) {
+    instance_type_ = TRF_TYPE;
+  
+    FILE* connections_file = fopen(connections_filename, "r");
+    if (connections_file == NULL) {
+        printf("file %s not found\n", connections_filename);
+        exit(1);
+    }
+    
+    // Lê número de nós e número de conexões
+    fscanf(connections_file, "%d %d", &number_of_node_, &number_of_edge_);
+    fclose(connections_file);
+    
+    FILE* edge_file = fopen(edge_filename, "r");
+    if (edge_file == NULL) {
+        printf("file %s not found\n", edge_filename);
+        exit(1);
+    }
+    
+    // Lê número de nós e número de conexões
+    fscanf(edge_file, "%d", &number_of_edge_);
+        
+    // Inicializa grafo.
+    g_ = new Graph(number_of_node_);
+    int n1, n2;
+    float weight;
+    // Adiciona conexões no grafo que representa a topologia da rede.
+    for (int i = 0; i < number_of_edge_; ++i) {
+        fscanf(edge_file, "%d %d %f", &n1, &n2, &weight);
+        g_->AddEdge(n1, n2);
+        g_->AddEdge(n2, n1);
+        g_->SetCost(n1, n2, 1);
+        g_->SetCost(n2, n1, 1);
+    }
+    fclose(edge_file);
 }
 
 void Instance::ExtractInstanceName(const char* filename) {
@@ -142,7 +171,8 @@ void Instance::DumpNet(const char* filename) {
     
     if (instance_type_ == TRF_TYPE) {
          // Lê número de nós e número de conexões
-         fprintf(file, "%d\n", number_of_edge_);
+         fprintf(file, "%d\n", (complete_graph_) ? 
+            number_of_node_*(number_of_node_ - 1)/2 : number_of_edge_);
     }
     
     // Adiciona conexões no grafo que representa a topologia da rede.

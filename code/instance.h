@@ -18,7 +18,9 @@ class Instance {
         // Destrutor padrão.
         ~Instance();
 
-        static void Initialize(const char* connections_filename);
+	static void Initialize(const char* net_file);
+	
+        static void Initialize(const char* net_file, const char* trf_file);
 
         // Retorna ponteiro para instância inicializada.
         static Instance* GetInstance();
@@ -59,6 +61,9 @@ class Instance {
         // Faz leitura dos arquivos com as conexões e requisições de tráfego.
         void ReadConnectionsFile(const char* connection_file_name);
 
+	// Faz leitura dos arquivos com as conexões e requisições de tráfego.
+        void ReadConnectionsFile(const char* connection_file_name, const char* edge_file_name);
+	
         // Extrai nome da instância.
         void ExtractInstanceName(const char* filename);        
 
