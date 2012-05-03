@@ -18,11 +18,11 @@ Dijkstra::Dijkstra(int qtpaths) {
   paths_.resize(qtpaths);
 }
 
-float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
-                                  int qtvertex,
+Graph Dijkstra::GetCostByDijkstra(Graph& graph,
                                   int src,
                                   int dst,
                                   int idpath) {
+
   /* int src = 0, dst = 0;
   if(vdst < vsrc)
   {
@@ -32,7 +32,7 @@ float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
     src = vsrc;
     dst = vdst;
   } */
-  const int k = qtvertex;
+  const int k = graph.GetQtVertex();
   int vis[k], prev[k];
   float dis[k];
   // Vertex prev[qtvertex];
@@ -45,7 +45,7 @@ float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
   while (true) {
     int i, n = -1;
 
-    for (i = 0; i < qtvertex; i++)
+    for (i = 0; i < graph.GetQtVertex(); i++)
       if (!vis[i] && (n < 0 || dis[i] < dis[n]))
         n = i;
 
@@ -53,21 +53,21 @@ float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
       break;
     vis[n] = 1;
 
-    for (i = 1; i < adjlist[n].size(); i++)
+    for (i = 1; i < graph.GetAdjList()[n].size(); i++) {
       // Aresta n -> LAdj[n][i].first com custo LAdj[n][i].second
       /* if (dis[adjlist[n][i].getNumber()] > dis[n] + adjlist[n][i].getWeight()){
               dis[adjlist[n][i].getNumber()] = dis[n] + adjlist[n][i].getWeight();
               prev[adjlist[n][i].getNumber()] = n;
       } */
-      if (dis[adjlist[n][i].GetNumber()] >
-                    dis[n] + adjlist[n][i].GetIncCost()) {
-        dis[adjlist[n][i].GetNumber()] =
-                    dis[n] + adjlist[n][i].GetIncCost();
+      if (dis[graph.GetAdjList()[n][i].GetNumber()] >
+                    dis[n] + graph.GetAdjList()[n][i].GetIncCost()) {
+        dis[graph.GetAdjList()[n][i].GetNumber()] =
+                    dis[n] + graph.GetAdjList()[n][i].GetIncCost();
         // Vertex v(n,0,0);
-        prev[adjlist[n][i].GetNumber()] = n;
+        prev[graph.GetAdjList()[n][i].GetNumber()] = n;
       }
+    }
   }
-
 
   // Vetor de distancias
   /* cout << "Distance: " << endl;
@@ -103,9 +103,6 @@ float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
 
   reverse(dijpath.begin(), dijpath.end());
 
-
-
-
   /* if(Paths[idpath].size() > 0)
   {
       cout << "Before execution the path is: ";
@@ -115,8 +112,6 @@ float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
       }
   }
   cout << endl; */
-
-
 
   paths_[idpath].clear();
   paths_[idpath] = dijpath;
@@ -131,9 +126,9 @@ float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
 
 
   /* cout << "After execution the path is: ";
-  for(int i=0; i<Paths[idpath].size(); i++)
+  for(int i=0; i<paths_[idpath].size(); i++)
   {
-       cout << Paths[idpath][i] << " - ";
+       cout << paths_[idpath][i] << " - ";
   }
   cout << endl; */
 
@@ -148,24 +143,38 @@ float Dijkstra::GetCostByDijkstra(std::vector<Vertex>*& adjlist,
       cout << Paths[idpath][i] << " ";
   } */
   // cout << endl;
-  return dis[dst];
+
+
+  // return dis[dst];
+  return graph;
 }
 
-void Dijkstra::SetAllGraphEdgeIncCost(Graph& graph,
-                                      int qtvertex,
+Graph Dijkstra::SetAllGraphEdgeIncCost(Graph& graph,
                                       int qtrequests) {
   Functions functions;
-  for (int i = 0; i < qtvertex; i++) {
+  for (int i = 0; i < graph.GetQtVertex(); i++) {
     for (int x = 1; x < graph.GetAdjList()[i].size(); x++) {
       int w = graph.GetAdjList()[i][x].GetQtRequests();
       float l = graph.GetAdjList()[i][x].GetWeight();
       int a = qtrequests;
       graph.GetAdjList()[i][x].
             SetIncCost(functions.Fwdm(w+a, l) - functions.Fwdm(w, l));
-      // graph.getAdjList()[i][x].setIncCost(functions.fwdm(w + a, l)) ;
+      // graph.GetAdjList()[i][x].SetIncCost(functions.Fwdm(w + a, l)) ;
     }
   }
+  // g.PrintWithIncCost();
+  return graph;
 }
 
 void Dijkstra::SetCostByDijkstra(float cost) {
+}
+
+void Dijkstra::PrintPaths() {
+  for(int i = 0; i < paths_.size(); i++) {
+    cout << endl << "PATH " << i << ": ";
+    for(int x = 0; x < paths_[i].size(); x++) {
+      cout << paths_[i][x] << " - ";
+    }
+  }
+  cout << endl;
 }

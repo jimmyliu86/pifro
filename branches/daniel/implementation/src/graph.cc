@@ -71,7 +71,7 @@ void Graph::LoadFromSNDFile(char* filename) {
   int src = 0, dst = 0;
   float weight = 0;
 
-  for (int i = 1; i < qt_vertex_; i++) {
+  for (int i = 1; i < qt_edge_; i++) {
     fin >> src;
     fin >> dst;
     fin >> weight;
@@ -123,6 +123,7 @@ void Graph::CleanCosts() {
       // << "->" << "[" << AdjList[i][x].getNumber() << "] ";
       adj_list_[i][x].SetCost(0);
       adj_list_[i][x].SetIncCost(0);
+      adj_list_[i][x].SetQtRequests(0);
     }
     // cout << endl;
   }

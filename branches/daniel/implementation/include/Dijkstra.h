@@ -25,14 +25,14 @@ class Dijkstra {
 
     Dijkstra();
     explicit Dijkstra(int qtpaths);
-    float GetCostByDijkstra(std::vector<Vertex>*& adjlist,
-                            int qtvertex,
+    Graph GetCostByDijkstra(Graph& graph,
                             int src,
                             int dst,
                             int idpath);
     void DeletePath(int idpath);
     void SetCostByDijkstra(float cost);
-    void SetAllGraphEdgeIncCost(Graph& graph, int qtvertex, int qtrequests);
+    Graph SetAllGraphEdgeIncCost(Graph& graph, int qtrequests);
+    void PrintPaths();
   private:
     float cost_by_dijkstra_;
 

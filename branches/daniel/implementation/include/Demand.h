@@ -23,17 +23,13 @@ class Demand {
   public:
     Demand();
     explicit Demand(char* filename,
-                    int tipo,
-                    std::vector<Vertex>*& adjlist,
-                    int qtvertex);
+                    int tipo);
     std::vector<Request>& GetVecRequest();
     void SetVecRequest(std::vector<Request> vecrequest);
     int GetQtRequest();
     void SetQtRequest(int qtrequest);
 
-    void LoadFromTRFFile(char* filename,
-                         std::vector<Vertex>*& adjlist,
-                         int qtvertex);
+    void LoadFromTRFFile(char* filename);
     int QtROADMByBFS(std::vector<Vertex>*& adjlist,
                      int src,
                      int dst,

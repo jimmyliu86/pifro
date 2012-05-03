@@ -10,11 +10,9 @@ Demand::Demand() {
 }
 
 Demand::Demand(char* filename,
-               int tipo,
-               std::vector<Vertex>*& adjlist,
-               int qtvertex) {
+               int tipo) {
   if (tipo == 0) {
-    LoadFromTRFFile(filename, adjlist, qtvertex);
+    LoadFromTRFFile(filename);
   }
 }
 
@@ -38,9 +36,7 @@ void Demand::SetQtRequest(int qtrequest) {
 //     return (request1.getQtROADM() < request2.getQtROADM());
 // }
 
-void Demand::LoadFromTRFFile(char* filename,
-                             std::vector<Vertex>*& adjlist,
-                             int qtvertex) {
+void Demand::LoadFromTRFFile(char* filename) {
   ifstream fin(filename);
   fin >> qt_request_;
   Request request;

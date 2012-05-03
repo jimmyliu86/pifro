@@ -9,6 +9,7 @@
 #include <vector>
 #include <iostream>
 #include <cstdlib>
+#include <time.h>
 
 #include "./rvgs.h"
 #include "./graph.h"
@@ -18,35 +19,28 @@
 
 using std::cout;
 
+#define myrand ((100 * rand())/(float)(RAND_MAX))
+
 class Greedy {
   public:
     Functions functions_;
-    Greedy();
+    Greedy(Graph graph, Demand demand);
     explicit Greedy(int qtRequests);
     void SetDemand(Demand& demand);
     void SetGraph(Graph& graph);
     void SetDijkstra(Dijkstra& dijkstra);
     Demand GetDemand();
     Graph GetGraph();
-    void DemandSort(std::vector<Request>& vecrequest);
-    void DemandSwap(std::vector<Request>& vecrequest);
-    float DeletePath(Graph& graph,
-                     int path,
-                     int qtvertex,
+    void DemandSort();
+    void DemandSwap();
+    float DeletePath(int path,
                      int qtrequests);
-    float AddPath(Graph& graph,
-                  int path,
-                  int qtvertex,
+    float AddPath(int path,
                   int qtrequests);
-    float Execute(Graph& graph,
-                  std::vector<Request>& vecrequest,
-                  int qtvertex,
-                  bool regenerateDijkstra);
-    float ExecuteWithRefine(Graph& graph,
-                            std::vector<Request>& vecrequest);
-    float ExecuteWithRefine(Graph graph,
-                            std::vector<Request> vecrequest,
-                            std::vector<int> permutation);
+    float Execute(bool regenerateDijkstra);
+    float ExecuteWithRefine();
+    float ExecuteWithRefine(std::vector<int> permutation);
+    float ExecuteWithRefine(int k);
 
   private:
     Graph graph_;
