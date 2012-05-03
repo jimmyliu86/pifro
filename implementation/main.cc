@@ -15,31 +15,35 @@
 #include "./MTRand.h"
 #include "./BRKGA.h"
 #include "./BRKGADecoder.h"
+#include "./igs.h"
 
 int main(int argc, char *argv[]) {
   cout.precision(50);
 
   // Greedy
-  Graph g("f:/instance1/abilene/abilene.net", 0);
+  Graph g("f:/instance/abilene/abilene.net", 0);
   g.PrintWithWeight();
   g.PrintWithCost();
   g.PrintWithQtRequests();
 
   cout << endl << endl;
 
-  Demand d("f:/instance1/abilene/abilene.trf",
-           0, g.GetAdjList(), g.GetQtVertex());
+  Demand d("f:/instance/abilene/abilene.trf", 0);
 
-  Greedy greedy;
+  Greedy greedy(g, d);
   cout << "\n\n\nGREEDY COST: US$ " <<
-       (greedy.ExecuteWithRefine(g, d.GetVecRequest())) / 1000000 << endl;
-  g.PrintWithQtRequests();
+         (greedy.ExecuteWithRefine() / 1000000) << endl << endl << endl;
+  system("PAUSE");
+
+  //IGS
+  IGS igs;
+  cout << "IGS COST: " << igs.execute(greedy, 600);
+  system("PAUSE");
 
   // BRKGA
-  Graph g2("f:/instance1/abilene/abilene.net", 0);
-  Demand d2("f:/instance1/abilene/abilene.trf",
-            0, g2.GetAdjList(), g2.GetQtVertex());
-  int seconds = 600;
+  Graph g2("f:/instance/abilene/abilene.net", 0);
+  Demand d2("f:/instance/abilene/abilene.trf", 0);
+  int seconds = 1800;
 
   time_t TStart = time(NULL);
 
@@ -60,10 +64,11 @@ int main(int argc, char *argv[]) {
   const unsigned MAXT = 2;
 
   // initialize the decoder
-  BRKGADecoder decoder(g2, d2.GetVecRequest());
+  BRKGADecoder decoder(g2, d2);
 
   // seed to the random number generator
-  const float rngSeed = 0;
+  // const float rngSeed = 0;
+  const float rngSeed = time(NULL);
   // initialize the random number generator
   MTRand rng(rngSeed);
 
@@ -109,7 +114,7 @@ int main(int argc, char *argv[]) {
   } while ((generation < MAX_GENS) && (curtime < seconds));
   cout << "TOTAL EXECUTION TIME: " << curtime << endl;
 
-  cout << "Best Fitness for BRKGAWithGreedy: US$ "
+  cout << "BRKGAWithGreedy COST: US$ "
        << algorithm.getBestFitness() / 1000000 << endl;
 
   return 0;

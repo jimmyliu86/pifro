@@ -16,13 +16,13 @@
 
 class BRKGADecoder {
   public:
-    explicit BRKGADecoder(Graph& graph, std::vector<Request>& vecrequest);
+    explicit BRKGADecoder(Graph graph, Demand demand);
     virtual ~BRKGADecoder();
 
     double decode(const std::vector< double >& chromosome) const;
 
   private:
-    std::vector<Request> vec_request_;
+    Demand demand_;
     Graph graph_;
 };
 

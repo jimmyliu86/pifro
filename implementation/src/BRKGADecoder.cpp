@@ -1,9 +1,9 @@
 #include "BRKGADecoder.h"
 
-BRKGADecoder::BRKGADecoder(Graph& graph, std::vector<Request>& vecrequest)
+BRKGADecoder::BRKGADecoder(Graph graph, Demand demand)
 {
   graph_ = graph;
-  vec_request_ = vecrequest;
+  demand_ = demand;
 }
 
 BRKGADecoder::~BRKGADecoder()
@@ -31,6 +31,9 @@ double BRKGADecoder::decode(const std::vector< double >& chromosome) const {
 
   // sample fitness is the first allele
   //return chromosome.front();
-  Greedy greedy;
-  return greedy.ExecuteWithRefine(graph_, vec_request_, permutation);
+
+  Greedy greedy(graph_, demand_);
+  float cost = greedy.ExecuteWithRefine(permutation);
+  // cout << "BRKGA TMP COST: " << cost << endl;
+  return cost;
 }
