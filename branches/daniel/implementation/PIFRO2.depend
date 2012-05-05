@@ -562,3 +562,167 @@
 	<time.h>
 	"./greedy.h"
 
+1335978945 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\brkgadecoder.cpp
+	"BRKGADecoder.h"
+
+1335972731 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\brkgadecoder.h
+	<time.h>
+	<algorithm>
+	<list>
+	<vector>
+	"./Graph.h"
+	"./Request.h"
+	"./Greedy.h"
+
+1336012338 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\graph.h
+	<vector>
+	<iostream>
+	<fstream>
+	"./macros.h"
+	"./vertex.h"
+
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\macros.h
+
+1335395438 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\vertex.h
+	<iostream>
+	<cstdlib>
+	"./macros.h"
+
+1335412174 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\request.h
+	"./macros.h"
+
+1336131321 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\greedy.h
+	<cmath>
+	<vector>
+	<iostream>
+	<cstdlib>
+	<time.h>
+	"./rvgs.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./functions.h"
+
+1334641078 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\rvgs.h
+
+1335977620 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\demand.h
+	<iostream>
+	<vector>
+	"./macros.h"
+	"./request.h"
+	"./graph.h"
+	"./breadth_first.h"
+	"./comparision.h"
+
+1335394717 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\breadth_first.h
+	<queue>
+	<vector>
+	<iostream>
+	"./macros.h"
+	"./vertex.h"
+
+1335412189 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\comparision.h
+
+1336012083 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\dijkstra.h
+	<iostream>
+	<algorithm>
+	<vector>
+	<string.h>
+	"./macros.h"
+	"./graph.h"
+	"./request.h"
+	"./vertex.h"
+	"./functions.h"
+
+1335411872 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\functions.h
+	<math.h>
+	<cmath>
+	"./constants.h"
+
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\constants.h
+
+1335411917 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\breadth_first.cc
+	<queue>
+	<vector>
+	"./breadth_first.h"
+
+1335977620 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\demand.cc
+	<vector>
+	"./demand.h"
+
+1336012080 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\dijkstra.cc
+	<vector>
+	"./dijkstra.h"
+
+1335411872 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\functions.cc
+	"./functions.h"
+
+1336012385 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\graph.cc
+	<vector>
+	"./graph.h"
+
+1335412966 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\request.cc
+	"./request.h"
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\rngs.cpp
+	<stdio.h>
+	<time.h>
+	"rngs.h"
+
+1334641078 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\rngs.h
+
+1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\rvgs.cpp
+	<math.h>
+	"rngs.h"
+	"rvgs.h"
+
+1335412989 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\vertex.cc
+	"./vertex.h"
+
+1336132950 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\greedy.cc
+	<algorithm>
+	<vector>
+	"./greedy.h"
+
+1336134344 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\src\igs.cpp
+	"igs.h"
+
+1335912201 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\igs.h
+	<time.h>
+	"./greedy.h"
+
+1336133681 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\main.cc
+	<time.h>
+	<cstdlib>
+	<vector>
+	"./vertex.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./greedy.h"
+	"./rvgs.h"
+	"./MTRand.h"
+	"./BRKGA.h"
+	"./BRKGADecoder.h"
+	"./igs.h"
+
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\mtrand.h
+	<iostream>
+	<climits>
+	<cstdio>
+	<ctime>
+	<cmath>
+
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\brkga.h
+	<omp.h>
+	<algorithm>
+	<exception>
+	<stdexcept>
+	"Population.h"
+
+1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro1 - natan\branches\daniel\implementation\include\population.h
+	<vector>
+	<algorithm>
+	<exception>
+	<stdexcept>
+

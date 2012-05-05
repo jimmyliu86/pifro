@@ -37,13 +37,13 @@ int main(int argc, char *argv[]) {
 
   //IGS
   IGS igs;
-  cout << "IGS COST: " << igs.execute(greedy, 600);
+  cout << "IGS COST: " << igs.execute(greedy, 600) / 1000000 << endl << endl << endl;
   system("PAUSE");
 
   // BRKGA
   Graph g2("f:/instance/abilene/abilene.net", 0);
   Demand d2("f:/instance/abilene/abilene.trf", 0);
-  int seconds = 1800;
+  int seconds = 600;
 
   time_t TStart = time(NULL);
 

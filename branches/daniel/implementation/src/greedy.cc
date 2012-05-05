@@ -17,17 +17,17 @@ Greedy::Greedy(int qtRequests) {
   dijkstra_ = tmp;
 }
 
-void Greedy::SetDemand(Demand& demand) {
+void Greedy::SetDemand(Demand demand) {
   demand_ = demand;
   Dijkstra dijkstra(demand.GetVecRequest().size());
   dijkstra_ = dijkstra;
 }
 
-void Greedy::SetGraph(Graph& graph) {
+void Greedy::SetGraph(Graph graph) {
   graph_ = graph;
 }
 
-void Greedy::SetDijkstra(Dijkstra& dijkstra) {
+void Greedy::SetDijkstra(Dijkstra dijkstra) {
   dijkstra_ = dijkstra;
 }
 
@@ -55,6 +55,10 @@ void Greedy::DemandSwap() {
 
   dijkstra_.paths_.push_back(dijkstra_.paths_[0]);
   dijkstra_.paths_.erase(dijkstra_.paths_.begin());
+}
+
+float Greedy::getMinCost() {
+  return min_cost_;
 }
 
 float Greedy::Execute(bool regenerateDijkstra) {
@@ -453,6 +457,7 @@ float Greedy::ExecuteWithRefine(int k) {
         DeletePath(x, demand_.GetVecRequest()[x].GetQt());
       }
 
+      for(int x = 0; x < k; x++) {
       graph_ = dijkstra_.SetAllGraphEdgeIncCost
                  (graph_, demand_.GetVecRequest()[i].GetQt());
       graph_ = dijkstra_.GetCostByDijkstra
@@ -460,14 +465,8 @@ float Greedy::ExecuteWithRefine(int k) {
                   demand_.GetVecRequest()[i].GetSrc(),
                   demand_.GetVecRequest()[i].GetDst(),
                   i);
-
       AddPath(i, demand_.GetVecRequest()[i].GetQt());
-
-      //Adicionando novamente as k rotas removidas
-      for(int x = 0; x < k; x++) {
-        act = AddPath(i, demand_.GetVecRequest()[i].GetQt());
       }
-
 
       if (act < min_cost_) {
         min_cost_ = act;

@@ -26,11 +26,12 @@ class Greedy {
     Functions functions_;
     Greedy(Graph graph, Demand demand);
     explicit Greedy(int qtRequests);
-    void SetDemand(Demand& demand);
-    void SetGraph(Graph& graph);
-    void SetDijkstra(Dijkstra& dijkstra);
+    void SetDemand(Demand demand);
+    void SetGraph(Graph graph);
+    void SetDijkstra(Dijkstra dijkstra);
     Demand GetDemand();
     Graph GetGraph();
+    float getMinCost();
     void DemandSort();
     void DemandSwap();
     float DeletePath(int path,
