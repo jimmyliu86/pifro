@@ -14,6 +14,7 @@
 #include <string.h>
 #include <limits.h>
 #include <fstream>
+#include <windows.h>
 
 #include "./vertex.h"
 #include "./graph.h"
@@ -32,7 +33,8 @@ using std::string;
 
 int main(int argc, char *argv[]) {
 
-  int time_for_execution = 300, qt_executions = 10, order = 1000000;
+  cout.precision(50);
+  int qt_executions = 5, delay_time = 5000, time_for_execution = 325 , order = 1000000;
   string instance_folder = "F:/Instance/";
   string instance_out = "F:/Instance/OUTPUTS/";
 
@@ -62,8 +64,6 @@ int main(int argc, char *argv[]) {
   instances.push_back("ta2");
   instances.push_back("zib54");
 
-  cout.precision(50);
-
   // Fazendo as heuristicas em todas as instancias que temos
   for(int f = 0; f < instances.size(); f++) {
 
@@ -87,6 +87,7 @@ int main(int argc, char *argv[]) {
       Greedy greedy(g, d);
       fout << (greedy.ExecuteWithRefine() / order) << endl;
       cout << "Greedy execution " << j << " for " << "'" << net_name << "' finished" << endl;
+      Sleep(delay_time);
     }
     fout << endl;
     cout << "Finishing Greedy for '" << net_name << "'\n\n";
@@ -169,6 +170,7 @@ int main(int argc, char *argv[]) {
 
       fout << algorithm.getBestFitness() / order << endl;
       cout << "BRKGA execution " << j << " for " << "'" << net_name << "' finished" << endl;
+      Sleep(delay_time);
     }
     fout << endl;
     cout << "Finishing BRKGA for '" << net_name << "'\n\n";
@@ -183,6 +185,7 @@ int main(int argc, char *argv[]) {
       IGS igs;
       fout << (igs.execute(greedy, time_for_execution) / order) << endl;
       cout << "IGS execution " << j << " for " << "'" << net_name << "' finished" << endl;
+      Sleep(delay_time);
     }
     fout << endl;
     cout << "Finishing IGS for '" << net_name << "'\n\n";
