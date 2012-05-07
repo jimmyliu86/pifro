@@ -38,7 +38,7 @@ class Greedy {
                      int qtrequests);
     float AddPath(int path,
                   int qtrequests);
-    float Execute(bool regenerateDijkstra);
+    float Execute(bool regenerateDijkstra, bool demandSort);
     float ExecuteWithRefine();
     float ExecuteWithRefine(std::vector<int> permutation);
     float ExecuteWithRefine(int k);

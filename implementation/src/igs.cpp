@@ -14,18 +14,19 @@ float IGS::execute(Greedy greedy, int execution_time) {
   time_t t_start = time(NULL);
 
   int k = 1, qt_it_wo_imp = 0;
-  float min_cost_s_line = 0, min_cost_s_star_line = 0, act = 0;
+  float act = 0;
 
   // Gerando S0 e S (o metodo ja constroi e refina)
   Greedy s  = greedy;
   s.ExecuteWithRefine();
-
-  Greedy s_line(greedy.GetGraph(), greedy.GetDemand());
+  min_cost_ = s.getMinCost();
 
   // Condicao de parada
   time_t t_stop = time(NULL);
   while ((t_stop - t_start) < execution_time) {
-    s_line = s;
+    // Desconstrucao de S
+    Greedy s_line(s.GetGraph(), s.GetDemand());
+    // Pertubacao (S, K)
     s_line.ExecuteWithRefine(k);
 
     // Criterio de aceitacao (BETTER)
@@ -38,20 +39,26 @@ float IGS::execute(Greedy greedy, int execution_time) {
 
     if(act < min_cost_) {
       min_cost_ = act;
+      qt_it_wo_imp = 0;
     }else{
       qt_it_wo_imp++;
-      // Piorando resultado para escapar de otimos locais
-      if(qt_it_wo_imp >= 20) {
-        if(s_line.getMinCost() > s.getMinCost()) {
+      // Piorando resultado
+      if(qt_it_wo_imp >= s_line.GetDemand().GetQtRequest()) {
+      // if(qt_it_wo_imp >= 5) {
+        if((s_line.getMinCost() > s.getMinCost()) && (s_line.getMinCost() > greedy.getMinCost())) {
           s = s_line;
-        }else if(greedy.getMinCost() > s.getMinCost()) {
+        }else if((greedy.getMinCost() > s_line.getMinCost()) && (greedy.getMinCost() > s.getMinCost())) {
           s = greedy;
+        }else {
+          s.ExecuteWithRefine();
         }
+        qt_it_wo_imp = 0;
       }
     }
 
     // Aumentando K
     if(k <= greedy.GetDemand().GetQtRequest() - 1) {
+    // if(k <= 3) {
       k++;
     }else{
       k = 1;

@@ -61,17 +61,20 @@ float Greedy::getMinCost() {
   return min_cost_;
 }
 
-float Greedy::Execute(bool regenerateDijkstra) {
-
-  // ALEATORIOS
-  DemandSort();
-
+float Greedy::Execute(bool regenerateDijkstra, bool demandSort) {
   if (regenerateDijkstra) {
     // Dijkstra dijkstra(vecrequest.size());
     dijkstra_.paths_.clear();
     dijkstra_.paths_.resize(demand_.GetVecRequest().size());
     // ObjDijkstra = dijkstra;
   }
+
+  if(demandSort) {
+    // ALEATORIOS
+    DemandSort();
+  }
+
+  graph_.CleanCosts();
 
   for (int p = 0; p < demand_.GetVecRequest().size(); p++) {
     dijkstra_.SetAllGraphEdgeIncCost(graph_, demand_.GetVecRequest()[p].GetQt());
@@ -96,6 +99,9 @@ float Greedy::Execute(bool regenerateDijkstra) {
   // graph_.PrintWithIncCost();
   float cost = graph_.GetTotalCost();
   // cout << "EXECUTE COST: " << cost << endl;
+  if(cost < min_cost_) {
+    min_cost_ = cost;
+  }
   return cost;
 }
 
@@ -115,7 +121,7 @@ float Greedy::DeletePath(int path, int qtrequests) {
     while (x < graph_.GetNeighbors(z).size()) {
       if (graph_.GetNeighbors(z)[x].GetNumber() == zprox) {
         graph_.GetNeighbors(z)[x].SetQtRequests
-                      (graph_.GetNeighbors(z)[x].GetQtRequests() - qtrequests);
+        (graph_.GetNeighbors(z)[x].GetQtRequests() - qtrequests);
         int w = graph_.GetNeighbors(z)[x].GetQtRequests();
         float l = graph_.GetNeighbors(z)[x].GetWeight();
         graph_.GetNeighbors(z)[x].SetCost(functions_.Fwdm(w, l));
@@ -130,11 +136,11 @@ float Greedy::DeletePath(int path, int qtrequests) {
 
   for (int i = path_cp.size() - 1; i >= 0; i--) {
     int z = path_cp[i], zprev = path_cp[i - 1],
-        x = graph_.GetNeighbors(z).size() - 1;
+                                x = graph_.GetNeighbors(z).size() - 1;
     while (x >= 1) {
       if (graph_.GetNeighbors(z)[x].GetNumber() == zprev) {
         graph_.GetNeighbors(z)[x].SetQtRequests
-                       (graph_.GetNeighbors(z)[x].GetQtRequests() - qtrequests);
+        (graph_.GetNeighbors(z)[x].GetQtRequests() - qtrequests);
         int w = graph_.GetNeighbors(z)[x].GetQtRequests();
         float l = graph_.GetNeighbors(z)[x].GetWeight();
         graph_.GetNeighbors(z)[x].SetCost(functions_.Fwdm(w, l));
@@ -194,7 +200,7 @@ float Greedy::AddPath(int path, int qtrequests) {
     while (x < graph_.GetNeighbors(z).size()) {
       if (graph_.GetNeighbors(z)[x].GetNumber() == zprox) {
         graph_.GetNeighbors(z)[x].SetQtRequests
-                      (graph_.GetNeighbors(z)[x].GetQtRequests() + qtrequests);
+        (graph_.GetNeighbors(z)[x].GetQtRequests() + qtrequests);
         int w = graph_.GetNeighbors(z)[x].GetQtRequests();
         float l = graph_.GetNeighbors(z)[x].GetWeight();
         graph_.GetNeighbors(z)[x].SetCost(functions_.Fwdm(w, l));
@@ -209,12 +215,12 @@ float Greedy::AddPath(int path, int qtrequests) {
 
   for (int i = path_cp.size() - 1; i >= 0; i--) {
     int z = path_cp[i], zprev = path_cp[i - 1],
-        x = graph_.GetNeighbors(z).size() - 1;
+                                x = graph_.GetNeighbors(z).size() - 1;
     while (x >= 1) {
       if (graph_.GetNeighbors(z)[x].GetNumber() == zprev) {
         graph_.GetNeighbors(z)[x]
-             .SetQtRequests
-                     (graph_.GetNeighbors(z)[x].GetQtRequests() + qtrequests);
+        .SetQtRequests
+        (graph_.GetNeighbors(z)[x].GetQtRequests() + qtrequests);
         int w = graph_.GetNeighbors(z)[x].GetQtRequests();
         float l = graph_.GetNeighbors(z)[x].GetWeight();
         graph_.GetNeighbors(z)[x].SetCost(functions_.Fwdm(w, l));
@@ -261,8 +267,8 @@ float Greedy::AddPath(int path, int qtrequests) {
 
 float Greedy::ExecuteWithRefine() {
   float act = 0;
-  graph_.CleanCosts();
-  act = Execute(true);
+  //graph_.CleanCosts();
+  act = Execute(true, true);
   //dijkstra_.PrintPaths();
   min_cost_ = act;
 
@@ -291,12 +297,12 @@ float Greedy::ExecuteWithRefine() {
 
       DeletePath(i, demand_.GetVecRequest()[i].GetQt());
       dijkstra_.SetAllGraphEdgeIncCost
-                 (graph_, demand_.GetVecRequest()[i].GetQt());
+      (graph_, demand_.GetVecRequest()[i].GetQt());
       dijkstra_.GetCostByDijkstra
-                 (graph_,
-                  demand_.GetVecRequest()[i].GetSrc(),
-                  demand_.GetVecRequest()[i].GetDst(),
-                  i);
+      (graph_,
+       demand_.GetVecRequest()[i].GetSrc(),
+       demand_.GetVecRequest()[i].GetDst(),
+       i);
       act = AddPath(i, demand_.GetVecRequest()[i].GetQt());
 
       if (act < min_cost_) {
@@ -343,8 +349,8 @@ float Greedy::ExecuteWithRefine(std::vector<int> permutation) {
 
   float act = 0;
 
-  graph_.CleanCosts();
-  act = Execute(true);
+  //graph_.CleanCosts();
+  act = Execute(true, false);
 
   min_cost_ = act;
 
@@ -380,12 +386,12 @@ float Greedy::ExecuteWithRefine(std::vector<int> permutation) {
 
       DeletePath(i, aux[i].GetQt());
       graph_ = dijkstra_.SetAllGraphEdgeIncCost
-                 (graph_, aux[i].GetQt());
+               (graph_, aux[i].GetQt());
       graph_ = dijkstra_.GetCostByDijkstra
-                 (graph_,
-                  aux[i].GetSrc(),
-                  aux[i].GetDst(),
-                  i);
+               (graph_,
+                aux[i].GetSrc(),
+                aux[i].GetDst(),
+                i);
       act = AddPath(i, aux[i].GetQt());
 
       if (act < min_cost_) {
@@ -424,16 +430,24 @@ float Greedy::ExecuteWithRefine(int k) {
   float act = 0;
 
   // Talvez devesse comentar as proximas 2 linhas
-  graph_.CleanCosts();
-  act = Execute(true);
+  //graph_.CleanCosts();
+  act = Execute(true, true);
 
   min_cost_ = act;
 
-  int actrequest = -1, pathch = 1, mincostch = 0, lastalt = -2, loops = 0;
+int mincostch = 1;
+
+while((mincostch > 0)) {
+  int actrequest = -1, pathch = 1, lastalt = -2, loops = 0;
   std::vector<int> actpath;
 
-  while (((pathch > 0) || (mincostch > 0)
-          || (loops < 1)) && (lastalt != actrequest)) {
+
+  // Excluindo K rotas
+  for(int x = 0; x < k; x++) {
+    DeletePath(x, demand_.GetVecRequest()[x].GetQt());
+  }
+
+  while (((pathch > 0) || (loops < 1)) && (lastalt != actrequest)) {
     if ((lastalt == actrequest) && (loops > 0)) {
       break;
     }
@@ -452,28 +466,18 @@ float Greedy::ExecuteWithRefine(int k) {
       actpath.clear();
       actpath = dijkstra_.paths_[i];
 
-      // Excluindo K rotas
-      for(int x = 0; x < k; x++) {
-        DeletePath(x, demand_.GetVecRequest()[x].GetQt());
-      }
 
-      for(int x = 0; x < k; x++) {
+      DeletePath(i, demand_.GetVecRequest()[i].GetQt());
       graph_ = dijkstra_.SetAllGraphEdgeIncCost
-                 (graph_, demand_.GetVecRequest()[i].GetQt());
+               (graph_, demand_.GetVecRequest()[i].GetQt());
       graph_ = dijkstra_.GetCostByDijkstra
-                 (graph_,
-                  demand_.GetVecRequest()[i].GetSrc(),
-                  demand_.GetVecRequest()[i].GetDst(),
-                  i);
-      AddPath(i, demand_.GetVecRequest()[i].GetQt());
-      }
+               (graph_,
+                demand_.GetVecRequest()[i].GetSrc(),
+                demand_.GetVecRequest()[i].GetDst(),
+                i);
+      act = AddPath(i, demand_.GetVecRequest()[i].GetQt());
 
-      if (act < min_cost_) {
-        min_cost_ = act;
-        mincostch++;
-        lastalt = i;
-        //continue;
-      }
+
 
       int u = 0;
       if (pathch == 0) {
@@ -487,6 +491,26 @@ float Greedy::ExecuteWithRefine(int k) {
         }
       }
     }
+
   }
+
+  // Adicionando K rotas
+  for(int x = 0; x < k; x++) {
+    graph_ = dijkstra_.SetAllGraphEdgeIncCost
+             (graph_, demand_.GetVecRequest()[x].GetQt());
+    graph_ = dijkstra_.GetCostByDijkstra
+             (graph_,
+              demand_.GetVecRequest()[x].GetSrc(),
+              demand_.GetVecRequest()[x].GetDst(),
+              x);
+    act = AddPath(x, demand_.GetVecRequest()[x].GetQt());
+  }
+
+  if (act < min_cost_) {
+    min_cost_ = act;
+    mincostch++;
+  }
+}
+
   return min_cost_;
 }

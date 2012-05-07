@@ -26,16 +26,16 @@
 		<Cursor position="333" topLine="0" />
 	</File>
 	<File name="include\graph.h" open="1" top="0" tabpos="4">
-		<Cursor position="1047" topLine="13" />
+		<Cursor position="220" topLine="0" />
 	</File>
 	<File name="include\greedy.h" open="1" top="0" tabpos="1">
-		<Cursor position="788" topLine="30" />
+		<Cursor position="1032" topLine="15" />
 	</File>
 	<File name="include\igs.h" open="0" top="0" tabpos="3">
 		<Cursor position="275" topLine="0" />
 	</File>
 	<File name="include\request.h" open="1" top="0" tabpos="9">
-		<Cursor position="305" topLine="15" />
+		<Cursor position="305" topLine="0" />
 	</File>
 	<File name="include\rngs.h" open="0" top="0" tabpos="0">
 		<Cursor position="552" topLine="0" />
@@ -47,7 +47,7 @@
 		<Cursor position="0" topLine="14" />
 	</File>
 	<File name="main.cc" open="1" top="1" tabpos="6">
-		<Cursor position="948" topLine="27" />
+		<Cursor position="5847" topLine="155" />
 	</File>
 	<File name="src\BRKGADecoder.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="992" topLine="3" />
@@ -59,22 +59,22 @@
 		<Cursor position="236" topLine="51" />
 	</File>
 	<File name="src\dijkstra.cc" open="1" top="0" tabpos="5">
-		<Cursor position="3421" topLine="144" />
+		<Cursor position="3421" topLine="9" />
 	</File>
 	<File name="src\functions.cc" open="0" top="0" tabpos="6">
 		<Cursor position="241" topLine="0" />
 	</File>
 	<File name="src\graph.cc" open="1" top="0" tabpos="3">
-		<Cursor position="3489" topLine="111" />
+		<Cursor position="3489" topLine="46" />
 	</File>
 	<File name="src\greedy.cc" open="1" top="0" tabpos="2">
-		<Cursor position="13320" topLine="453" />
+		<Cursor position="12813" topLine="478" />
 	</File>
 	<File name="src\igs.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="231" topLine="13" />
+		<Cursor position="1005" topLine="20" />
 	</File>
 	<File name="src\request.cc" open="1" top="0" tabpos="10">
-		<Cursor position="548" topLine="53" />
+		<Cursor position="548" topLine="40" />
 	</File>
 	<File name="src\rngs.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="2263" topLine="12" />
