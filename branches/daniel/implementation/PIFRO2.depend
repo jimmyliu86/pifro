@@ -57,7 +57,7 @@
 
 1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\constants.h
 
-1336335753 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\greedy.h
+1336715810 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\greedy.h
 	<cmath>
 	<vector>
 	<iostream>
@@ -71,7 +71,7 @@
 
 1334641078 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\rvgs.h
 
-1335412189 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\comparision.h
+1336529573 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\comparision.h
 
 1334641077 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\mtrand.h
 	<iostream>
@@ -93,7 +93,7 @@
 	<exception>
 	<stdexcept>
 
-1335972731 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\brkgadecoder.h
+1336717203 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\brkgadecoder.h
 	<time.h>
 	<algorithm>
 	<list>
@@ -102,7 +102,7 @@
 	"./Request.h"
 	"./Greedy.h"
 
-1335978945 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\brkgadecoder.cpp
+1336717890 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\brkgadecoder.cpp
 	"BRKGADecoder.h"
 
 1334641070 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\breadthfirst.cpp
@@ -502,7 +502,7 @@
 	"rngs.h"
 	"rvgs.h"
 
-1336369946 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\main.cc
+1336716194 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\main.cc
 	<time.h>
 	<cstdlib>
 	<iostream>
@@ -515,6 +515,7 @@
 	<string.h>
 	<limits.h>
 	<fstream>
+	<windows.h>
 	"./vertex.h"
 	"./graph.h"
 	"./demand.h"
@@ -541,7 +542,7 @@
 	<vector>
 	"./graph.h"
 
-1336366560 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\greedy.cc
+1336716194 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\greedy.cc
 	<algorithm>
 	<vector>
 	"./greedy.h"
@@ -564,10 +565,10 @@
 	<vector>
 	"./breadth_first.h"
 
-1336366605 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\igs.cpp
+1336717203 source:f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\src\igs.cpp
 	"igs.h"
 
-1335912201 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\igs.h
+1336457699 f:\material aulas\cefet\mestrado\disserta플o\workspace dev c++\pifro2\include\igs.h
 	<time.h>
 	"./greedy.h"
 

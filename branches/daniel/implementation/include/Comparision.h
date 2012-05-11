@@ -17,7 +17,7 @@ struct comparision_request_by_qtroadm {
 struct comparision_request_by_key {
   public:
     bool operator()(Request a, Request b) {
-      return a.GetKey() < b.GetKey();
+      return a.key_ < b.key_;
   }
 };
 

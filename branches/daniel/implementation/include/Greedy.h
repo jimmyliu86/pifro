@@ -17,18 +17,20 @@
 #include "./dijkstra.h"
 #include "./functions.h"
 
-using std::cout;
+using namespace std;
 
-#define myrand ((100 * rand())/(float)(RAND_MAX))
+#define myrand ((1 * rand())/(float)(RAND_MAX))
 
 class Greedy {
   public:
     Functions functions_;
+    Greedy();
     Greedy(Graph graph, Demand demand);
-    explicit Greedy(int qtRequests);
+    Greedy(int qtRequests);
     void SetDemand(Demand demand);
     void SetGraph(Graph graph);
     void SetDijkstra(Dijkstra dijkstra);
+    void SetMinCost(float min_cost);
     Demand GetDemand();
     Graph GetGraph();
     float getMinCost();
@@ -39,7 +41,7 @@ class Greedy {
     float AddPath(int path,
                   int qtrequests);
     float Execute(bool regenerateDijkstra, bool demandSort);
-    float ExecuteWithRefine();
+    float ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort);
     float ExecuteWithRefine(std::vector<int> permutation);
     float ExecuteWithRefine(int k);
 
