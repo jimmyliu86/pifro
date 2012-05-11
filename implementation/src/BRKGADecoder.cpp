@@ -21,6 +21,7 @@ double BRKGADecoder::decode(const std::vector< double >& chromosome) const {
 
   // Here we sort 'permutation', which will then produce a permutation of [n] in pair::second:
   std::sort(ranking.begin(), ranking.end());
+  std::reverse(ranking.begin(), ranking.end());
 
   // permutation[i].second is in {0, ..., n - 1}; a permutation can be obtained as follows
   std::vector< int > permutation;
@@ -28,12 +29,12 @@ double BRKGADecoder::decode(const std::vector< double >& chromosome) const {
       i != ranking.end(); ++i) {
     permutation.push_back(i->second);
   }
-
   // sample fitness is the first allele
   //return chromosome.front();
 
   Greedy greedy(graph_, demand_);
+  greedy.Execute(true, true);
   float cost = greedy.ExecuteWithRefine(permutation);
-  // cout << "BRKGA TMP COST: " << cost << endl;
+  // cout << "BRKGA TMP COST: " << cost / 1000000 << endl;
   return cost;
 }

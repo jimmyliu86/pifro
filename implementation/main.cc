@@ -32,42 +32,42 @@ using std::stringstream;
 using std::string;
 
 int main(int argc, char *argv[]) {
-
+  // srand(time(NULL));
   cout.precision(50);
-  int qt_executions = 5, delay_time = 5000, time_for_execution = 325 , order = 1000000;
+  int qt_executions = 5, delay_time = 5000, time_for_execution = 300 , order = 1000000;
   string instance_folder = "F:/Instance/";
   string instance_out = "F:/Instance/OUTPUTS/";
 
   std::vector<string> instances;
   instances.push_back("abilene");
   instances.push_back("atlanta");
-  instances.push_back("cost266");
+  //instances.push_back("cost266");
   instances.push_back("dfn-bwin");
   instances.push_back("dfn-gwin");
   instances.push_back("di-yuan");
-  instances.push_back("france");
+  //instances.push_back("france");
   instances.push_back("geant");
-  instances.push_back("germany50");
-  instances.push_back("giul39");
-  instances.push_back("janos-us");
-  instances.push_back("janos-us-ca");
+  //instances.push_back("germany50");
+  //instances.push_back("giul39");
+  //instances.push_back("janos-us");
+  //instances.push_back("janos-us-ca");
   instances.push_back("newyork");
-  instances.push_back("nobel-eu");
-  instances.push_back("nobel-germany");
+  //instances.push_back("nobel-eu");
+  //instances.push_back("nobel-germany");
   instances.push_back("nobel-us");
-  instances.push_back("norway");
+  //instances.push_back("norway");
   instances.push_back("pdh");
-  instances.push_back("pioro40");
+  //instances.push_back("pioro40");
   instances.push_back("polska");
-  instances.push_back("sun");
-  instances.push_back("ta1");
-  instances.push_back("ta2");
-  instances.push_back("zib54");
+  //instances.push_back("sun");
+  //instances.push_back("ta1");
+  //instances.push_back("ta2");
+  //instances.push_back("zib54");
 
   // Fazendo as heuristicas em todas as instancias que temos
   for(int f = 0; f < instances.size(); f++) {
 
-    string output(instance_out + instances[f] + ".txt");
+    string output(instance_out + instances[f] + "_spolm.txt");
     string net_name_str(instance_folder + instances[f] + "/" + instances[f] + ".net");
     string dem_name_str(instance_folder + instances[f] + "/" + instances[f] + ".trf");
 
@@ -77,15 +77,19 @@ int main(int argc, char *argv[]) {
     char * dem_name = new char[dem_name_str.size() + 1];
     strcpy (dem_name, dem_name_str.c_str());
 
-    // GREEDY
-    cout << "Starting Greedy for '" << net_name << "'\n";
     ofstream fout(output.c_str());
+    fout.precision(10);
+
+    // GREEDY
     fout << "GREEDY SECTION" << endl;
     for(int j = 0; j < qt_executions; j++) {
+      cout << "Starting GREEDY execution " << j << " for '" << net_name << "'\n";
+      time_t TStart = time(NULL);
       Graph g(net_name, 0);
       Demand d(dem_name, 0);
       Greedy greedy(g, d);
-      fout << (greedy.ExecuteWithRefine() / order) << endl;
+      greedy.Execute(true, true);
+      fout << (greedy.ExecuteWithRefine(true, true) / order) << ";\n";
       cout << "Greedy execution " << j << " for " << "'" << net_name << "' finished" << endl;
       Sleep(delay_time);
     }
@@ -93,23 +97,27 @@ int main(int argc, char *argv[]) {
     cout << "Finishing Greedy for '" << net_name << "'\n\n";
 
     // BRKGA
-    cout << "Starting BRKGA for '" << net_name << "'\n";
     fout << "BRKGA SECTION" << endl;
     for(int j = 0; j < qt_executions; j++) {
+      cout << "Starting BRKGA execution " << j << " for '" << net_name << "'\n";
       time_t TStart = time(NULL);
 
-      Graph g(net_name, 0);
-      Demand d(dem_name, 0);
+      Graph g_brkga(net_name, 0);
+      Demand d_brkga(dem_name, 0);
+      //Greedy gr_brkga(g_brkga, d_brkga);
+      //gr_brkga.Execute(true, false);
 
       // size of chromosomes
-      const unsigned n = d.GetVecRequest().size();
+      const unsigned n = d_brkga.GetVecRequest().size();
+      // const unsigned n = 100;
       // size of population
       // const unsigned p = 1000;
-      const unsigned p = 100;
+      // const unsigned p = 100;
+      const unsigned p = d_brkga.GetVecRequest().size();
       // fraction of population to be the elite-set
-      const double pe = 0.30;
+      const double pe = 0.20;
       // fraction of population to be replaced by mutants
-      const double pm = 0.15;
+      const double pm = 0.10;
       // probability that offspring inherit an allele from elite parent
       const double rhoe = 0.70;
       // number of independent populations
@@ -118,11 +126,11 @@ int main(int argc, char *argv[]) {
       const unsigned MAXT = 2;
 
       // initialize the decoder
-      BRKGADecoder decoder(g, d);
+      BRKGADecoder decoder(g_brkga, d_brkga);
 
       // seed to the random number generator
-      // const float rngSeed = 0;
-      const float rngSeed = time(NULL);
+      const float rngSeed = 0;
+      //const float rngSeed = time(NULL);
       // initialize the random number generator
       MTRand rng(rngSeed);
 
@@ -168,7 +176,7 @@ int main(int argc, char *argv[]) {
       } while ((generation < MAX_GENS) && (curtime < time_for_execution));
       // cout << "TOTAL EXECUTION TIME: " << curtime << endl;
 
-      fout << algorithm.getBestFitness() / order << endl;
+      fout << (algorithm.getBestFitness() / order) << ";\n";
       cout << "BRKGA execution " << j << " for " << "'" << net_name << "' finished" << endl;
       Sleep(delay_time);
     }
@@ -176,14 +184,16 @@ int main(int argc, char *argv[]) {
     cout << "Finishing BRKGA for '" << net_name << "'\n\n";
 
     //IGS
-    cout << "Starting IGS for '" << net_name << "'\n";
     fout << "IGS SECTION" << endl;
     for(int j = 0; j < qt_executions; j++) {
-      Graph g(net_name, 0);
-      Demand d(dem_name, 0);
-      Greedy greedy(g, d);
+      cout << "Starting IGS execution " << j << " for '" << net_name << "'\n";
+
+      Graph g_igs(net_name, 0);
+      Demand d_igs(dem_name, 0);
+      //Greedy greedy(g_igs, d_igs);
       IGS igs;
-      fout << (igs.execute(greedy, time_for_execution) / order) << endl;
+      fout << (igs.execute(g_igs, d_igs, time_for_execution) / order) << ";\n";
+      // cout << (igs.execute(greedy, time_for_execution) / order) << endl;
       cout << "IGS execution " << j << " for " << "'" << net_name << "' finished" << endl;
       Sleep(delay_time);
     }

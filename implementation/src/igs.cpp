@@ -10,63 +10,43 @@ IGS::~IGS()
   //dtor
 }
 
-float IGS::execute(Greedy greedy, int execution_time) {
+float IGS::execute(Graph graph, Demand demand, int execution_time) {
   time_t t_start = time(NULL);
 
-  int k = 1, qt_it_wo_imp = 0;
-  float act = 0;
+  int k = (demand.GetVecRequest().size() * 0.10);
+  float act = 0, beta = 0.05;
 
-  // Gerando S0 e S (o metodo ja constroi e refina)
-  Greedy s  = greedy;
-  s.ExecuteWithRefine();
-  min_cost_ = s.getMinCost();
+  Greedy s0(graph, demand);
+  s0.Execute(true, true);
 
-  // Condicao de parada
+  Greedy s = s0;
+  s.ExecuteWithRefine(true, false);
+
+  Greedy s_star = s;
+  min_cost_ = s_star.getMinCost();
+
+  Greedy s1 = s, s2 = s;
+
   time_t t_stop = time(NULL);
   while ((t_stop - t_start) < execution_time) {
-    // Desconstrucao de S
-    Greedy s_line(s.GetGraph(), s.GetDemand());
-    // Pertubacao (S, K)
-    s_line.ExecuteWithRefine(k);
+    Greedy s1 = s;
+    s1.ExecuteWithRefine(k);
 
-    // Criterio de aceitacao (BETTER)
-    if (s_line.getMinCost() < s.getMinCost()) {
-      s = s_line;
-      act = s_line.getMinCost();
-    }else{
-      act = s.getMinCost();
+    Greedy s2 = s1;
+    s2.ExecuteWithRefine(true, false);
+
+    if(s2.getMinCost() <= ((1 + beta) * s_star.getMinCost())) {
+      s = s2;
     }
 
-    if(act < min_cost_) {
-      min_cost_ = act;
-      qt_it_wo_imp = 0;
-    }else{
-      qt_it_wo_imp++;
-      // Piorando resultado
-      if(qt_it_wo_imp >= s_line.GetDemand().GetQtRequest()) {
-      // if(qt_it_wo_imp >= 5) {
-        if((s_line.getMinCost() > s.getMinCost()) && (s_line.getMinCost() > greedy.getMinCost())) {
-          s = s_line;
-        }else if((greedy.getMinCost() > s_line.getMinCost()) && (greedy.getMinCost() > s.getMinCost())) {
-          s = greedy;
-        }else {
-          s.ExecuteWithRefine();
-        }
-        qt_it_wo_imp = 0;
-      }
-    }
-
-    // Aumentando K
-    if(k <= greedy.GetDemand().GetQtRequest() - 1) {
-    // if(k <= 3) {
-      k++;
-    }else{
-      k = 1;
+    if(s.getMinCost() < s_star.getMinCost()) {
+      s_star = s;
     }
 
     t_stop = time(NULL);
-    cout << "Execution at: " << (t_stop - t_start) << " - COST: " << act / 1000000 << " - K: " << k << endl;
+//-->     cout << "IGS TMP S*: " << s_star.getMinCost()/1000000 << " - S'' COST: " << s2.getMinCost()/1000000 << " - S COST: " << s.getMinCost() / 1000000 << endl;
   }
 
+  min_cost_ = s_star.getMinCost();
   return min_cost_;
 }
