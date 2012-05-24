@@ -20,7 +20,6 @@
 		<Unit filename="include\BRKGADecoder.h" />
 		<Unit filename="include\MTRand.h" />
 		<Unit filename="include\Population.h" />
-		<Unit filename="include\breadth_first.h" />
 		<Unit filename="include\comparision.h" />
 		<Unit filename="include\constants.h" />
 		<Unit filename="include\demand.h" />
@@ -36,13 +35,12 @@
 		<Unit filename="include\vertex.h" />
 		<Unit filename="main.cc" />
 		<Unit filename="src\BRKGADecoder.cpp" />
-		<Unit filename="src\breadth_first.cc" />
 		<Unit filename="src\demand.cc" />
 		<Unit filename="src\dijkstra.cc" />
 		<Unit filename="src\functions.cc" />
 		<Unit filename="src\graph.cc" />
 		<Unit filename="src\greedy.cc" />
-		<Unit filename="src\igs.cpp" />
+		<Unit filename="src\igs.cc" />
 		<Unit filename="src\request.cc" />
 		<Unit filename="src\rngs.cpp" />
 		<Unit filename="src\rvgs.cpp" />

@@ -5,10 +5,10 @@
 #ifndef _PIFRO2_INCLUDE_DIJKSTRA_H_
 #define _PIFRO2_INCLUDE_DIJKSTRA_H_
 
+#include <string.h>
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <string.h>
 
 #include "./macros.h"
 #include "./graph.h"
@@ -25,17 +25,16 @@ class Dijkstra {
 
     Dijkstra();
     explicit Dijkstra(int qtpaths);
-    Graph GetCostByDijkstra(Graph& graph,
+    Graph GetPathByDijkstra(Graph graph,
                             int src,
                             int dst,
                             int idpath);
     void DeletePath(int idpath);
-    void SetCostByDijkstra(float cost);
-    Graph SetAllGraphEdgeIncCost(Graph& graph, int qtrequests);
+    Graph SetAllGraphEdgeIncCost(Graph graph, int qtrequests);
     void PrintPaths();
+
   private:
     float cost_by_dijkstra_;
-
 };
 
 #endif  // _PIFRO2_INCLUDE_DIJKSTRA_H_

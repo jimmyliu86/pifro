@@ -9,7 +9,7 @@
 struct comparision_request_by_qtroadm {
   public:
     bool operator()(Request a, Request b) {
-      return a.GetQtROADM() < b.GetQtROADM();
+      return a.qt_roadm_ < b.qt_roadm_;
   }
 };
 

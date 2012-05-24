@@ -5,14 +5,17 @@
 #ifndef _PIFRO2_INCLUDE_DEMAND_H_
 #define _PIFRO2_INCLUDE_DEMAND_H_
 
+#include <time.h>
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <algorithm>
 
 #include "./macros.h"
 #include "./request.h"
 #include "./graph.h"
-#include "./breadth_first.h"
 #include "./comparision.h"
+#include "./rvgs.h"
 
 using std::cout;
 using std::endl;
@@ -21,23 +24,15 @@ using std::ifstream;
 
 class Demand {
   public:
+    std::vector<Request> vec_request_;
+    int qt_request_;
+
     Demand();
     explicit Demand(char* filename,
                     int tipo);
-    std::vector<Request>& GetVecRequest();
-    void SetVecRequest(std::vector<Request> vecrequest);
-    int GetQtRequest();
-    void SetQtRequest(int qtrequest);
-
     void LoadFromTRFFile(char* filename);
-    int QtROADMByBFS(std::vector<Vertex>*& adjlist,
-                     int src,
-                     int dst,
-                     int qtvertex);
+    void Sort();
     void Print();
-  private:
-    std::vector<Request> vec_request_;
-    int qt_request_;
 };
 
 #endif  // _PIFRO2_INCLUDE_DEMAND_H_
