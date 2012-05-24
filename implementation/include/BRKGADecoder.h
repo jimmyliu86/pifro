@@ -16,14 +16,16 @@
 
 class BRKGADecoder {
   public:
+    Demand demand_;
+    Graph graph_;
+
     explicit BRKGADecoder(Graph graph, Demand demand);
     virtual ~BRKGADecoder();
 
     double decode(const std::vector< double >& chromosome) const;
 
   private:
-    Demand demand_;
-    Graph graph_;
+
 };
 
 #endif  // _PIFRO2_INCLUDE_BRKGADECODER_H_

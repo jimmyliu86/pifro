@@ -16,26 +16,6 @@ Demand::Demand(char* filename,
   }
 }
 
-std::vector<Request>& Demand::GetVecRequest() {
-  return vec_request_;
-}
-
-void Demand::SetVecRequest(std::vector<Request> vecrequest) {
-  vec_request_ = vecrequest;
-}
-
-int Demand::GetQtRequest() {
-  return qt_request_;
-}
-
-void Demand::SetQtRequest(int qtrequest) {
-  qt_request_ = qtrequest;
-}
-
-// bool Demand::compare(Request request1, Request request2){
-//     return (request1.getQtROADM() < request2.getQtROADM());
-// }
-
 void Demand::LoadFromTRFFile(char* filename) {
   ifstream fin(filename);
   fin >> qt_request_;
@@ -43,45 +23,35 @@ void Demand::LoadFromTRFFile(char* filename) {
   int src, dst;
   int qt;
 
-  // vector<int> visited;
-  // BreadthFirst bfs;
-
   for (int i = 0; i < qt_request_; i++) {
     fin >> src;
     fin >> dst;
     fin >> qt;
 
-    request.SetSrc(src);
-    request.SetDst(dst);
-    request.SetQt(qt);
-    request.SetId(i);
+    request.src_ = src;
+    request.dst_ = dst;
+    request.qt_ = qt;
+    request.id_ = i;
 
-
-    // request.setQtROADM(bfs.getQtROADM(adjlist, src, dst, qtvertex));
-    // cout << "SRC: " << src << " - DST: " << dst
-    // << " - QTROADM: " << request.getQtROADM() << endl;
-
-    // ------>>> bfs.printWay();
-    // cout << "======================================\n";
-    // cout << "QTROADM: " << request.getQtROADM() << " - i: " << i << endl;
     vec_request_.push_back(request);
   }
   fin.close();
+}
 
-  // bfs.getQtROADM(adjlist, 5, 10, qtvertex);
-  // bfs.printWay();
-  // sort(VecRequest.begin(),
-  //        VecRequest.end(),
-  //        comparison_request_by_qtroadm());
-  // cout << "QT: " << VecRequest.begin().getQtROADM()<<endl;
+void Demand::Sort() {
+  srand(time(NULL));
+  for (int i = 0; i < vec_request_.size(); i++) {
+    vec_request_[i].key_ = ((static_cast<float>(Uniform(0, 1)) / rand()));
+  }
+  sort(vec_request_.begin(), vec_request_.end(), comparision_request_by_key());
 }
 
 void Demand::Print() {
   for (int i = 0; i < vec_request_.size(); i++) {
-    cout << "Source: " << vec_request_[i].GetSrc()
-         << " - Destination: " << vec_request_[i].GetDst()
-         << " - Quantity: " << vec_request_[i].GetQt()
-         << " - QtROADM: " << vec_request_[i].GetQtROADM()
+    cout << "Source: " << vec_request_[i].src_
+         << " - Destination: " << vec_request_[i].dst_
+         << " - Quantity: " << vec_request_[i].qt_
+         << " - QtROADM: " << vec_request_[i].qt_roadm_
          << endl;
   }
 }

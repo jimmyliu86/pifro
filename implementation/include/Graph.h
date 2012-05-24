@@ -11,6 +11,7 @@
 
 #include "./macros.h"
 #include "./vertex.h"
+#include "./functions.h"
 
 using std::cout;
 using std::endl;
@@ -19,16 +20,16 @@ using std::ofstream;
 
 class Graph {
   public:
+    std::vector< std::vector<Vertex> > adj_list_;
+    int** adj_matrix_;
+    int qt_vertex_;
+    int qt_edge_;
+    Functions functions_;
+
     Graph();
     explicit Graph(char* filename, int tipo);
-    std::vector<Vertex>*& GetAdjList();
-    int**& GetAdjMatrix();
-    int GetQtVertex();
-    void SetAdjList(std::vector<Vertex>* adjlist);
-    void SetQtVertex(int qtvertex);
     void AddEdge(int src, int dst, float weight);
     void DeleteEdge(int vertex);
-    std::vector<Vertex>& GetNeighbors(int vertex);
     float GetTotalCost();
     void CleanCosts();
     void CleanColors();
@@ -38,12 +39,6 @@ class Graph {
     void PrintWithCost();
     void PrintWithIncCost();
     void PrintWithQtRequests();
-
-  private:
-    std::vector<Vertex>* adj_list_;
-    int** adj_matrix_;
-    int qt_vertex_;
-    int qt_edge_;
 };
 
 #endif  // _PIFRO2_INCLUDE_GRAPH_H_

@@ -9,13 +9,11 @@
 
 #include "./greedy.h"
 
-class IGS
-{
+class IGS {
   public:
     IGS();
     virtual ~IGS();
     float execute(Graph graph, Demand demand, int execution_time);
-  protected:
   private:
     float min_cost_;
 };
