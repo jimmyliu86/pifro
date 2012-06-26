@@ -16,8 +16,8 @@ float IGS::execute(Graph graph, Demand demand, int execution_time) {
   float act = 0, beta = 0;
 
   Greedy s(graph, demand);
-  s.Execute(true, false);
-  s.ExecuteWithRefine(false, false);
+  s.Execute(true, false, t_start, execution_time);
+  s.ExecuteWithRefine(false, false, t_start, execution_time);
 
   Greedy s_star = s;
 
@@ -25,8 +25,8 @@ float IGS::execute(Graph graph, Demand demand, int execution_time) {
 
   while ((t_stop - t_start) < execution_time) {
     Greedy s2 = s;
-    s2.ExecuteWithRefine(k);
-    s2.ExecuteWithRefine(false, false);
+    s2.ExecuteWithRefine(k, t_start, execution_time);
+    s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ <= ((1 + beta) * s_star.min_cost_)) {
       s = s2;

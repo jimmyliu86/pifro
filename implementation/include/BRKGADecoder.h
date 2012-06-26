@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <list>
 #include <vector>
+#include <float.h>
 
 #include "./Graph.h"
 #include "./Request.h"
@@ -19,12 +20,14 @@ class BRKGADecoder {
     Demand demand_;
     Graph graph_;
 
-    explicit BRKGADecoder(Graph graph, Demand demand);
+    explicit BRKGADecoder(Graph graph, Demand demand, time_t tstart, int tex);
     virtual ~BRKGADecoder();
 
     double decode(const std::vector< double >& chromosome) const;
 
   private:
+    time_t TStart, TStop;
+    int Tex;
 
 };
 
