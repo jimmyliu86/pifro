@@ -49,6 +49,10 @@ private:
 
   double& operator()(unsigned i, unsigned j);   // Direct access to allele j of chromosome i
   std::vector< double >& operator()(unsigned i);  // Direct access to chromosome i
+
+  //{Daniel}
+  time_t TStart, TStop;
+  int Tex;
 };
 
 Population::Population(const Population& pop) :

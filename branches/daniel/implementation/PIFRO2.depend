@@ -423,7 +423,7 @@
 
 1337834022 c:\cygwin\pifro2\include\constants.h
 
-1337834498 c:\cygwin\pifro2\include\greedy.h
+1340688886 c:\cygwin\pifro2\include\greedy.h
 	<time.h>
 	<cmath>
 	<vector>
@@ -445,29 +445,29 @@
 	<ctime>
 	<cmath>
 
-1334641077 c:\cygwin\pifro2\include\brkga.h
-	<omp.h>
+1324914874 c:\cygwin\pifro2\include\brkga.h
 	<algorithm>
 	<exception>
 	<stdexcept>
 	"Population.h"
 
-1334641077 c:\cygwin\pifro2\include\population.h
+1340690515 c:\cygwin\pifro2\include\population.h
 	<vector>
 	<algorithm>
 	<exception>
 	<stdexcept>
 
-1337054484 c:\cygwin\pifro2\include\brkgadecoder.h
+1340691986 c:\cygwin\pifro2\include\brkgadecoder.h
 	<time.h>
 	<algorithm>
 	<list>
 	<vector>
+	<float.h>
 	"./Graph.h"
 	"./Request.h"
 	"./Greedy.h"
 
-1337831830 source:c:\cygwin\pifro2\src\brkgadecoder.cpp
+1340691986 source:c:\cygwin\pifro2\src\brkgadecoder.cpp
 	"BRKGADecoder.h"
 
 1334641070 source:c:\cygwin\pifro2\src\breadthfirst.cpp
@@ -753,7 +753,7 @@
 1337833940 source:c:\cygwin\pifro2\src\vertex.cc
 	"./vertex.h"
 
-1337833467 source:c:\cygwin\pifro2\main.cc
+1340691586 source:c:\cygwin\pifro2\main.cc
 	<dirent.h>
 	<stdio.h>
 	<windows.h>
@@ -782,26 +782,26 @@
 	<time.h>
 	"./greedy.h"
 
-1337831830 source:c:\cygwin\pifro2\src\demand.cc
+1337834800 source:c:\cygwin\pifro2\src\demand.cc
 	<vector>
 	"./demand.h"
 
-1337833585 source:c:\cygwin\pifro2\src\functions.cc
+1337834814 source:c:\cygwin\pifro2\src\functions.cc
 	"./functions.h"
 
 1337833617 source:c:\cygwin\pifro2\src\graph.cc
 	"./graph.h"
 
-1337834238 source:c:\cygwin\pifro2\src\greedy.cc
+1340691586 source:c:\cygwin\pifro2\src\greedy.cc
 	"./greedy.h"
 
 1337833909 source:c:\cygwin\pifro2\src\igs.cpp
 	"./igs.h"
 
-1337834220 source:c:\cygwin\pifro2\src\dijkstra.cc
+1337834806 source:c:\cygwin\pifro2\src\dijkstra.cc
 	<vector>
 	"./dijkstra.h"
 
-1337833891 source:c:\cygwin\pifro2\src\igs.cc
+1340694149 source:c:\cygwin\pifro2\src\igs.cc
 	"./igs.h"
 

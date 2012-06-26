@@ -49,6 +49,42 @@ float Greedy::Execute(bool regenerateDijkstra, bool demandSort) {
   return min_cost_;
 }
 
+float Greedy::Execute(bool regenerateDijkstra, bool demandSort, time_t tstart, int tex) {
+  if (demandSort) {
+    demand_.Sort();
+  }
+
+  graph_.CleanCosts();
+
+  if (regenerateDijkstra) {
+
+    dijkstra_.paths_.clear();
+    dijkstra_.paths_.resize(demand_.qt_request_);
+
+    for (int p = 0; p < demand_.vec_request_.size(); p++) {
+      if((time(NULL) - tstart) < tex){
+        AddPath(p, demand_.vec_request_[p].qt_, true);
+      }else{
+        break;
+      }
+    }
+  } else {
+    for (int p = 0; p < demand_.vec_request_.size(); p++) {
+      if((time(NULL) - tstart) < tex){
+        AddPath(p, demand_.vec_request_[p].qt_, false);
+      }else{
+        break;
+      }
+    }
+  }
+
+  if((time(NULL) - tstart) < tex){
+    min_cost_ = graph_.GetTotalCost();
+  }
+
+  return min_cost_;
+}
+
 float Greedy::DeletePath(int path, int qtrequests) {
   std::vector<int> path_cp = dijkstra_.paths_[path];
 
@@ -198,8 +234,71 @@ float Greedy::ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort) {
   return min_cost_;
 }
 
+float Greedy::ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort, time_t tstart, int tex) {
+  if (regenerate_dijkstra || demand_sort) {
+    min_cost_ = Execute(regenerate_dijkstra, demand_sort, tstart, tex);
+  } else {
+    min_cost_ = graph_.GetTotalCost();
+  }
 
-float Greedy::ExecuteWithRefine(std::vector<int> permutation) {
+  int actrequest = -1, pathch = 1, mincostch = 0, lastalt = -2, loops = 0;
+  std::vector<int> actpath;
+
+  while (((pathch > 0) || (mincostch > 0)
+          || (loops < 1)) && (lastalt != actrequest) && ((time(NULL) - tstart) < tex)) {
+    if ((lastalt == actrequest) && (loops > 0)) {
+      break;
+    }
+
+    if (actrequest == demand_.vec_request_.size() -1) {
+      actrequest = -1;
+      loops++;
+    }
+
+    actrequest++;
+
+    pathch = 0;
+    mincostch = 0;
+
+    for (int i = 0; i < demand_.vec_request_.size(); i++) {
+      if((time(NULL) - tstart) < tex){
+      actpath.clear();
+      actpath = dijkstra_.paths_[i];
+
+      DeletePath(i, demand_.vec_request_[i].qt_);
+      AddPath(i, demand_.vec_request_[i].qt_, true);
+
+      if (graph_.GetTotalCost() != min_cost_) {
+        mincostch++;
+        if (min_cost_ > graph_.GetTotalCost()) {
+          min_cost_ = graph_.GetTotalCost();
+          lastalt = i;
+        }
+      }
+
+      int u = 0;
+      if (pathch == 0) {
+        while (u < actpath.size()) {
+          if (actpath[u] != dijkstra_.paths_[i][u]) {
+            pathch++;
+            lastalt = i;
+            break;
+          }
+          u++;
+        }
+      }
+    }else{
+      break;
+    }
+    }
+  }
+  if((time(NULL) - tstart) < tex){
+    min_cost_ = graph_.GetTotalCost();
+  }
+  return min_cost_;
+}
+
+float Greedy::ExecuteWithRefine(std::vector<int> permutation, time_t tstart, int tex) {
   std::vector<Request> aux;
 
   for (int i = 0; i < permutation.size(); i++) {
@@ -207,8 +306,8 @@ float Greedy::ExecuteWithRefine(std::vector<int> permutation) {
   }
 
   demand_.vec_request_ = aux;
-  min_cost_ = Execute(true, false);
-  min_cost_ = ExecuteWithRefine(false, false);
+  //min_cost_ = Execute(true, false);
+  min_cost_ = ExecuteWithRefine(true, false, tstart, tex);
 
   return min_cost_;
 }
@@ -237,8 +336,47 @@ float Greedy::ExecuteWithRefine(int k) {
     AddPath(x, demand_.vec_request_[x].qt_, true);
   }
 
-  min_cost_ = ExecuteWithRefine(false, false);
+  //min_cost_ = ExecuteWithRefine(false, false);
+  min_cost_ = graph_.GetTotalCost();
 
   return min_cost_;
 }
 
+float Greedy::ExecuteWithRefine(int k, time_t tstart, int tex){
+  std::vector<Request> rnd_requests;
+  int x = 0;
+
+  while ((x < k) && ((time(NULL) - tstart) < tex)) {
+    int r = (rand() % demand_.vec_request_.size());
+    DeletePath(r, demand_.vec_request_[r].qt_);
+    dijkstra_.paths_.push_back(dijkstra_.paths_[r]);
+    dijkstra_.paths_.erase(dijkstra_.paths_.begin() + r);
+    rnd_requests.push_back(demand_.vec_request_[r]);
+    demand_.vec_request_.erase(demand_.vec_request_.begin() + r);
+    x++;
+  }
+
+  for (x = 0; x < rnd_requests.size(); x++) {
+    if((time(NULL) - tstart) < tex){
+      demand_.vec_request_.push_back(rnd_requests[x]);
+    }else{
+      break;
+    }
+  }
+
+  for (x = demand_.vec_request_.size() - k;
+       x < demand_.vec_request_.size(); x++) {
+         if((time(NULL) - tstart) < tex){
+           AddPath(x, demand_.vec_request_[x].qt_, true);
+         }else{
+           break;
+         }
+  }
+
+  //min_cost_ = ExecuteWithRefine(false, false);
+  if((time(NULL) - tstart) < tex){
+    min_cost_ = graph_.GetTotalCost();
+  }
+
+  return min_cost_;
+}

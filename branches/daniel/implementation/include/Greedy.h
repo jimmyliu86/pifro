@@ -36,9 +36,12 @@ class Greedy {
                   int qtrequests,
                   bool search_new_path);
     float Execute(bool regenerateDijkstra, bool demandSort);
+    float Execute(bool regenerateDijkstra, bool demandSort, time_t tstart, int tex);
     float ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort);
-    float ExecuteWithRefine(std::vector<int> permutation);
+    float ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort, time_t tstart, int tex);
+    float ExecuteWithRefine(std::vector<int> permutation, time_t tstart, int tex);
     float ExecuteWithRefine(int k);
+    float ExecuteWithRefine(int k, time_t tstart, int tex);
 };
 
 #endif  // _PIFRO2_INCLUDE_GREEDY_H_
