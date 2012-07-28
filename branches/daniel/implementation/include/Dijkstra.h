@@ -9,12 +9,14 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <float.h>
 
 #include "./macros.h"
 #include "./graph.h"
 #include "./request.h"
 #include "./vertex.h"
 #include "./functions.h"
+#include "./constants.h"
 
 using std::cout;
 using std::endl;
@@ -28,9 +30,11 @@ class Dijkstra {
     Graph GetPathByDijkstra(Graph graph,
                             int src,
                             int dst,
-                            int idpath);
+                            int idpath,
+                            int qtrequests);
     void DeletePath(int idpath);
     Graph SetAllGraphEdgeIncCost(Graph graph, int qtrequests);
+    Graph SetAllGraphEdgeIncCost(Graph graph, int qtrequests, int p);
     void PrintPaths();
 
   private:

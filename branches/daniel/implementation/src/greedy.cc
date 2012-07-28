@@ -80,7 +80,11 @@ float Greedy::Execute(bool regenerateDijkstra, bool demandSort, time_t tstart, i
 
   if((time(NULL) - tstart) < tex){
     min_cost_ = graph_.GetTotalCost();
+  }else{
+    min_cost_ = FLT_MAX;
   }
+
+  // graph_.PrintWithQtRequests();
 
   return min_cost_;
 }
@@ -121,7 +125,7 @@ float Greedy::DeletePath(int path, int qtrequests) {
 
   min_cost_ = graph_.GetTotalCost();
 
-  return  graph_.GetTotalCost();
+  return  min_cost_;
 }
 
 
@@ -132,7 +136,8 @@ float Greedy::AddPath(int path, int qtrequests, bool search_new_path) {
     graph_ = dijkstra_.GetPathByDijkstra(graph_,
                                          demand_.vec_request_[path].src_,
                                          demand_.vec_request_[path].dst_,
-                                         path);
+                                         path,
+                                         qtrequests);
   }
 
   std::vector<int> path_cp = dijkstra_.paths_[path];
@@ -146,6 +151,17 @@ float Greedy::AddPath(int path, int qtrequests, bool search_new_path) {
         int w = graph_.adj_list_[z][x].qt_requests_;
         float l = graph_.adj_list_[z][x].weight_;
         graph_.adj_list_[z][x].cost_ = functions_.Fwdm(w, l);
+
+              // Verificando se não ultrapassou a quantidade
+              // de comprimentos de onda permitidos
+              if(graph_.adj_list_[z][x].qt_requests_ > (ROADMLimit * U)){
+              cout << "wavelengths limit reaching on fiber " <<
+                 z << " - " << x << " - Wavelenghts amount: " <<
+                 graph_.adj_list_[z][x].qt_requests_ << endl;
+                 graph_.impossible_ = -1;
+              // system("PAUSE");
+            }
+
         break;
       }
       x++;
@@ -171,7 +187,7 @@ float Greedy::AddPath(int path, int qtrequests, bool search_new_path) {
 
   min_cost_ = graph_.GetTotalCost();
 
-  return graph_.GetTotalCost();
+  return min_cost_;
 }
 
 
@@ -275,6 +291,7 @@ float Greedy::ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort, time
           lastalt = i;
         }
       }
+            //cout << "GREEDY MIN COST: " << min_cost_ << "\n";
 
       int u = 0;
       if (pathch == 0) {
@@ -294,6 +311,8 @@ float Greedy::ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort, time
   }
   if((time(NULL) - tstart) < tex){
     min_cost_ = graph_.GetTotalCost();
+  }else{
+    min_cost_ = FLT_MAX;
   }
   return min_cost_;
 }
@@ -307,8 +326,11 @@ float Greedy::ExecuteWithRefine(std::vector<int> permutation, time_t tstart, int
 
   demand_.vec_request_ = aux;
   //min_cost_ = Execute(true, false);
-  min_cost_ = ExecuteWithRefine(true, false, tstart, tex);
-
+  if((time(NULL) - tstart) < tex){
+    min_cost_ = ExecuteWithRefine(true, false, tstart, tex);
+  }else{
+    min_cost_ = FLT_MAX;
+  }
   return min_cost_;
 }
 
@@ -376,6 +398,8 @@ float Greedy::ExecuteWithRefine(int k, time_t tstart, int tex){
   //min_cost_ = ExecuteWithRefine(false, false);
   if((time(NULL) - tstart) < tex){
     min_cost_ = graph_.GetTotalCost();
+  }else{
+    min_cost_ = FLT_MAX;
   }
 
   return min_cost_;

@@ -405,31 +405,34 @@
 
 1337834014 c:\cygwin\pifro2\include\comparision.h
 
-1337834296 c:\cygwin\pifro2\include\dijkstra.h
+1342011428 c:\cygwin\pifro2\include\dijkstra.h
 	<string.h>
 	<iostream>
 	<algorithm>
 	<vector>
+	<float.h>
 	"./macros.h"
 	"./graph.h"
 	"./request.h"
 	"./vertex.h"
 	"./functions.h"
+	"./constants.h"
 
-1337834321 c:\cygwin\pifro2\include\functions.h
+1341886237 c:\cygwin\pifro2\include\functions.h
 	<math.h>
 	<cmath>
 	"./constants.h"
 
-1337834022 c:\cygwin\pifro2\include\constants.h
+1342893328 c:\cygwin\pifro2\include\constants.h
 
-1340688886 c:\cygwin\pifro2\include\greedy.h
+1340723559 c:\cygwin\pifro2\include\greedy.h
 	<time.h>
 	<cmath>
 	<vector>
 	<iostream>
 	<cstdlib>
 	<algorithm>
+	<float.h>
 	"./rvgs.h"
 	"./graph.h"
 	"./demand.h"
@@ -457,7 +460,7 @@
 	<exception>
 	<stdexcept>
 
-1340691986 c:\cygwin\pifro2\include\brkgadecoder.h
+1342909780 c:\cygwin\pifro2\include\brkgadecoder.h
 	<time.h>
 	<algorithm>
 	<list>
@@ -466,8 +469,9 @@
 	"./Graph.h"
 	"./Request.h"
 	"./Greedy.h"
+	"./psc.h"
 
-1340691986 source:c:\cygwin\pifro2\src\brkgadecoder.cpp
+1342909816 source:c:\cygwin\pifro2\src\brkgadecoder.cpp
 	"BRKGADecoder.h"
 
 1334641070 source:c:\cygwin\pifro2\src\breadthfirst.cpp
@@ -753,20 +757,15 @@
 1337833940 source:c:\cygwin\pifro2\src\vertex.cc
 	"./vertex.h"
 
-1340691586 source:c:\cygwin\pifro2\main.cc
-	<dirent.h>
+1342909753 source:c:\cygwin\pifro2\main.cc
 	<stdio.h>
 	<windows.h>
 	<stdlib.h>
-	<sys/types.h>
-	<sys/stat.h>
-	<unistd.h>
-	<string.h>
-	<limits.h>
 	<time.h>
 	<cstdlib>
 	<iostream>
 	<fstream>
+	<sstream>
 	"./vertex.h"
 	"./graph.h"
 	"./demand.h"
@@ -777,31 +776,58 @@
 	"./BRKGA.h"
 	"./BRKGADecoder.h"
 	"./igs.h"
+	"./psc.h"
+	"./mspsc.h"
 
-1337834560 c:\cygwin\pifro2\include\igs.h
+1342907414 c:\cygwin\pifro2\include\igs.h
 	<time.h>
 	"./greedy.h"
+	"./psc.h"
 
 1337834800 source:c:\cygwin\pifro2\src\demand.cc
 	<vector>
 	"./demand.h"
 
-1337834814 source:c:\cygwin\pifro2\src\functions.cc
+1341886413 source:c:\cygwin\pifro2\src\functions.cc
 	"./functions.h"
 
-1337833617 source:c:\cygwin\pifro2\src\graph.cc
+1340859470 source:c:\cygwin\pifro2\src\graph.cc
 	"./graph.h"
 
-1340691586 source:c:\cygwin\pifro2\src\greedy.cc
+1342910052 source:c:\cygwin\pifro2\src\greedy.cc
 	"./greedy.h"
 
 1337833909 source:c:\cygwin\pifro2\src\igs.cpp
 	"./igs.h"
 
-1337834806 source:c:\cygwin\pifro2\src\dijkstra.cc
+1342011450 source:c:\cygwin\pifro2\src\dijkstra.cc
 	<vector>
 	"./dijkstra.h"
 
-1340694149 source:c:\cygwin\pifro2\src\igs.cc
+1342894030 source:c:\cygwin\pifro2\src\igs.cc
 	"./igs.h"
+
+1342059824 source:c:\cygwin\pifro2\src\mspsc.cc
+	"mspsc.h"
+
+1341892261 c:\cygwin\pifro2\include\mspsc.h
+	<float.h>
+	"./psc.h"
+
+1341892207 c:\cygwin\pifro2\include\psc.h
+	<time.h>
+	<cmath>
+	<vector>
+	<iostream>
+	<cstdlib>
+	<algorithm>
+	<float.h>
+	"./rvgs.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./functions.h"
+
+1342910052 source:c:\cygwin\pifro2\src\psc.cc
+	"./PSC.h"
 

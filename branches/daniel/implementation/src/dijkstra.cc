@@ -16,7 +16,8 @@ Dijkstra::Dijkstra(int qtpaths) {
 Graph Dijkstra::GetPathByDijkstra(Graph graph,
                                   int src,
                                   int dst,
-                                  int idpath) {
+                                  int idpath,
+                                  int qtrequests) {
   const int k = graph.qt_vertex_;
   int vis[k], prev[k];
   float dis[k];
@@ -56,12 +57,22 @@ Graph Dijkstra::GetPathByDijkstra(Graph graph,
 
   reverse(dijpath.begin(), dijpath.end());
 
+  // Verifica se foi possivel encontrar um caminho otico
+  if((dijpath[0] != src) &&
+     (dijpath[dijpath.size() - 1] != dst)){
+    cout << "Lightpath for " << src << " - " <<
+     dst << " not found " << dijpath[0] <<
+     " - " << dijpath[dijpath.size() - 1] << endl;
+    system("PAUSE");
+  }
+
   paths_[idpath].clear();
   paths_[idpath] = dijpath;
 
   return graph;
 }
 
+// Para Greedy
 Graph Dijkstra::SetAllGraphEdgeIncCost(Graph graph,
                                        int qtrequests) {
   Functions functions;
@@ -70,8 +81,35 @@ Graph Dijkstra::SetAllGraphEdgeIncCost(Graph graph,
       int w = graph.adj_list_[i][x].qt_requests_;
       float l = graph.adj_list_[i][x].weight_;
       int a = qtrequests;
-      graph.adj_list_[i][x].
-      inc_cost_ = functions.Fwdm(w+a, l) - functions.Fwdm(w, l);
+      if ((w + a) <= (U * ROADMLimit)) {
+        graph.adj_list_[i][x].
+        inc_cost_ = functions.Fwdm(w+a, l) - functions.Fwdm(w, l);
+      } else {
+        graph.adj_list_[i][x].
+        inc_cost_ = FLT_MAX;
+      }
+    }
+  }
+  return graph;
+}
+
+// Para PSC
+Graph Dijkstra::SetAllGraphEdgeIncCost(Graph graph,
+                                       int qtrequests,
+                                       int p) {
+  Functions functions;
+  for (int i = 0; i < graph.qt_vertex_; i++) {
+    for (int x = 1; x < graph.adj_list_[i].size(); x++) {
+      int w = graph.adj_list_[i][x].qt_requests_;
+      float l = graph.adj_list_[i][x].weight_;
+      int a = qtrequests;
+      if ((w + a) <= (U * ROADMLimit)) {
+        graph.adj_list_[i][x].
+        inc_cost_ = functions.F_line_wdm(w + a, l, p) - functions.F_line_wdm(w, l, p);
+      } else {
+        graph.adj_list_[i][x].
+        inc_cost_ = FLT_MAX;
+      }
     }
   }
   return graph;

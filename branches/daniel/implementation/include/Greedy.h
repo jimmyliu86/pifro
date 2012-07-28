@@ -11,6 +11,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>
+#include <float.h>
 
 #include "./rvgs.h"
 #include "./graph.h"

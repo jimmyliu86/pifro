@@ -25,6 +25,7 @@ class Graph {
     int qt_vertex_;
     int qt_edge_;
     Functions functions_;
+    int impossible_;
 
     Graph();
     explicit Graph(char* filename, int tipo);
