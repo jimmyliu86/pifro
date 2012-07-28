@@ -344,7 +344,7 @@ int main(int argc, char *argv[]) {
           }
         } while ((generation < MAX_GENS) && (curtime < time_for_execution_original));
 
-        fout << (algorithm.getBestFitness() / order) << ";";
+        fout << (algorithm.getBestFitness() / order) << ";\n";
         cout << "BRKGA execution " << j
              << " for " << "'" << net_name << "' finished at " << curtime << " seconds" << endl;
         Sleep(delay_time);
@@ -449,7 +449,7 @@ int main(int argc, char *argv[]) {
           }
         } while ((generation < MAX_GENS) && (curtime < time_for_execution_original));
 
-        fout << (algorithm.getBestFitness() / order) << ";";
+        fout << (algorithm.getBestFitness() / order) << ";\n";
         cout << "BRKGA execution " << j
              << " for " << "'" << net_name << "' finished at " << curtime << " seconds" << endl;
         Sleep(delay_time);
@@ -554,7 +554,7 @@ int main(int argc, char *argv[]) {
           }
         } while ((generation < MAX_GENS) && (curtime < time_for_execution_original));
 
-        fout << (algorithm.getBestFitness() / order) << ";";
+        fout << (algorithm.getBestFitness() / order) << ";\n";
         cout << "MSBRKGA execution " << j
              << " for " << "'" << net_name << "' finished at " << curtime << " seconds" << endl;
         Sleep(delay_time);
@@ -658,7 +658,7 @@ int main(int argc, char *argv[]) {
           }
         } while ((generation < MAX_GENS) && (curtime < time_for_execution_original));
 
-        fout << (algorithm.getBestFitness() / order) << ";";
+        fout << (algorithm.getBestFitness() / order) << ";\n";
         cout << "MSBRKGA execution " << j
              << " for " << "'" << net_name << "' finished at " << curtime << " seconds" << endl;
         Sleep(delay_time);
