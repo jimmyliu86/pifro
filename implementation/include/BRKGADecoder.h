@@ -14,20 +14,21 @@
 #include "./Graph.h"
 #include "./Request.h"
 #include "./Greedy.h"
+#include "./psc.h"
 
 class BRKGADecoder {
   public:
     Demand demand_;
     Graph graph_;
 
-    explicit BRKGADecoder(Graph graph, Demand demand, time_t tstart, int tex);
+    explicit BRKGADecoder(Graph graph, Demand demand, time_t tstart, int tex, int heuristic);
     virtual ~BRKGADecoder();
 
     double decode(const std::vector< double >& chromosome) const;
 
   private:
     time_t TStart, TStop;
-    int Tex;
+    int Tex, Heuristic;
 
 };
 

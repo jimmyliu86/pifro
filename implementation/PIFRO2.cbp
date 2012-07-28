@@ -29,6 +29,8 @@
 		<Unit filename="include\greedy.h" />
 		<Unit filename="include\igs.h" />
 		<Unit filename="include\macros.h" />
+		<Unit filename="include\mspsc.h" />
+		<Unit filename="include\psc.h" />
 		<Unit filename="include\request.h" />
 		<Unit filename="include\rngs.h" />
 		<Unit filename="include\rvgs.h" />
@@ -41,6 +43,8 @@
 		<Unit filename="src\graph.cc" />
 		<Unit filename="src\greedy.cc" />
 		<Unit filename="src\igs.cc" />
+		<Unit filename="src\mspsc.cc" />
+		<Unit filename="src\psc.cc" />
 		<Unit filename="src\request.cc" />
 		<Unit filename="src\rngs.cpp" />
 		<Unit filename="src\rvgs.cpp" />

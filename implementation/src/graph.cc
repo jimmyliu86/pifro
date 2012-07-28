@@ -5,11 +5,13 @@
 #include "./graph.h"
 
 Graph::Graph() {
+  impossible_ = -1;
 }
 
 Graph::Graph(char* filename, int tipo) {
   if (tipo == 0)
     LoadFromSNDFile(filename);
+  impossible_ = -1;
 }
 
 void Graph::AddEdge(int src, int dst, float weight) {
@@ -53,26 +55,29 @@ void Graph::LoadFromSNDFile(char* filename) {
 
 float Graph::GetTotalCost() {
   float totalcost = 0;
-  for (int p = 0; p < qt_vertex_; p++) {
-    for (int x = 1; x < adj_list_[p].size(); x++) {
-      if (adj_list_[p][x].color_ == -1) {
-        int w = adj_list_[p][x].qt_requests_;
-        float l = adj_list_[p][x].weight_;
-        totalcost += functions_.Fwdm(w, l);
-        adj_list_[p][x].color_ = 0;
-        int u = 1;
-        while (u < adj_list_[adj_list_[p][x].number_].size()) {
-          if (adj_list_[adj_list_[p][x].number_][u].number_ ==
-              adj_list_[p][0].number_) {
-            adj_list_[adj_list_[p][x].number_][u].color_ = 0;
+  if(impossible_ != 0) {
+    for (int p = 0; p < qt_vertex_; p++) {
+      for (int x = 1; x < adj_list_[p].size(); x++) {
+        if (adj_list_[p][x].color_ == -1) {
+          int w = adj_list_[p][x].qt_requests_;
+          float l = adj_list_[p][x].weight_;
+          totalcost += functions_.Fwdm(w, l);
+          adj_list_[p][x].color_ = 0;
+          int u = 1;
+          while (u < adj_list_[adj_list_[p][x].number_].size()) {
+            if (adj_list_[adj_list_[p][x].number_][u].number_ ==
+                adj_list_[p][0].number_) {
+              adj_list_[adj_list_[p][x].number_][u].color_ = 0;
+            }
+            u++;
           }
-          u++;
         }
       }
     }
+    CleanColors();
+  } else {
+    totalcost = -1;
   }
-  CleanColors();
-
   return totalcost;
 }
 
@@ -166,6 +171,12 @@ void Graph::PrintWithQtRequests() {
       cout  << "->" << adj_list_[i][x].qt_requests_
             << "->" << "[" << adj_list_[i][x].number_
             << "]";
+      if(adj_list_[i][x].qt_requests_ > 800) {
+        cout << "Extrapolado o limite de comprimentos de onda da fibra " <<
+             i << " - " << x << " - Quantidade de comprimentos de onda:" <<
+             adj_list_[i][x].qt_requests_ << endl;
+        system("PAUSE");
+      }
     }
     cout << endl;
   }

@@ -1,11 +1,12 @@
 #include "BRKGADecoder.h"
 
-BRKGADecoder::BRKGADecoder(Graph graph, Demand demand, time_t tstart, int tex)
+BRKGADecoder::BRKGADecoder(Graph graph, Demand demand, time_t tstart, int tex, int heuristic)
 {
   graph_ = graph;
   demand_ = demand;
   TStart = tstart;
   Tex = tex;
+  Heuristic = heuristic;
 }
 
 BRKGADecoder::~BRKGADecoder()
@@ -27,9 +28,17 @@ double BRKGADecoder::decode(const std::vector< double >& chromosome) const {
     permutation.push_back(i->second);
   }
 
-  Greedy greedy(graph_, demand_);
-  greedy.min_cost_ = FLT_MAX;
-  float cost = greedy.ExecuteWithRefine(permutation, TStart, Tex);
+  //Heuristic Greedy = 0, PSC = 1
+  float cost = FLT_MAX;
+  if(Heuristic == 0){
+    Greedy greedy(graph_, demand_);
+    greedy.min_cost_ = FLT_MAX;
+    cost = greedy.ExecuteWithRefine(permutation, TStart, Tex);
+  }else if(Heuristic == 1){
+    PSC psc(graph_, demand_);
+    psc.min_cost_ = FLT_MAX;
+    cost = psc.ExecuteWithRefine(permutation, TStart, Tex);
+  }
 
   return cost;
 }

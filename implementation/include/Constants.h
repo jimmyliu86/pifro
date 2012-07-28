@@ -10,6 +10,8 @@ const float OACost = ROADMCost / 2;
 const float OTCost = ROADMCost * 0.10;
 const float LOA = 100;
 const float LOT = 500;
-const float U = 100;
+const int U = 100;
+const int ROADMLimit = 8;
+const int P = 5;
 
 #endif  // _PIFRO2_INCLUDE_CONSTANTS_H_
