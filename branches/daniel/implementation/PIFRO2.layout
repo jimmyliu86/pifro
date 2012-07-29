@@ -55,7 +55,7 @@
 	<File name="include\vertex.h" open="0" top="0" tabpos="8">
 		<Cursor position="463" topLine="0" />
 	</File>
-	<File name="main.cc" open="1" top="1" tabpos="1">
+	<File name="main.cc" open="1" top="0" tabpos="1">
 		<Cursor position="22426" topLine="1012" />
 	</File>
 	<File name="src\BRKGADecoder.cpp" open="0" top="0" tabpos="8">
@@ -70,11 +70,11 @@
 	<File name="src\functions.cc" open="0" top="0" tabpos="6">
 		<Cursor position="796" topLine="0" />
 	</File>
-	<File name="src\graph.cc" open="1" top="0" tabpos="5">
-		<Cursor position="1972" topLine="50" />
+	<File name="src\graph.cc" open="1" top="1" tabpos="5">
+		<Cursor position="2326" topLine="45" />
 	</File>
 	<File name="src\greedy.cc" open="1" top="0" tabpos="2">
-		<Cursor position="4843" topLine="369" />
+		<Cursor position="4899" topLine="136" />
 	</File>
 	<File name="src\igs.cc" open="0" top="0" tabpos="5">
 		<Cursor position="4204" topLine="149" />
@@ -83,7 +83,7 @@
 		<Cursor position="473" topLine="0" />
 	</File>
 	<File name="src\psc.cc" open="1" top="0" tabpos="7">
-		<Cursor position="8361" topLine="0" />
+		<Cursor position="4825" topLine="135" />
 	</File>
 	<File name="src\request.cc" open="0" top="0" tabpos="4">
 		<Cursor position="385" topLine="0" />
