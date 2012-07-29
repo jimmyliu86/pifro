@@ -5,13 +5,13 @@
 #include "./graph.h"
 
 Graph::Graph() {
-  impossible_ = -1;
+  impossible_ = 0;
 }
 
 Graph::Graph(char* filename, int tipo) {
   if (tipo == 0)
     LoadFromSNDFile(filename);
-  impossible_ = -1;
+  impossible_ = 0;
 }
 
 void Graph::AddEdge(int src, int dst, float weight) {
@@ -55,7 +55,7 @@ void Graph::LoadFromSNDFile(char* filename) {
 
 float Graph::GetTotalCost() {
   float totalcost = 0;
-  if(impossible_ != 0) {
+  if(impossible_ != -1) {
     for (int p = 0; p < qt_vertex_; p++) {
       for (int x = 1; x < adj_list_[p].size(); x++) {
         if (adj_list_[p][x].color_ == -1) {
@@ -88,6 +88,7 @@ void Graph::CleanCosts() {
       adj_list_[i][x].inc_cost_ = 0;
       adj_list_[i][x].qt_requests_ = 0;
       adj_list_[i][x].color_ = -1;
+      impossible_ = 0;
     }
   }
 }
