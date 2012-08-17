@@ -35,6 +35,7 @@
 		<Unit filename="include\rngs.h" />
 		<Unit filename="include\rvgs.h" />
 		<Unit filename="include\vertex.h" />
+		<Unit filename="include\vns.h" />
 		<Unit filename="main.cc" />
 		<Unit filename="src\BRKGADecoder.cpp" />
 		<Unit filename="src\demand.cc" />
@@ -49,6 +50,7 @@
 		<Unit filename="src\rngs.cpp" />
 		<Unit filename="src\rvgs.cpp" />
 		<Unit filename="src\vertex.cc" />
+		<Unit filename="src\vns.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

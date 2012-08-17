@@ -23,6 +23,7 @@
 #include "./igs.h"
 #include "./psc.h"
 #include "./mspsc.h"
+#include "./vns.h"
 
 using std::cin;
 using std::stringstream;
@@ -40,13 +41,13 @@ int main(int argc, char *argv[]) {
   srand(time(NULL));
 
   std::vector<double> igs_k_;
-  igs_k_.push_back(0.05);
+//  igs_k_.push_back(0.05);
   igs_k_.push_back(0.1);
-  igs_k_.push_back(0.15);
+//  igs_k_.push_back(0.15);
   igs_k_.push_back(0.2);
-  igs_k_.push_back(0.25);
+//  igs_k_.push_back(0.25);
   igs_k_.push_back(0.3);
-  igs_k_.push_back(0.35);
+/*  igs_k_.push_back(0.35);
   igs_k_.push_back(0.4);
   igs_k_.push_back(0.45);
   igs_k_.push_back(0.5);
@@ -59,11 +60,14 @@ int main(int argc, char *argv[]) {
   igs_k_.push_back(0.85);
   igs_k_.push_back(0.9);
   igs_k_.push_back(0.95);
-  igs_k_.push_back(1);
+  igs_k_.push_back(1); */
 
   std::vector<double> igs_beta_;
   igs_beta_.push_back(0);
+  igs_beta_.push_back(0.05);
   igs_beta_.push_back(0.1);
+  igs_beta_.push_back(0.2);
+/*  igs_beta_.push_back(0.1);
   igs_beta_.push_back(0.2);
   igs_beta_.push_back(0.3);
   igs_beta_.push_back(0.4);
@@ -71,10 +75,10 @@ int main(int argc, char *argv[]) {
   igs_beta_.push_back(0.6);
   igs_beta_.push_back(0.7);
   igs_beta_.push_back(0.8);
-  igs_beta_.push_back(0.9);
+  igs_beta_.push_back(0.9);*/
 
   std::vector<int> igs_x_;
-  igs_x_.push_back(0);
+/*  igs_x_.push_back(0);
   igs_x_.push_back(10);
   igs_x_.push_back(20);
   igs_x_.push_back(30);
@@ -83,7 +87,9 @@ int main(int argc, char *argv[]) {
   igs_x_.push_back(60);
   igs_x_.push_back(70);
   igs_x_.push_back(80);
-  igs_x_.push_back(90);
+  igs_x_.push_back(90);*/
+  igs_x_.push_back(25);
+  igs_x_.push_back(50);
   igs_x_.push_back(100);
 
 
@@ -124,7 +130,8 @@ int main(int argc, char *argv[]) {
   bool greedy_exec_ = true, psc_exec_ = true, mspsc_exec_ = true,
        brkga_greedy_exec_= true, brkga_psc_exec_ = true, msbrkga_greedy_exec_= true, msbrkga_psc_exec_ = true,
        igs_greedy_minor_exec_ = true, igs_greedy_minor_equal_exec_ = true, igs_greedy_minor_x_exec_ = true, igs_greedy_minor_equal_x_exec_ = true,
-       igs_psc_minor_exec_ = true, igs_psc_minor_equal_exec_ = true, igs_psc_minor_x_exec_ = true, igs_psc_minor_equal_x_exec_ = true;
+       igs_psc_minor_exec_ = true, igs_psc_minor_equal_exec_ = true, igs_psc_minor_x_exec_ = true, igs_psc_minor_equal_x_exec_ = true,
+       vns_greedy_minor_exec_ = true, vns_greedy_minor_equal_exec_ = true, vns_psc_minor_exec_ = true, vns_psc_minor_equal_exec_ = true;
 
   // GREEDY
   if(greedy_exec_) {
@@ -658,7 +665,7 @@ int main(int argc, char *argv[]) {
           }
         } while ((generation < MAX_GENS) && (curtime < time_for_execution_original));
 
-        fout << (algorithm.getBestFitness() / order) << ";\n";
+        fout << (algorithm.getBestFitness() / order) << ";\nbAd";
         cout << "MSBRKGA execution " << j
              << " for " << "'" << net_name << "' finished at " << curtime << " seconds" << endl;
         Sleep(delay_time);
@@ -718,8 +725,8 @@ int main(int argc, char *argv[]) {
   if(igs_greedy_minor_equal_exec_) {
     for (int f = 0; f < instances.size(); f++) {
       for(int a = 0; a < igs_k_.size(); a++){
-        for(int b = 0; b < igs_beta_.size(); b++){
-          string output(instance_out + "/IGS/GREEDY/IGS_GME_" + instances[f] + "_k_" + tostring(igs_k_[a]) + "_b_" + tostring(igs_beta_[b]) + ".txt");
+//        for(int b = 0; b < igs_beta_.size(); b++){
+          string output(instance_out + "/IGS/GREEDY/IGS_GME_" + instances[f] + "_k_" + tostring(igs_k_[a]) + ".txt");
           string net_name_str(instance_folder +
                               instances[f] + "/" + instances[f] + ".net");
           string dem_name_str(instance_folder +
@@ -746,7 +753,7 @@ int main(int argc, char *argv[]) {
             g.CleanCosts();
             d.Sort();
             IGS igs;
-            fout << (igs.executeWithGreedyMinorEqual(g, d, time_for_execution_original, igs_k_[a], igs_beta_[b]) / order) << ";\n";
+            fout << (igs.executeWithGreedyMinorEqual(g, d, time_for_execution_original, igs_k_[a], 0) / order) << ";\n";
             cout << "IGS execution " << j
                  << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
             cout << "Finishing IGS for '" << net_name << "'\n\n";
@@ -754,7 +761,7 @@ int main(int argc, char *argv[]) {
 
           }
          fout.close();
-        }
+//        }
       }
     }
   }
@@ -812,10 +819,9 @@ int main(int argc, char *argv[]) {
   if(igs_greedy_minor_equal_x_exec_) {
     for (int f = 0; f < instances.size(); f++) {
       for(int a = 0; a < igs_k_.size(); a++){
-        for(int b = 0; b < igs_beta_.size(); b++){
+//        for(int b = 0; b < igs_beta_.size(); b++){
           for(int c = 0; c < igs_x_.size(); c++){
-            string output(instance_out + "/IGS/GREEDY/IGS_GMEX_" + instances[f] + "_k_" + tostring(igs_k_[a]) + "_b_" + tostring(igs_beta_[b]) +
-                          "_x_" + tostring(igs_x_[c]) + ".txt");
+            string output(instance_out + "/IGS/GREEDY/IGS_GMEX_" + instances[f] + "_k_" + tostring(igs_k_[a]) + "_x_" + tostring(igs_x_[c]) + ".txt");
             string net_name_str(instance_folder +
                                 instances[f] + "/" + instances[f] + ".net");
             string dem_name_str(instance_folder +
@@ -842,7 +848,7 @@ int main(int argc, char *argv[]) {
               g.CleanCosts();
               d.Sort();
               IGS igs;
-              fout << (igs.executeWithGreedyMinorEqualX(g, d, time_for_execution_original, igs_k_[a], igs_beta_[b], igs_x_[c]) / order) << ";\n";
+              fout << (igs.executeWithGreedyMinorEqualX(g, d, time_for_execution_original, igs_k_[a], 0, igs_x_[c]) / order) << ";\n";
               cout << "IGS execution " << j
                    << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
               cout << "Finishing IGS for '" << net_name << "'\n\n";
@@ -851,7 +857,7 @@ int main(int argc, char *argv[]) {
             }
            fout.close();
           }
-        }
+//        }
       }
     }
   }
@@ -905,8 +911,8 @@ int main(int argc, char *argv[]) {
   if(igs_psc_minor_equal_exec_) {
     for (int f = 0; f < instances.size(); f++) {
       for(int a = 0; a < igs_k_.size(); a++){
-        for(int b = 0; b < igs_beta_.size(); b++){
-          string output(instance_out + "/IGS/PSC/IGS_PME_" + instances[f] + "_k_" + tostring(igs_k_[a]) + "_b_" + tostring(igs_beta_[b]) + ".txt");
+//        for(int b = 0; b < igs_beta_.size(); b++){
+          string output(instance_out + "/IGS/PSC/IGS_PME_" + instances[f] + "_k_" + tostring(igs_k_[a]) + ".txt");
           string net_name_str(instance_folder +
                               instances[f] + "/" + instances[f] + ".net");
           string dem_name_str(instance_folder +
@@ -933,7 +939,7 @@ int main(int argc, char *argv[]) {
             g.CleanCosts();
             d.Sort();
             IGS igs;
-            fout << (igs.executeWithPSCMinorEqual(g, d, time_for_execution_original, igs_k_[a], igs_beta_[b]) / order) << ";\n";
+            fout << (igs.executeWithPSCMinorEqual(g, d, time_for_execution_original, igs_k_[a], 0) / order) << ";\n";
             cout << "IGS execution " << j
                  << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
             cout << "Finishing IGS for '" << net_name << "'\n\n";
@@ -941,7 +947,7 @@ int main(int argc, char *argv[]) {
 
           }
          fout.close();
-        }
+//        }
       }
     }
   }
@@ -999,10 +1005,9 @@ int main(int argc, char *argv[]) {
   if(igs_psc_minor_equal_x_exec_) {
     for (int f = 0; f < instances.size(); f++) {
       for(int a = 0; a < igs_k_.size(); a++){
-        for(int b = 0; b < igs_beta_.size(); b++){
+//        for(int b = 0; b < igs_beta_.size(); b++){
           for(int c = 0; c < igs_x_.size(); c++){
-            string output(instance_out + "/IGS/PSC/IGS_PMEX_" + instances[f] + "_k_" + tostring(igs_k_[a]) + "_b_" + tostring(igs_beta_[b]) +
-                          "_x_" + tostring(igs_x_[c]) + ".txt");
+            string output(instance_out + "/IGS/PSC/IGS_PMEX_" + instances[f] + "_k_" + tostring(igs_k_[a]) + "_x_" + tostring(igs_x_[c]) + ".txt");
             string net_name_str(instance_folder +
                                 instances[f] + "/" + instances[f] + ".net");
             string dem_name_str(instance_folder +
@@ -1029,7 +1034,7 @@ int main(int argc, char *argv[]) {
               g.CleanCosts();
               d.Sort();
               IGS igs;
-              fout << (igs.executeWithPSCMinorEqualX(g, d, time_for_execution_original, igs_k_[a], igs_beta_[b], igs_x_[c]) / order) << ";\n";
+              fout << (igs.executeWithPSCMinorEqualX(g, d, time_for_execution_original, igs_k_[a], 0, igs_x_[c]) / order) << ";\n";
               cout << "IGS execution " << j
                    << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
               cout << "Finishing IGS for '" << net_name << "'\n\n";
@@ -1038,10 +1043,195 @@ int main(int argc, char *argv[]) {
             }
            fout.close();
           }
-        }
+//        }
       }
     }
   }
+
+
+
+  // VNS_GREEDY_MINOR
+  if(vns_greedy_minor_exec_) {
+  for(int b = 0; b < igs_beta_.size(); b++){
+    for (int f = 0; f < instances.size(); f++) {
+//      for(int a = 0; a < igs_k_.size(); a++){
+          string output(instance_out + "/VNS/GREEDY/VNS_GM_" + instances[f] + "_b_" + tostring(igs_beta_[b]) + ".txt");
+          string net_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".net");
+          string dem_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".trf");
+
+          char * net_name = new char[net_name_str.size() + 1];
+          strcpy(net_name, net_name_str.c_str());
+
+          char * dem_name = new char[dem_name_str.size() + 1];
+          strcpy(dem_name, dem_name_str.c_str());
+
+          ofstream fout(output.c_str());
+          fout.precision(150);
+
+          Graph g(net_name, 0);
+          Demand d(dem_name, 0);
+
+          fout << "VNS;" << endl;
+          for (int j = 0; j < qt_executions; j++) {
+            // time_for_execution = curtime;
+            cout << "Starting VNS execution " << j << " for '" << net_name << "'\n";
+
+            TStart = time(NULL);
+            g.CleanCosts();
+            d.Sort();
+            VNS vns;
+            fout << (vns.executeWithGreedyMinor(g, d, time_for_execution_original, igs_beta_[b]) / order) << ";\n";
+            cout << "VNS execution " << j
+                 << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
+            cout << "Finishing VNS for '" << net_name << "'\n\n";
+            Sleep(delay_time);
+
+          }
+         fout.close();
+//        }
+      }
+    }
+  }
+
+  // VNS_GREEDY_MINOR_EQUAL
+  if(vns_greedy_minor_equal_exec_) {
+    for (int f = 0; f < instances.size(); f++) {
+//      for(int a = 0; a < igs_k_.size(); a++){
+//        for(int b = 0; b < igs_beta_.size(); b++){
+          string output(instance_out + "/VNS/GREEDY/VNS_GME_" + instances[f] + ".txt");
+          string net_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".net");
+          string dem_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".trf");
+
+          char * net_name = new char[net_name_str.size() + 1];
+          strcpy(net_name, net_name_str.c_str());
+
+          char * dem_name = new char[dem_name_str.size() + 1];
+          strcpy(dem_name, dem_name_str.c_str());
+
+          ofstream fout(output.c_str());
+          fout.precision(150);
+
+          Graph g(net_name, 0);
+          Demand d(dem_name, 0);
+
+          fout << "VNS;" << endl;
+          for (int j = 0; j < qt_executions; j++) {
+            // time_for_execution = curtime;
+            cout << "Starting VNS execution " << j << " for '" << net_name << "'\n";
+
+            TStart = time(NULL);
+            g.CleanCosts();
+            d.Sort();
+            VNS vns;
+            fout << (vns.executeWithGreedyMinorEqual(g, d, time_for_execution_original) / order) << ";\n";
+            cout << "VNS execution " << j
+                 << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
+            cout << "Finishing VNS for '" << net_name << "'\n\n";
+            Sleep(delay_time);
+
+          }
+         fout.close();
+//        }
+//      }
+    }
+  }
+
+
+  // VNS_PSC_MINOR
+  if(vns_psc_minor_exec_) {
+  for(int b = 0; b < igs_beta_.size(); b++){
+    for (int f = 0; f < instances.size(); f++) {
+//      for(int a = 0; a < igs_k_.size(); a++){
+          string output(instance_out + "/VNS/PSC/VNS_PM_" + instances[f] + "_b_" + tostring(igs_beta_[b]) + ".txt");
+          string net_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".net");
+          string dem_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".trf");
+
+          char * net_name = new char[net_name_str.size() + 1];
+          strcpy(net_name, net_name_str.c_str());
+
+          char * dem_name = new char[dem_name_str.size() + 1];
+          strcpy(dem_name, dem_name_str.c_str());
+
+          ofstream fout(output.c_str());
+          fout.precision(150);
+
+          Graph g(net_name, 0);
+          Demand d(dem_name, 0);
+
+          fout << "VNS;" << endl;
+          for (int j = 0; j < qt_executions; j++) {
+            // time_for_execution = curtime;
+            cout << "Starting VNS execution " << j << " for '" << net_name << "'\n";
+
+            TStart = time(NULL);
+            g.CleanCosts();
+            d.Sort();
+            VNS vns;
+            fout << (vns.executeWithPSCMinor(g, d, time_for_execution_original, igs_beta_[b]) / order) << ";\n";
+            cout << "VNS execution " << j
+                 << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
+            cout << "Finishing VNS for '" << net_name << "'\n\n";
+            Sleep(delay_time);
+
+          }
+         fout.close();
+//        }
+      }
+    }
+  }
+
+  // VNS_PSC_MINOR_EQUAL
+  if(vns_psc_minor_equal_exec_) {
+    for (int f = 0; f < instances.size(); f++) {
+//      for(int a = 0; a < igs_k_.size(); a++){
+//        for(int b = 0; b < igs_beta_.size(); b++){
+          string output(instance_out + "/VNS/PSC/VNS_PME_" + instances[f] + ".txt");
+          string net_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".net");
+          string dem_name_str(instance_folder +
+                              instances[f] + "/" + instances[f] + ".trf");
+
+          char * net_name = new char[net_name_str.size() + 1];
+          strcpy(net_name, net_name_str.c_str());
+
+          char * dem_name = new char[dem_name_str.size() + 1];
+          strcpy(dem_name, dem_name_str.c_str());
+
+          ofstream fout(output.c_str());
+          fout.precision(150);
+
+          Graph g(net_name, 0);
+          Demand d(dem_name, 0);
+
+          fout << "VNS;" << endl;
+          for (int j = 0; j < qt_executions; j++) {
+            // time_for_execution = curtime;
+            cout << "Starting VNS execution " << j << " for '" << net_name << "'\n";
+
+            TStart = time(NULL);
+            g.CleanCosts();
+            d.Sort();
+            VNS vns;
+            fout << (vns.executeWithPSCMinorEqual(g, d, time_for_execution_original) / order) << ";\n";
+            cout << "VNS execution " << j
+                 << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
+            cout << "Finishing VNS for '" << net_name << "'\n\n";
+            Sleep(delay_time);
+
+          }
+         fout.close();
+//        }
+//      }
+    }
+  }
+
+
 
   system("PAUSE");
   return 0;
