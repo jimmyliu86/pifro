@@ -381,7 +381,7 @@
 	"./vertex.h"
 	"./functions.h"
 
-1337834147 c:\cygwin\pifro2\include\demand.h
+1347510188 c:\cygwin\pifro2\include\demand.h
 	<time.h>
 	<iostream>
 	<vector>
@@ -425,7 +425,7 @@
 
 1342893328 c:\cygwin\pifro2\include\constants.h
 
-1343513676 c:\cygwin\pifro2\include\greedy.h
+1347604782 c:\cygwin\pifro2\include\greedy.h
 	<time.h>
 	<cmath>
 	<vector>
@@ -433,6 +433,7 @@
 	<cstdlib>
 	<algorithm>
 	<float.h>
+	<limits.h>
 	"./rvgs.h"
 	"./graph.h"
 	"./demand.h"
@@ -757,7 +758,7 @@
 1337833940 source:c:\cygwin\pifro2\src\vertex.cc
 	"./vertex.h"
 
-1343946431 source:c:\cygwin\pifro2\main.cc
+1347843766 source:c:\cygwin\pifro2\main.cc
 	<stdio.h>
 	<windows.h>
 	<stdlib.h>
@@ -766,6 +767,7 @@
 	<iostream>
 	<fstream>
 	<sstream>
+	<math.h>
 	"./vertex.h"
 	"./graph.h"
 	"./demand.h"
@@ -778,13 +780,24 @@
 	"./igs.h"
 	"./psc.h"
 	"./mspsc.h"
+	"./vns.h"
+	"./differentialevolution.h"
 
-1342907414 c:\cygwin\pifro2\include\igs.h
+1347603473 c:\cygwin\pifro2\include\igs.h
 	<time.h>
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+	<time.h>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<math.h>
 	"./greedy.h"
 	"./psc.h"
 
-1337834800 source:c:\cygwin\pifro2\src\demand.cc
+1347595971 source:c:\cygwin\pifro2\src\demand.cc
 	<vector>
 	"./demand.h"
 
@@ -794,7 +807,7 @@
 1343537240 source:c:\cygwin\pifro2\src\graph.cc
 	"./graph.h"
 
-1343537018 source:c:\cygwin\pifro2\src\greedy.cc
+1347844254 source:c:\cygwin\pifro2\src\greedy.cc
 	"./greedy.h"
 
 1337833909 source:c:\cygwin\pifro2\src\igs.cpp
@@ -804,7 +817,7 @@
 	<vector>
 	"./dijkstra.h"
 
-1342894030 source:c:\cygwin\pifro2\src\igs.cc
+1347603735 source:c:\cygwin\pifro2\src\igs.cc
 	"./igs.h"
 
 1342059824 source:c:\cygwin\pifro2\src\mspsc.cc
@@ -814,7 +827,7 @@
 	<float.h>
 	"./psc.h"
 
-1341892207 c:\cygwin\pifro2\include\psc.h
+1347811659 c:\cygwin\pifro2\include\psc.h
 	<time.h>
 	<cmath>
 	<vector>
@@ -822,20 +835,43 @@
 	<cstdlib>
 	<algorithm>
 	<float.h>
+	<limits.h>
 	"./rvgs.h"
 	"./graph.h"
 	"./demand.h"
 	"./dijkstra.h"
 	"./functions.h"
 
-1343537018 source:c:\cygwin\pifro2\src\psc.cc
+1347843766 source:c:\cygwin\pifro2\src\psc.cc
 	"./PSC.h"
 
-1345178625 source:c:\cygwin\pifro2\src\vns.cpp
+1347601543 source:c:\cygwin\pifro2\src\vns.cpp
 	"vns.h"
 
-1345178610 c:\cygwin\pifro2\include\vns.h
+1347591244 c:\cygwin\pifro2\include\vns.h
 	<time.h>
 	"./greedy.h"
 	"./psc.h"
+
+1346628166 source:c:\cygwin\pifro2\src\differentialevolution.cpp
+	"differentialevolution.h"
+
+1346373448 c:\cygwin\pifro2\include\differentialevolution.h
+	<time.h>
+	<algorithm>
+	<list>
+	<vector>
+	<float.h>
+	"./Graph.h"
+	"./Request.h"
+	"./Greedy.h"
+	"./psc.h"
+	"./solution.h"
+
+1346211079 c:\cygwin\pifro2\include\solution.h
+	<vector>
+	"./macros.h"
+
+1345607309 source:c:\cygwin\pifro2\src\solution.cc
+	"solution.h"
 

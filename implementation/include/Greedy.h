@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <float.h>
+#include <limits.h>
 
 #include "./rvgs.h"
 #include "./graph.h"
@@ -41,8 +42,9 @@ class Greedy {
     float ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort);
     float ExecuteWithRefine(bool regenerate_dijkstra, bool demand_sort, time_t tstart, int tex);
     float ExecuteWithRefine(std::vector<int> permutation, time_t tstart, int tex);
-    float ExecuteWithRefine(int k);
-    float ExecuteWithRefine(int k, time_t tstart, int tex);
+    float ExecuteWithRefine(int k, bool roulete);
+    float ExecuteWithRefine(int k, time_t tstart, int tex, bool roulete);
+    int makespin();
 };
 
 #endif  // _PIFRO2_INCLUDE_GREEDY_H_
