@@ -23,6 +23,7 @@
 		<Unit filename="include\comparision.h" />
 		<Unit filename="include\constants.h" />
 		<Unit filename="include\demand.h" />
+		<Unit filename="include\differentialevolution.h" />
 		<Unit filename="include\dijkstra.h" />
 		<Unit filename="include\functions.h" />
 		<Unit filename="include\graph.h" />
@@ -34,11 +35,13 @@
 		<Unit filename="include\request.h" />
 		<Unit filename="include\rngs.h" />
 		<Unit filename="include\rvgs.h" />
+		<Unit filename="include\solution.h" />
 		<Unit filename="include\vertex.h" />
 		<Unit filename="include\vns.h" />
 		<Unit filename="main.cc" />
 		<Unit filename="src\BRKGADecoder.cpp" />
 		<Unit filename="src\demand.cc" />
+		<Unit filename="src\differentialevolution.cpp" />
 		<Unit filename="src\dijkstra.cc" />
 		<Unit filename="src\functions.cc" />
 		<Unit filename="src\graph.cc" />
@@ -49,6 +52,7 @@
 		<Unit filename="src\request.cc" />
 		<Unit filename="src\rngs.cpp" />
 		<Unit filename="src\rvgs.cpp" />
+		<Unit filename="src\solution.cc" />
 		<Unit filename="src\vertex.cc" />
 		<Unit filename="src\vns.cpp" />
 		<Extensions>

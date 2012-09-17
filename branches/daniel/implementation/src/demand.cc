@@ -22,6 +22,7 @@ void Demand::LoadFromTRFFile(char* filename) {
   Request request;
   int src, dst;
   int qt;
+  qt_wavelength_ = 0;
 
   for (int i = 0; i < qt_request_; i++) {
     fin >> src;
@@ -31,6 +32,7 @@ void Demand::LoadFromTRFFile(char* filename) {
     request.src_ = src;
     request.dst_ = dst;
     request.qt_ = qt;
+    qt_wavelength_ += qt;
     request.id_ = i;
 
     vec_request_.push_back(request);

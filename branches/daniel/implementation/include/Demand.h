@@ -25,7 +25,7 @@ using std::ifstream;
 class Demand {
   public:
     std::vector<Request> vec_request_;
-    int qt_request_;
+    int qt_request_, qt_wavelength_;
 
     Demand();
     explicit Demand(char* filename,

@@ -10,7 +10,7 @@ IGS::IGS() {
 IGS::~IGS() {
 }
 
-float IGS::executeWithGreedyMinor(Graph graph, Demand demand, int execution_time, double k, double beta) {
+float IGS::executeWithGreedyMinor(Graph graph, Demand demand, int execution_time, double k, double beta, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x = 0;
   float act = 0, beta_ = beta;
@@ -24,7 +24,7 @@ float IGS::executeWithGreedyMinor(Graph graph, Demand demand, int execution_time
 
   while ((t_stop - t_start) < execution_time) {
     Greedy s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ < ((1 + beta_) * s_star.min_cost_)) {
@@ -41,7 +41,7 @@ float IGS::executeWithGreedyMinor(Graph graph, Demand demand, int execution_time
   return min_cost_;
 }
 
-float IGS::executeWithGreedyMinorEqual(Graph graph, Demand demand, int execution_time, double k, double beta) {
+float IGS::executeWithGreedyMinorEqual(Graph graph, Demand demand, int execution_time, double k, double beta, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x = 0;
   float act = 0, beta_ = beta;
@@ -55,7 +55,7 @@ float IGS::executeWithGreedyMinorEqual(Graph graph, Demand demand, int execution
 
   while ((t_stop - t_start) < execution_time) {
     Greedy s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ <= ((1 + beta_) * s_star.min_cost_)) {
@@ -72,7 +72,7 @@ float IGS::executeWithGreedyMinorEqual(Graph graph, Demand demand, int execution
   return min_cost_;
 }
 
-float IGS::executeWithGreedyMinorX(Graph graph, Demand demand, int execution_time, double k, double beta, int x) {
+float IGS::executeWithGreedyMinorX(Graph graph, Demand demand, int execution_time, double k, double beta, int x, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x_ = 0;
   float act = 0, beta_ = beta;
@@ -86,7 +86,7 @@ float IGS::executeWithGreedyMinorX(Graph graph, Demand demand, int execution_tim
 
   while ((t_stop - t_start) < execution_time) {
     Greedy s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ < ((1 + beta_) * s_star.min_cost_)) {
@@ -115,7 +115,7 @@ float IGS::executeWithGreedyMinorX(Graph graph, Demand demand, int execution_tim
   return min_cost_;
 }
 
-float IGS::executeWithGreedyMinorEqualX(Graph graph, Demand demand, int execution_time, double k, double beta, int x) {
+float IGS::executeWithGreedyMinorEqualX(Graph graph, Demand demand, int execution_time, double k, double beta, int x, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x_ = 0;
   float act = 0, beta_ = beta;
@@ -129,7 +129,7 @@ float IGS::executeWithGreedyMinorEqualX(Graph graph, Demand demand, int executio
 
   while ((t_stop - t_start) < execution_time) {
     Greedy s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ < ((1 + beta_) * s_star.min_cost_)) {
@@ -160,7 +160,7 @@ float IGS::executeWithGreedyMinorEqualX(Graph graph, Demand demand, int executio
 
 
 
-float IGS::executeWithPSCMinor(Graph graph, Demand demand, int execution_time, double k, double beta) {
+float IGS::executeWithPSCMinor(Graph graph, Demand demand, int execution_time, double k, double beta, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x = 0;
   float act = 0, beta_ = beta;
@@ -174,7 +174,7 @@ float IGS::executeWithPSCMinor(Graph graph, Demand demand, int execution_time, d
 
   while ((t_stop - t_start) < execution_time) {
     PSC s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ < ((1 + beta_) * s_star.min_cost_)) {
@@ -191,7 +191,7 @@ float IGS::executeWithPSCMinor(Graph graph, Demand demand, int execution_time, d
   return min_cost_;
 }
 
-float IGS::executeWithPSCMinorEqual(Graph graph, Demand demand, int execution_time, double k, double beta) {
+float IGS::executeWithPSCMinorEqual(Graph graph, Demand demand, int execution_time, double k, double beta, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x = 0;
   float act = 0, beta_ = beta;
@@ -205,7 +205,7 @@ float IGS::executeWithPSCMinorEqual(Graph graph, Demand demand, int execution_ti
 
   while ((t_stop - t_start) < execution_time) {
     PSC s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ <= ((1 + beta_) * s_star.min_cost_)) {
@@ -222,7 +222,7 @@ float IGS::executeWithPSCMinorEqual(Graph graph, Demand demand, int execution_ti
   return min_cost_;
 }
 
-float IGS::executeWithPSCMinorX(Graph graph, Demand demand, int execution_time, double k, double beta, int x) {
+float IGS::executeWithPSCMinorX(Graph graph, Demand demand, int execution_time, double k, double beta, int x, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x_ = 0;
   float act = 0, beta_ = beta;
@@ -236,7 +236,7 @@ float IGS::executeWithPSCMinorX(Graph graph, Demand demand, int execution_time, 
 
   while ((t_stop - t_start) < execution_time) {
     PSC s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ < ((1 + beta_) * s_star.min_cost_)) {
@@ -265,7 +265,7 @@ float IGS::executeWithPSCMinorX(Graph graph, Demand demand, int execution_time, 
   return min_cost_;
 }
 
-float IGS::executeWithPSCMinorEqualX(Graph graph, Demand demand, int execution_time, double k, double beta, int x) {
+float IGS::executeWithPSCMinorEqualX(Graph graph, Demand demand, int execution_time, double k, double beta, int x, bool roulete) {
   time_t t_start = time(NULL);
   int k_ = (demand.vec_request_.size() * k), x_ = 0;
   float act = 0, beta_ = beta;
@@ -279,7 +279,7 @@ float IGS::executeWithPSCMinorEqualX(Graph graph, Demand demand, int execution_t
 
   while ((t_stop - t_start) < execution_time) {
     PSC s2 = s;
-    s2.ExecuteWithRefine(k_, t_start, execution_time);
+    s2.ExecuteWithRefine(k_, t_start, execution_time, roulete);
     s2.ExecuteWithRefine(false, false, t_start, execution_time);
 
     if (s2.min_cost_ < ((1 + beta_) * s_star.min_cost_)) {

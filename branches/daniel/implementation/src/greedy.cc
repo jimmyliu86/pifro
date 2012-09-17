@@ -24,6 +24,27 @@ void Greedy::DemandSwap() {
   dijkstra_.paths_.erase(dijkstra_.paths_.begin());
 }
 
+int Greedy::makespin(){
+  int power = (rand() % INT_MAX);
+  int iret = 0, rest = (power % demand_.qt_wavelength_);
+//  cout << "REST = " << rest;
+  while(rest > 0){
+    rest = rest - demand_.vec_request_[iret].qt_;
+    if((iret < demand_.vec_request_.size() - 1) && (rest > 0)){
+      iret++;
+    }
+    //cout << " - QTTMP = " << demand.vec_request_[iret].qt_;
+  }
+
+//  cout << " - POWER = " << power << " - WAVELENGTHS = " << demand_.qt_wavelength_ << " - REST = " << rest << " - IRET = " << iret << " - QT = " << demand_.vec_request_[iret].qt_ << endl;
+
+/*  if((iret == demand_.vec_request_[iret].size()) || (rest > 0)){
+    system("PAUSE");
+  }*/
+
+  return iret;
+}
+
 float Greedy::Execute(bool regenerateDijkstra, bool demandSort) {
   if (demandSort) {
     demand_.Sort();
@@ -335,12 +356,19 @@ float Greedy::ExecuteWithRefine(std::vector<int> permutation, time_t tstart, int
 }
 
 
-float Greedy::ExecuteWithRefine(int k) {
+float Greedy::ExecuteWithRefine(int k, bool roulete) {
   std::vector<Request> rnd_requests;
   int x = 0;
 
   while (x < k) {
-    int r = (rand() % demand_.vec_request_.size());
+
+    int r = 0;
+    if(roulete){
+        r = makespin();
+    }else{
+       r = (rand() % demand_.vec_request_.size());
+    }
+
     DeletePath(r, demand_.vec_request_[r].qt_);
     dijkstra_.paths_.push_back(dijkstra_.paths_[r]);
     dijkstra_.paths_.erase(dijkstra_.paths_.begin() + r);
@@ -364,12 +392,19 @@ float Greedy::ExecuteWithRefine(int k) {
   return min_cost_;
 }
 
-float Greedy::ExecuteWithRefine(int k, time_t tstart, int tex){
+float Greedy::ExecuteWithRefine(int k, time_t tstart, int tex, bool roulete){
   std::vector<Request> rnd_requests;
   int x = 0;
 
   while ((x < k) && ((time(NULL) - tstart) < tex)) {
-    int r = (rand() % demand_.vec_request_.size());
+
+    int r = 0;
+    if(roulete == true){
+        r = makespin();
+    }else{
+       r = (rand() % demand_.vec_request_.size());
+    }
+
     DeletePath(r, demand_.vec_request_[r].qt_);
     dijkstra_.paths_.push_back(dijkstra_.paths_[r]);
     dijkstra_.paths_.erase(dijkstra_.paths_.begin() + r);
