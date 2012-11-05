@@ -81,13 +81,13 @@ Graph Dijkstra::SetAllGraphEdgeIncCost(Graph graph,
       int w = graph.adj_list_[i][x].qt_requests_;
       float l = graph.adj_list_[i][x].weight_;
       int a = qtrequests;
-      if ((w + a) <= (U * ROADMLimit)) {
+      //if ((w + a) <= (U * ROADMLimit)) {
         graph.adj_list_[i][x].
         inc_cost_ = functions.Fwdm(w+a, l) - functions.Fwdm(w, l);
-      } else {
+      /*} else {
         graph.adj_list_[i][x].
         inc_cost_ = FLT_MAX;
-      }
+      }*/
     }
   }
   return graph;
@@ -103,13 +103,13 @@ Graph Dijkstra::SetAllGraphEdgeIncCost(Graph graph,
       int w = graph.adj_list_[i][x].qt_requests_;
       float l = graph.adj_list_[i][x].weight_;
       int a = qtrequests;
-      if ((w + a) <= (U * ROADMLimit)) {
+      //if ((w + a) <= (U * ROADMLimit)) {
         graph.adj_list_[i][x].
         inc_cost_ = functions.F_line_wdm(w + a, l, p) - functions.F_line_wdm(w, l, p);
-      } else {
+      /*} else {
         graph.adj_list_[i][x].
         inc_cost_ = FLT_MAX;
-      }
+      }*/
     }
   }
   return graph;
