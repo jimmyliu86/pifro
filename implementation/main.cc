@@ -101,33 +101,33 @@ int main(int argc, char *argv[]) {
                                       order = 1;
   time_t TStart, TStop;
   //string instance_folder = "F:/Instance/";
-  string instance_folder = "c:/PIFRO/instances/";
-  string instance_out = "c:/PIFRO/results/";
+  string instance_folder = "c:/PIFRO2/instances/";
+  string instance_out = "c:/PIFRO2/results/";
 
   std::vector<string> instances;
-//  instances.push_back("abilene"); // n
-  /*  instances.push_back("atlanta"); // n
-    instances.push_back("cost266");
-    instances.push_back("dfn-bwin"); // n
-    instances.push_back("dfn-gwin"); // n
-    instances.push_back("di-yuan"); // n
-    instances.push_back("france");
-    instances.push_back("geant"); // n */
-  /*  instances.push_back("germany50");
-    instances.push_back("giul39");
-    instances.push_back("janos-us");
-    instances.push_back("janos-us-ca");
-    instances.push_back("newyork"); // n
-    instances.push_back("nobel-eu");
-    instances.push_back("nobel-germany");
-    instances.push_back("nobel-us"); // n
-    instances.push_back("norway");
-    instances.push_back("pdh"); // n
-    instances.push_back("pioro40");
-    instances.push_back("polska"); // n
-    instances.push_back("sun");
-    instances.push_back("ta1");
-    instances.push_back("ta2"); */
+  instances.push_back("abilene"); // n
+  instances.push_back("atlanta"); // n
+  instances.push_back("cost266");
+  instances.push_back("dfn-bwin"); // n
+  instances.push_back("dfn-gwin"); // n
+  instances.push_back("di-yuan"); // n
+  instances.push_back("france");
+  instances.push_back("geant"); // n */
+  instances.push_back("germany50");
+  instances.push_back("giul39");
+  instances.push_back("janos-us");
+  instances.push_back("janos-us-ca");
+  instances.push_back("newyork"); // n
+  instances.push_back("nobel-eu");
+  instances.push_back("nobel-germany");
+  instances.push_back("nobel-us"); // n
+  instances.push_back("norway");
+  instances.push_back("pdh"); // n
+  instances.push_back("pioro40");
+  instances.push_back("polska"); // n
+  instances.push_back("sun");
+  instances.push_back("ta1");
+  instances.push_back("ta2");
   instances.push_back("zib54");
 
   std::vector<int> de_a;
@@ -148,11 +148,11 @@ int main(int argc, char *argv[]) {
   vns_it.push_back(10);
   vns_it.push_back(20);
 
-  bool greedy_exec_ = false, psc_exec_ = false, mspsc_exec_ = false,
-  brkga_greedy_exec_= false, brkga_psc_exec_ = false, msbrkga_greedy_exec_= false, msbrkga_psc_exec_ = false,
-  igs_greedy_minor_exec_ = true, igs_greedy_minor_equal_exec_ = false, igs_greedy_minor_x_exec_ = false, igs_greedy_minor_equal_x_exec_ = false,
+  bool greedy_exec_ = true, psc_exec_ = true, mspsc_exec_ = true,
+  brkga_greedy_exec_= true, brkga_psc_exec_ = true, msbrkga_greedy_exec_= false, msbrkga_psc_exec_ = false,
+  igs_greedy_minor_exec_ = false, igs_greedy_minor_equal_exec_ = false, igs_greedy_minor_x_exec_ = false, igs_greedy_minor_equal_x_exec_ = false,
   igs_psc_minor_exec_ = false, igs_psc_minor_equal_exec_ = false, igs_psc_minor_x_exec_ = false, igs_psc_minor_equal_x_exec_ = false,
-  vns_greedy_minor_exec_ = true, vns_greedy_minor_equal_exec_ = false, vns_psc_minor_exec_ = false, vns_psc_minor_equal_exec_ = false,
+  vns_greedy_minor_exec_ = false, vns_greedy_minor_equal_exec_ = false, vns_psc_minor_exec_ = false, vns_psc_minor_equal_exec_ = false,
   de_greedy_exec_ = false, de_psc_exec_ = false;
 
 
