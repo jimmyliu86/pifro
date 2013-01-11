@@ -208,10 +208,12 @@ bool TrafficHand::GeneratePathFile(const std::string &path_filename,
   
   fprintf(file, "%d\n", static_cast<int>(paths.size()));
   for (int i = 0; i < paths.size(); ++i) {
-    fprintf(file, "%d %d | %d\n", paths[i].front(), paths[i].back(),
-        static_cast<int>(paths[i].size()));
     for (int j = 0; j < paths[i].size(); ++j) {
-      fprintf(file, "%d ", paths[i][j]);
+      if (j != (paths[i].size() -1)) {
+        fprintf(file, "%d ", paths[i][j]);
+      } else {
+        fprintf(file, "%d", paths[i][j]);
+      }
     }
 
     if (i != (paths.size() -1)) {
