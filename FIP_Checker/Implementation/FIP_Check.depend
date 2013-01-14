@@ -1,0 +1,169 @@
+# depslib dependency file v1.0
+1358129211 source:f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\src\functions.cc
+	"./functions.h"
+
+1358129211 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\functions.h
+	<math.h>
+	<cmath>
+	"./constants.h"
+
+1358129398 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\constants.h
+
+1358137977 source:f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\src\graph.cc
+	"./graph.h"
+
+1358137468 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\graph.h
+	<vector>
+	<iostream>
+	<fstream>
+	"./macros.h"
+	"./vertex.h"
+	"./functions.h"
+
+1358129355 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\macros.h
+
+1358128886 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\vertex.h
+	<iostream>
+	<cstdlib>
+	"./macros.h"
+
+1358128931 source:f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\src\request.cc
+	"./request.h"
+
+1358128933 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\request.h
+	<vector>
+	"./macros.h"
+
+1358128884 source:f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\src\vertex.cc
+	"./vertex.h"
+
+1358137660 source:f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\main.cpp
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+	<time.h>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<math.h>
+	<math.h>
+	<cmath>
+	"./graph.h"
+	"./demand.h"
+	"./checker.h"
+
+1358137451 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\demand.h
+	<time.h>
+	<iostream>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"./macros.h"
+	"./request.h"
+	"./graph.h"
+	"./comparision.h"
+
+1358129489 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\comparision.h
+
+1358135781 source:f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\src\checker.cc
+	"checker.h"
+
+1358135774 f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\include\checker.h
+	<vector>
+	<iostream>
+	<fstream>
+	"./macros.h"
+	"./vertex.h"
+	"./functions.h"
+	"./demand.h"
+	"./graph.h"
+
+1358138041 source:f:\material aulas\cefet\mestrado\dissertacao\workspace dev c++\fip_check\src\demand.cc
+	<vector>
+	"./demand.h"
+
+1358135781 source:c:\fip_checker\implementation\src\checker.cc
+	"checker.h"
+
+1358135774 c:\fip_checker\implementation\include\checker.h
+	<vector>
+	<iostream>
+	<fstream>
+	"./macros.h"
+	"./vertex.h"
+	"./functions.h"
+	"./demand.h"
+	"./graph.h"
+
+1358129355 c:\fip_checker\implementation\include\macros.h
+
+1358128886 c:\fip_checker\implementation\include\vertex.h
+	<iostream>
+	<cstdlib>
+	"./macros.h"
+
+1358129211 c:\fip_checker\implementation\include\functions.h
+	<math.h>
+	<cmath>
+	"./constants.h"
+
+1358129398 c:\fip_checker\implementation\include\constants.h
+
+1358137451 c:\fip_checker\implementation\include\demand.h
+	<time.h>
+	<iostream>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"./macros.h"
+	"./request.h"
+	"./graph.h"
+	"./comparision.h"
+
+1358128933 c:\fip_checker\implementation\include\request.h
+	<vector>
+	"./macros.h"
+
+1358137468 c:\fip_checker\implementation\include\graph.h
+	<vector>
+	<iostream>
+	<fstream>
+	"./macros.h"
+	"./vertex.h"
+	"./functions.h"
+
+1358129489 c:\fip_checker\implementation\include\comparision.h
+
+1358138041 source:c:\fip_checker\implementation\src\demand.cc
+	<vector>
+	"./demand.h"
+
+1358129211 source:c:\fip_checker\implementation\src\functions.cc
+	"./functions.h"
+
+1358137977 source:c:\fip_checker\implementation\src\graph.cc
+	"./graph.h"
+
+1358128931 source:c:\fip_checker\implementation\src\request.cc
+	"./request.h"
+
+1358128884 source:c:\fip_checker\implementation\src\vertex.cc
+	"./vertex.h"
+
+1358138093 source:c:\fip_checker\implementation\main.cpp
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+	<time.h>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<math.h>
+	<math.h>
+	<cmath>
+	"./graph.h"
+	"./demand.h"
+	"./checker.h"
+

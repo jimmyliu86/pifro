@@ -1,0 +1,11 @@
+INSTRUÇÕES PARA UTILIZAÇÃO DO SOFTWARE:
+
+1 - Na pasta implementation está o fonte do software, abra-o no CODE::BLOCKS;
+
+2 - Abra o diretório include, e em seguida o arquivo "constants.h". Altere os custos das variáveis de PIFRO para os custos desejados.
+
+3 - Abra o diretório src, e em seguida o arquivo "main.cpp". Coloque a variável "instance_folder" o diretório com seus arquivos .sol. Na variável "instance_out" coloque o diretório onde serão salvos os arquivos com os relatórios das análises. Comente as linhas que adicionam as instancias ao vector "instances" as quais você NÃO deseja analisar. O software está pré-configurado para salvar os arquivos na pasta "Results" que está dentro do diretório principal e ler instâncias do diretório "Instances" que se encontra no mesmo local. GUARDE SEUS ARQUIVOS, POIS ESTES SÃO EXCLUÍDOS E RECRIADOS A CADA EXECUÇÃO.
+
+4 - Execute o software, ele mostrará na saída padrão o custo de cada solução e também salvará em arquivos mais detalhamente o custo da solução, o grafo com a quantidade de comprimentos de onda em cada aresta em forma de lista de adjacência, idem ao anterior no entanto o grafo com o custo de cada aresta, e as requisições na forma como solicitaram a alocação dos comprimentos de onda na rede ótica.
+
+Dúvidas favor enviar e-mail para daniel.morais@gmail.com
