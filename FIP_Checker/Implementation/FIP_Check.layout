@@ -25,11 +25,11 @@
 	<File name="include\vertex.h" open="1" top="0" tabpos="9">
 		<Cursor position="654" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1">
+	<File name="main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="2354" topLine="60" />
 	</File>
-	<File name="src\checker.cc" open="1" top="0" tabpos="3">
-		<Cursor position="267" topLine="1" />
+	<File name="src\checker.cc" open="1" top="1" tabpos="3">
+		<Cursor position="1008" topLine="12" />
 	</File>
 	<File name="src\demand.cc" open="1" top="0" tabpos="2">
 		<Cursor position="1572" topLine="61" />
@@ -38,12 +38,12 @@
 		<Cursor position="838" topLine="5" />
 	</File>
 	<File name="src\graph.cc" open="1" top="0" tabpos="4">
-		<Cursor position="3765" topLine="130" />
+		<Cursor position="3765" topLine="124" />
 	</File>
 	<File name="src\request.cc" open="0" top="0" tabpos="0">
 		<Cursor position="407" topLine="0" />
 	</File>
 	<File name="src\vertex.cc" open="1" top="0" tabpos="8">
-		<Cursor position="883" topLine="14" />
+		<Cursor position="883" topLine="12" />
 	</File>
 </CodeBlocks_layout_file>

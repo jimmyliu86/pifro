@@ -31,7 +31,7 @@ float Checker::MergeGraphAndDemand(Graph& graph, Demand& demand) {
       }
     }
 
-    for (int i = demand.vec_request_.size() - 1; i > 0; i--) {
+    for (int i = demand.vec_request_.size() - 1; i >= 0; i--) {
       int z = demand.vec_request_[i].dst_, zprev = demand.vec_request_[i].src_,
                                   x = graph.adj_list_[z].size() - 1;
       while (x >= 1) {
