@@ -17,17 +17,19 @@
 #include "./psc.h"
 #include "./solution.h"
 
+#define myrand ((float)(rand())/(float)(RAND_MAX) )
+
 class DifferentialEvolution
 {
   public:
     Demand demand_;
     Graph graph_;
     time_t t_start_, t_stop_;
-    int tex_, heuristic_, d_, np_, cr_, f_, mutation_type_, qt_pond_, cross_type_, best_, prev_best_;
-    double min_cost_;
+    int tex_, heuristic_, d_, np_, mutation_type_, qt_pond_, cross_type_, best_, prev_best_;
+    double cr_, f_, min_cost_;
     std::vector<Solution> solutions_;
 
-    explicit DifferentialEvolution(Graph graph, Demand demand, time_t t_start, int tex, int heuristic, int d, int np, int cr, int f, int mutation_type, int qt_pond, int cross_type);
+    explicit DifferentialEvolution(Graph graph, Demand demand, time_t t_start, int tex, int heuristic, int d, int np, double cr, double f, int mutation_type, int qt_pond, int cross_type);
     virtual ~DifferentialEvolution();
 
     void createInitialPopulation();
