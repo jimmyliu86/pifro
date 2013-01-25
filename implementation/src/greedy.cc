@@ -175,13 +175,13 @@ float Greedy::AddPath(int path, int qtrequests, bool search_new_path) {
 
               // Verificando se não ultrapassou a quantidade
               // de comprimentos de onda permitidos
-             /* if(graph_.adj_list_[z][x].qt_requests_ > (ROADMLimit * U)){
-               cout << "wavelengths limit reaching on fiber " <<
+              if(graph_.adj_list_[z][x].qt_requests_ > (ROADMLimit * U)){
+              /* cout << "wavelengths limit reaching on fiber " <<
                  z << " - " << x << " - Wavelenghts amount: " <<
-                 graph_.adj_list_[z][x].qt_requests_ << endl;
+                 graph_.adj_list_[z][x].qt_requests_ << endl; */
                  graph_.impossible_ = -1;
               // system("PAUSE");
-            }*/
+            }
 
         break;
       }

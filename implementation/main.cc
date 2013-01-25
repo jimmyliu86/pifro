@@ -11,6 +11,8 @@
 #include <fstream>
 #include <sstream>
 #include <math.h>
+#include <math.h>
+#include <cmath>
 
 #include "./vertex.h"
 #include "./graph.h"
@@ -27,6 +29,8 @@
 #include "./vns.h"
 #include "./differentialevolution.h"
 
+#define myrand ((float)(rand())/(float)(RAND_MAX) )
+
 using std::cin;
 using std::stringstream;
 using std::string;
@@ -40,7 +44,14 @@ std::string tostring(double x)
 
 
 int main(int argc, char *argv[]) {
+  cout.precision(50);
   srand(time(NULL));
+
+  /*  for(int y=0; y<=10; y++){
+      int randomico = floor(myrand * 100);
+      cout << "RAND: " <<  randomico << endl;
+    }
+    system("PAUSE");*/
 
   std::vector<double> igs_k_;
 //  igs_k_.push_back(0.05);
@@ -112,7 +123,7 @@ int main(int argc, char *argv[]) {
   instances.push_back("dfn-gwin"); // n
   instances.push_back("di-yuan"); // n
   instances.push_back("france");
-  instances.push_back("geant"); // n */
+  instances.push_back("geant"); // n
   instances.push_back("germany50");
   instances.push_back("giul39");
   instances.push_back("janos-us");
@@ -132,8 +143,8 @@ int main(int argc, char *argv[]) {
 
   std::vector<int> de_a;
   de_a.push_back(0);
-  de_a.push_back(1);
-//  de_a.push_back(2); --> Executar depois
+  //de_a.push_back(1);
+  //de_a.push_back(2); //--> Executar depois
 
   std::vector<int> de_b;
   de_b.push_back(1);
@@ -141,19 +152,19 @@ int main(int argc, char *argv[]) {
 
   std::vector<int> de_c;
   de_c.push_back(0);
-  // de_c.push_back(1);
+  //de_c.push_back(1);
 
   std::vector<int> vns_it;
   vns_it.push_back(5);
   vns_it.push_back(10);
   vns_it.push_back(20);
 
-  bool greedy_exec_ = true, psc_exec_ = true, mspsc_exec_ = true,
-  brkga_greedy_exec_= true, brkga_psc_exec_ = true, msbrkga_greedy_exec_= false, msbrkga_psc_exec_ = false,
-  igs_greedy_minor_exec_ = false, igs_greedy_minor_equal_exec_ = false, igs_greedy_minor_x_exec_ = false, igs_greedy_minor_equal_x_exec_ = false,
-  igs_psc_minor_exec_ = false, igs_psc_minor_equal_exec_ = false, igs_psc_minor_x_exec_ = false, igs_psc_minor_equal_x_exec_ = false,
-  vns_greedy_minor_exec_ = false, vns_greedy_minor_equal_exec_ = false, vns_psc_minor_exec_ = false, vns_psc_minor_equal_exec_ = false,
-  de_greedy_exec_ = false, de_psc_exec_ = false;
+  bool greedy_exec_ = false, psc_exec_ = false, mspsc_exec_ = false,
+                                         brkga_greedy_exec_= false, brkga_psc_exec_ = false, msbrkga_greedy_exec_= false, msbrkga_psc_exec_ = false,
+                                             igs_greedy_minor_exec_ = false, igs_greedy_minor_equal_exec_ = false, igs_greedy_minor_x_exec_ = false, igs_greedy_minor_equal_x_exec_ = false,
+                                                 igs_psc_minor_exec_ = false, igs_psc_minor_equal_exec_ = false, igs_psc_minor_x_exec_ = false, igs_psc_minor_equal_x_exec_ = false,
+                                                     vns_greedy_minor_exec_ = false, vns_greedy_minor_equal_exec_ = false, vns_psc_minor_exec_ = false, vns_psc_minor_equal_exec_ = false,
+                                                         de_greedy_exec_ = true, de_psc_exec_ = true;
 
 
 
@@ -1296,19 +1307,18 @@ int main(int argc, char *argv[]) {
               TStart = time(NULL);
               g.CleanCosts();
               d.Sort();
-              DifferentialEvolution de(g, d, TStart, time_for_execution_original, 0, d.vec_request_.size(), 70 , 0.2, 0.8, de_a[a], de_b[b], de_c[c]);
+              DifferentialEvolution de(g, d, TStart, time_for_execution_original, 0, d.vec_request_.size(), 10, 0.8, 0.8, de_a[a], de_b[b], de_c[c]);
               fout << (de.evolve() / order) << ";\n";
               cout << "DE GREEDY execution " << j
                    << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
               cout << "Finishing DE for '" << net_name << " - Cost: " << de.min_cost_ << "'\n\n";
               Sleep(delay_time);
-              system("PAUSE");
-
             }
             fout.close();
           }
         }
       }
+      // system("PAUSE");
     }
   }
 
@@ -1346,7 +1356,7 @@ int main(int argc, char *argv[]) {
               TStart = time(NULL);
               g.CleanCosts();
               d.Sort();
-              DifferentialEvolution de(g, d, TStart, time_for_execution_original, 1, d.vec_request_.size(), g.qt_vertex_, 0.7, 0.8, de_a[a], de_b[b], de_c[c]);
+              DifferentialEvolution de(g, d, TStart, time_for_execution_original, 1, d.vec_request_.size(), 10, 0.7, 0.8, de_a[a], de_b[b], de_c[c]);
               fout << (de.evolve() / order) << ";\n";
               cout << "DE PSC execution " << j
                    << " for " << "'" << net_name << "' finished at " << (time(NULL) - TStart) << " seconds" << endl;
@@ -1361,6 +1371,6 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  system("PAUSE");
+  // system("PAUSE");
   return 0;
 }

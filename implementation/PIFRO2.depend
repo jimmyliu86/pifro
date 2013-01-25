@@ -875,3 +875,239 @@
 1345610909 source:c:\cygwin\pifro2\src\solution.cc
 	"solution.h"
 
+1358796913 source:c:\pifro2\implementation\src\differentialevolution.cpp
+	"differentialevolution.h"
+
+1358729484 c:\pifro2\implementation\include\differentialevolution.h
+	<time.h>
+	<algorithm>
+	<list>
+	<vector>
+	<float.h>
+	"./Graph.h"
+	"./Request.h"
+	"./Greedy.h"
+	"./psc.h"
+	"./solution.h"
+
+1358702283 c:\pifro2\implementation\include\graph.h
+	<vector>
+	<iostream>
+	<fstream>
+	"./macros.h"
+	"./vertex.h"
+	"./functions.h"
+
+1358702283 c:\pifro2\implementation\include\macros.h
+
+1358702283 c:\pifro2\implementation\include\vertex.h
+	<iostream>
+	<cstdlib>
+	"./macros.h"
+
+1358702283 c:\pifro2\implementation\include\functions.h
+	<math.h>
+	<cmath>
+	"./constants.h"
+
+1358702283 c:\pifro2\implementation\include\constants.h
+
+1358702283 c:\pifro2\implementation\include\request.h
+	"./macros.h"
+
+1358702283 c:\pifro2\implementation\include\greedy.h
+	<time.h>
+	<cmath>
+	<vector>
+	<iostream>
+	<cstdlib>
+	<algorithm>
+	<float.h>
+	<limits.h>
+	"./rvgs.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./functions.h"
+
+1358702283 c:\pifro2\implementation\include\rvgs.h
+
+1358702283 c:\pifro2\implementation\include\demand.h
+	<time.h>
+	<iostream>
+	<vector>
+	<cstdlib>
+	<algorithm>
+	"./macros.h"
+	"./request.h"
+	"./graph.h"
+	"./comparision.h"
+	"./rvgs.h"
+
+1358702283 c:\pifro2\implementation\include\comparision.h
+
+1358702283 c:\pifro2\implementation\include\dijkstra.h
+	<string.h>
+	<iostream>
+	<algorithm>
+	<vector>
+	<float.h>
+	"./macros.h"
+	"./graph.h"
+	"./request.h"
+	"./vertex.h"
+	"./functions.h"
+	"./constants.h"
+
+1358702283 c:\pifro2\implementation\include\psc.h
+	<time.h>
+	<cmath>
+	<vector>
+	<iostream>
+	<cstdlib>
+	<algorithm>
+	<float.h>
+	<limits.h>
+	"./rvgs.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./functions.h"
+
+1346214679 c:\pifro2\implementation\include\solution.h
+	<vector>
+	"./macros.h"
+
+1345610909 source:c:\pifro2\implementation\src\solution.cc
+	"solution.h"
+
+1347605143 source:c:\pifro2\implementation\src\vns.cpp
+	"vns.h"
+
+1347594844 c:\pifro2\implementation\include\vns.h
+	<time.h>
+	"./greedy.h"
+	"./psc.h"
+
+1358817727 source:c:\pifro2\implementation\main.cc
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+	<time.h>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<math.h>
+	<math.h>
+	<cmath>
+	"./vertex.h"
+	"./graph.h"
+	"./demand.h"
+	"./dijkstra.h"
+	"./greedy.h"
+	"./rvgs.h"
+	"./MTRand.h"
+	"./BRKGA.h"
+	"./BRKGADecoder.h"
+	"./igs.h"
+	"./psc.h"
+	"./mspsc.h"
+	"./vns.h"
+	"./differentialevolution.h"
+
+1358702283 c:\pifro2\implementation\include\mtrand.h
+	<iostream>
+	<climits>
+	<cstdio>
+	<ctime>
+	<cmath>
+
+1358702283 c:\pifro2\implementation\include\brkga.h
+	<algorithm>
+	<exception>
+	<stdexcept>
+	"Population.h"
+
+1358702283 c:\pifro2\implementation\include\population.h
+	<vector>
+	<algorithm>
+	<exception>
+	<stdexcept>
+
+1358702283 c:\pifro2\implementation\include\brkgadecoder.h
+	<time.h>
+	<algorithm>
+	<list>
+	<vector>
+	<float.h>
+	"./Graph.h"
+	"./Request.h"
+	"./Greedy.h"
+	"./psc.h"
+
+1358702283 c:\pifro2\implementation\include\igs.h
+	<time.h>
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+	<time.h>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<sstream>
+	<math.h>
+	"./greedy.h"
+	"./psc.h"
+
+1358702283 c:\pifro2\implementation\include\mspsc.h
+	<float.h>
+	"./psc.h"
+
+1358702283 source:c:\pifro2\implementation\src\brkgadecoder.cpp
+	"BRKGADecoder.h"
+
+1358702283 source:c:\pifro2\implementation\src\demand.cc
+	<vector>
+	"./demand.h"
+
+1358702283 source:c:\pifro2\implementation\src\dijkstra.cc
+	<vector>
+	"./dijkstra.h"
+
+1358702283 source:c:\pifro2\implementation\src\functions.cc
+	"./functions.h"
+
+1358702283 source:c:\pifro2\implementation\src\graph.cc
+	"./graph.h"
+
+1358702283 source:c:\pifro2\implementation\src\greedy.cc
+	"./greedy.h"
+
+1358702283 source:c:\pifro2\implementation\src\igs.cc
+	"./igs.h"
+
+1358702283 source:c:\pifro2\implementation\src\mspsc.cc
+	"mspsc.h"
+
+1358702283 source:c:\pifro2\implementation\src\psc.cc
+	"./PSC.h"
+
+1358702283 source:c:\pifro2\implementation\src\request.cc
+	"./request.h"
+
+1358702283 source:c:\pifro2\implementation\src\rngs.cpp
+	<stdio.h>
+	<time.h>
+	"rngs.h"
+
+1358702283 c:\pifro2\implementation\include\rngs.h
+
+1358702283 source:c:\pifro2\implementation\src\rvgs.cpp
+	<math.h>
+	"rngs.h"
+	"rvgs.h"
+
+1358702283 source:c:\pifro2\implementation\src\vertex.cc
+	"./vertex.h"
+
