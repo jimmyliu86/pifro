@@ -1,0 +1,8 @@
+# Resumo #
+
+
+Tipicamente, existe um grande número de enlaces de fibra ótica já posicionadas no subsolo. Entretanto, elas só podem ser utilizadas quando os dispositivos óticos apropriados são instalados em suas extremidades. Os dispositivos óticos que operam nessas redes custam  atualmente centenas de milhões de dólares. O presente trabalho tem como objetivo revisar a literatura sobre o problema de instalação de fibras óticas em redes WDM e propor estratégias de solução. A resolução do problema envolve minimizar o custo dos aparelhos óticos instalados na rede.
+
+**Palavras-chave**: algoritmo genético de chaves aleatórias, busca local, fibra ótica, heurística construtiva, otimização, redes WDM.
+
+&lt;wiki:gadget url="http://pifro.googlecode.com/svn/trunk/instances/site.xml" width="800" height="600" /&gt;

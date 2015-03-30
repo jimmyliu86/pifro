@@ -1,0 +1,3 @@
+Tipicamente, existe um grande número de enlaces de fibra ótica já posicionadas no subsolo. Entretanto, elas só podem ser utilizadas quando os dispositivos óticos apropriados são instalados em suas extremidades. Os dispositivos óticos que operam nessas redes custam atualmente centenas de milhões de dólares.
+
+O projeto consiste em implementar as principais heurísticas propostas na literatura sobre o problema de instalação de fibras óticas em redes WDM e propor novas estratégias de solução. A resolução do problema envolve minimizar o custo dos aparelhos óticos necessários para funcionamento da rede. Uma heurística baseada em algoritmos genéticos é proposta para resolver o problema.
